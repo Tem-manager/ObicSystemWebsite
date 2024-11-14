@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from 'react-router-dom';
 
 import {  
@@ -7,12 +6,10 @@ import {
    BusinessOutlined as MinistryIcon, 
    PlayCircleOutline as VideoIcon , 
    PermIdentityOutlined as User,
-   AccountBalanceWalletOutlined as  Wallet
-  } from '@mui/icons-material';
-  
+   AccountBalanceWalletOutlined as Wallet
+} from '@mui/icons-material';
+
 import React from 'react';
-
-
 
 const SideBar = () => {
   const location = useLocation();
@@ -25,25 +22,33 @@ const SideBar = () => {
       {/* Navigation Links */}
       <div className="flex flex-col items-center w-full space-y-10">
         {[ 
-          { to: "/chat", icon: <HomeIcon fontSize="large" /> }, 
-          { to: "/services", icon: <ServiceIcon fontSize="large" /> },
-          { to: "/ministries", icon: <MinistryIcon fontSize="large" /> }, 
-          { to: "/enjoy", icon: <VideoIcon fontSize="large" /> }, 
-          { to: "/wallet", icon: <Wallet fontSize="large" /> }, 
-          // { to: "/login", icon: <Login fontSize="large" /> },
-          { to: "/login", icon: <User fontSize="large" /> },
+          { to: "/chat", icon: <HomeIcon fontSize="large" />, label: "Home" }, 
+          { to: "/services", icon: <ServiceIcon fontSize="large" />, label: "Services" },
+          { to: "/ministries", icon: <MinistryIcon fontSize="large" />, label: "Ministries" }, 
+          { to: "/enjoy", icon: <VideoIcon fontSize="large" />, label: "Enjoy" }, 
+          { to: "/wallet", icon: <Wallet fontSize="large" />, label: "Wallet" }, 
+          { to: "/login", icon: <User fontSize="large" />, label: "Login" },
         ].map((item, index) => (
           <Link
             key={index}
             to={item.to}
-            className={`group flex items-center justify-center w-14 h-14 rounded-md text-gray-300 
-              ${isActive(item.to) ? 'text-[#192745] bg-gray-300' : 'hover:text-white hover:bg-gray-300'}
+            className={`group flex flex-col items-center justify-center w-14 h-20 rounded-md
+              ${isActive(item.to) ? 'text-white' : 'text-gray-600 hover:text-white'}
               transition-all duration-300 ease-in-out`}
           > 
+            {/* Icon */}
             {React.cloneElement(item.icon, { 
-              className: `${isActive(item.to) ? 'text-[#192745]' : 'text-gray-300'} 
-              group-hover:text-[#192745]`
+              className: `${isActive(item.to) ? 'text-white' : 'text-gray-400 group-hover:text-white'}`  
             })}
+
+            {/* Label */}
+            <span
+              className={`mt-2 text-xs
+                ${isActive(item.to) ? 'text-white' : 'text-gray-400 group-hover:text-white '}
+                transition-all duration-300 ease-in-out`}
+            >
+              {item.label}
+            </span>
           </Link>
         ))}
       </div>
