@@ -1,5 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import SideBar from './Components/Partials/SideBar';
+<<<<<<< Updated upstream
+=======
+import Header from './Components/Partials/Header';
+import MarketRoutes from './features/market/route/MarketRoutes';
+>>>>>>> Stashed changes
 import MinistriesRoutes from './features/ministries/route/MinistriesRoutes';
 import Page404 from './pages/Page404';
 import SharedRoutes from './route/SharedRoutes';
@@ -24,10 +29,8 @@ const App = () => {
           <Route path="/ministries/*" element={<MinistriesRoutes />} />
           <Route path="/enjoy/*" element={<EnjoyRoutes />} />
           <Route path="/wallet/*" element={<WalletRoutes />} />
-
-      
-
-          <Route path="*" element={<Page404 />} />          
+          <Route path="*" element={<Page404 />} />   
+       
         </Routes>
       </div>
     </div>
