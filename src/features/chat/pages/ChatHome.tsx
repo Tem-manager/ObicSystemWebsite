@@ -1,11 +1,8 @@
-import Header from "../Components/Partials/Header";
-import Navbar from "../Components/Partials/Navbar";
 
 const ChatHome = () => {
   return (
-    <div>
-      <Header/>
-      <Navbar/>
+    <div className="bg-red-300">
+      <h1>taiseer</h1>
     </div>
   );
 };
