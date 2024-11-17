@@ -1,13 +1,16 @@
+import { ChatTab } from "../../../../Components/Partials/ChatTab";
+
 function AllChats(){
    return (
       <div className="bg-green-300">
+        <ChatTab/>
         <h1>taiseer</h1>
         <h1>taiseer</h1>
         <h1>taiseer</h1>
         <h1>taiseer</h1>
         <h1>taiseer</h1>
         <h1>taiseer</h1>
-        <h1>taiseer</h1>
+        <h1>taiseejr</h1>
         <h1>taiseer</h1>
         <h1>taiseer</h1>
         <h1>taiseer</h1>
