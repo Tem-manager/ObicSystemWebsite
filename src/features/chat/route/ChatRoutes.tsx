@@ -30,9 +30,13 @@ const Groups = lazy(() =>
 );
 
 
-// const Moments = lazy(() =>
-//   import("../pages/protected/moments/Moments")
-// );
+const Moments = lazy(() =>
+  import("../pages/protected/moments/Moments")
+);
+
+const Status = lazy(() =>
+  import("../pages/protected/status/Status")
+);
 
 const routes = [
   {
@@ -45,10 +49,15 @@ const routes = [
     title: "Chat | Groups  ",
     component: Groups,
   },
-  // {
-  //   path: "/moments",
-  //   title: "Chat | Moments  ",
-  //   component: Moments,
-  // },
+  {
+    path: "/moments",
+    title: "Chat | Moments  ",
+    component: Moments,
+  },
+  {
+    path: "/status",
+    title: "Chat | Status  ",
+    component: Status,
+  },
 ]
 export default routes;

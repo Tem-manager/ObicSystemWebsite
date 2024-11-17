@@ -25,12 +25,12 @@ interface RouteConfig {
 const routes: RouteConfig[] = [
   {
     path: "/",
-    title: "login  ",
+    title: "login",
     component: SharedRoutes,
   },
   {
     path: "/*",
-    title: "User Profile",
+    title: "",
     component: SharedRoutes,
   },
   {

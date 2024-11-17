@@ -1,76 +1,8 @@
-function AllChats(){
-   return (
-      <div className="bg-green-300">
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-        <h1>taiseer</h1>
-      </div>
+function AllChats() {
+  return (
+    <>
+    <h1>all chat</h1>
+    </>
     );
 }
 

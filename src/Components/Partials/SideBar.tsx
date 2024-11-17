@@ -27,7 +27,7 @@ const SideBar = () => {
           { to: "/ministries", icon: <MinistryIcon fontSize="large" />, label: "Ministries" }, 
           { to: "/enjoy", icon: <VideoIcon fontSize="large" />, label: "Enjoy" }, 
           { to: "/wallet", icon: <Wallet fontSize="large" />, label: "Wallet" }, 
-          { to: "/login", icon: <User fontSize="large" />, label: "Login" },
+          { to: "/", icon: <User fontSize="large" />, label: "Login" },
         ].map((item, index) => (
           <Link
             key={index}

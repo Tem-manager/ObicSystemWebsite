@@ -1,56 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>("Dashboard");
+  const location = useLocation();
 
-  const handleTabClick = (tabName: string) => {
-    setActiveTab(tabName);
-  };
+  // Helper function to determine if the link should be active
+  const isActive = (path: string) => location.pathname === path;
+
+  // Links data
+  const tabs = [
+    { to: "/chat", label: "Chat" },
+    { to: "/chat/status", label: "Status" },
+    { to: "/chat/moments", label: "Moments" },
+  ];
 
   return (
-    <div className="text-sm font-medium text-center text-gray-500  dark:text-gray-400 dark:border-gray-700 sticky top-16">
-      <ul className="flex flex-wrap -mb-px">
-        <li className="me-2">
-          <a
-            href="#"
-            onClick={() => handleTabClick("Profile")}
-            className={`inline-block p-4 border-b-2 rounded-t-lg ${
-              activeTab === "Profile"
-                ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500"
-                : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-            }`}
-          >
-            Chat
-          </a>
-        </li>
-        <li className="me-2">
-          <a
-            href="#"
-            onClick={() => handleTabClick("Dashboard")}
-            className={`inline-block p-4 border-b-2 rounded-t-lg ${
-              activeTab === "Dashboard"
-                ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500"
-                : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-            }`}
-          >
-            Status
-          </a>
-        </li>
-        <li className="me-2">
-          <a
-            href="#"
-            onClick={() => handleTabClick("Settings")}
-            className={`inline-block p-4 border-b-2 rounded-t-lg ${
-              activeTab === "Settings"
-                ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500"
-                : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-            }`}
-          >
-            Moment  
-          </a>
-        </li>
-        
-        
+    <div className="text-sm font-medium text-center text-gray-500 sticky top-14">
+      <ul className="flex flex-wrap mb-px">
+        {tabs.map((tab, index) => (
+          <li key={index} className="me-2">
+            <Link
+              to={tab.to}
+              className={`inline-block p-4 border-b-2 rounded-t-lg ${
+                isActive(tab.to)
+                  ? "text-blue-600 border-blue-600 dark:text-[#192745] dark:border-[#192745]"
+                  : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-500"
+              }`}
+            >
+              {tab.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
