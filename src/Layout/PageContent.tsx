@@ -31,7 +31,7 @@ const PageContent: FC = () => {
 
   return (
     <div
-      className="p-4 bg-gray-100 "
+      className="p-4 bg-gray-100  "
       ref={mainContentRef}
     >
       <Suspense fallback={<Loader />}>

@@ -1,49 +1,59 @@
-// components/Tabs.tsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const Tabs: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("Home");
+const Navbar: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<string>("Dashboard");
+
+  const handleTabClick = (tabName: string) => {
+    setActiveTab(tabName);
+  };
 
   return (
-    <div className="flex flex-col items-center h-screen w-full">
-      {/* شريط التبويبات */}
-      <div className="flex justify-center w-full bg-zinc-50 text-neutral-500 shadow-md dark:bg-neutral-700">
-        <ul className="list-style-none flex w-full ps-0 lg:justify-center">
-          <li className="my-4 lg:my-0 flex-1 text-center">
-            <button
-              className={`w-full py-2 ${activeTab === "Home" ? "text-[#192745] font-semibold  " : "text-black/60 dark:text-white"}`}
-              onClick={() => setActiveTab("Home")}
-            >
-              Home
-            </button>
-          </li>
-          <li className="my-4 lg:my-0 flex-1 text-center">
-            <button
-              className={`w-full py-2 ${activeTab === "Features" ? "text-[#192745] font-semibold " : "text-black/60 dark:text-white/60"}`}
-              onClick={() => setActiveTab("Features")}
-            >
-              Features
-            </button>
-          </li>
-          <li className="my-4 lg:my-0 flex-1 text-center">
-            <button
-              className={`w-full py-2 ${activeTab === "Pricing" ? "text-[#192745] font-semibold " : "text-black/60 dark:text-white/60"}`}
-              onClick={() => setActiveTab("Pricing")}
-            >
-              Pricing
-            </button>
-          </li>
-        </ul>
-      </div>
-
-      {/* محتوى التبويبات */}
-      <div className="flex-grow w-full flex justify-center items-center p-4 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
-        {activeTab === "Home" && <div>Welcome to the Home tab content!</div>}
-        {activeTab === "Features" && <div>Here are some amazing features.</div>}
-        {activeTab === "Pricing" && <div>Our pricing plans are simple and transparent.</div>}
-      </div>
+    <div className="text-sm font-medium text-center text-gray-500  dark:text-gray-400 dark:border-gray-700 sticky top-16">
+      <ul className="flex flex-wrap -mb-px">
+        <li className="me-2">
+          <a
+            href="#"
+            onClick={() => handleTabClick("Profile")}
+            className={`inline-block p-4 border-b-2 rounded-t-lg ${
+              activeTab === "Profile"
+                ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500"
+                : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+            }`}
+          >
+            Chat
+          </a>
+        </li>
+        <li className="me-2">
+          <a
+            href="#"
+            onClick={() => handleTabClick("Dashboard")}
+            className={`inline-block p-4 border-b-2 rounded-t-lg ${
+              activeTab === "Dashboard"
+                ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500"
+                : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+            }`}
+          >
+            Status
+          </a>
+        </li>
+        <li className="me-2">
+          <a
+            href="#"
+            onClick={() => handleTabClick("Settings")}
+            className={`inline-block p-4 border-b-2 rounded-t-lg ${
+              activeTab === "Settings"
+                ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500"
+                : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+            }`}
+          >
+            Moment  
+          </a>
+        </li>
+        
+        
+      </ul>
     </div>
   );
 };
 
-export default Tabs;
+export default Navbar;

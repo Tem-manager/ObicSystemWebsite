@@ -31,6 +31,7 @@
 
 import PageContent from "./PageContent";
 import Header from "../Components/Partials/Header";
+import Navbar from "../Components/Partials/Navbar";
 
 function ChatLayout() {
   return (
@@ -44,13 +45,13 @@ function ChatLayout() {
 
 
       {/* ===== Navbar Start ===== */}
-      {/* <Tabs/> */}
+      <Navbar/>
       {/* ===== Navbar End ===== */}
 
 
 
       {/* ===== Main Content Area Start ===== */}
-      <div className="flex flex-1 pt-[20px]">
+      <div className="flex flex-1 pt-[4px]">
         <main className="w-full">
           <PageContent />
         </main>

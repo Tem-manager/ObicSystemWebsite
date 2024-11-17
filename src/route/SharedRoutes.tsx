@@ -7,7 +7,7 @@ import Login from '../pages/Login';
 const SharedRoutes = () => (
 
   <Routes>
-    <Route path="/login" element={<Login />} />
+    <Route path="/" element={<Login />} />
     <Route path="/profile" element={<UserProfile />} />
     <Route path="*" element={<Page404 />} />
   </Routes>
