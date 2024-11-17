@@ -2,7 +2,7 @@ import { MoreVert as MoreVertIcon, Search as SearchIcon } from '@mui/icons-mater
 
 function Header() {
   return (
-    <div className="top-2 sticky w-full z-50 ">
+    <div className="top-4 sticky w-full z-50   ">
       <div className="w-full bg-white px-4 py-2 shadow-md rounded-xl shadow-md ">
         <div className="flex items-center justify-between h-[45px] ">
           {/* Left section - OBIC text */}
@@ -11,7 +11,7 @@ function Header() {
           </div>
 
           {/* Right section - Search icon and Three-dot menu button */}
-          <div className="flex items-center space-x-4 text-[#192745]">
+          <div className="flex items-center space-x-8 text-[#192745]">
             {/* Search icon */}
             <button type="button">
               <SearchIcon fontSize="large" />

@@ -1,4 +1,4 @@
-import { Suspense , FC, useEffect, useRef, lazy } from "react";
+import { FC, useEffect, useRef, lazy } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import PageTitle from "../../../Components/ui/PageTitle";
 import routes from "../route/ChatRoutes";
@@ -29,7 +29,8 @@ const PageContent: FC = () => {
 
   return (
     <div
-      className="p-4 bg-gray-100 "
+    
+      className="p-2 bg-gray-100 sticky top-60 "
       ref={mainContentRef}
     >
         <Routes>

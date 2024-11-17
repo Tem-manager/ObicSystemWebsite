@@ -7,7 +7,7 @@ function AppLayout() {
       <div className="h-screen w-full flex ">
         
         {/* ===== Sidebar Start ===== */}
-      <div className="fixed left-0 top-0 h-full w-10 bg-red-100">
+      <div className="fixed left-0 top-0 h-full w-10">
         <SideBar />
       </div>
       
