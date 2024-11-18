@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Call, Chat, Favorite, Group } from "@mui/icons-material";
-import { Link } from "react-router-dom"; // استيراد Link من react-router-dom
+import { Link, useLocation } from "react-router-dom"; // استيراد useLocation
 
 export const ChatTab = () => {
   return (
@@ -13,27 +13,26 @@ export const ChatTab = () => {
 };
 
 const SlideTabs = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const location = useLocation(); // الحصول على المسار الحالي
 
   return (
     <ul className="flex flex-col items-center">
       {/* قائمة الأيقونات مرتبة بشكل عمودي */}
-      <Tab icon={<Chat />} isActive={activeIndex === 0} onClick={() => setActiveIndex(0)} to="/chat" />
-      <Tab icon={<Favorite />} isActive={activeIndex === 1} onClick={() => setActiveIndex(1)} to="/chat/favorites" />
-      <Tab icon={<Group />} isActive={activeIndex === 2} onClick={() => setActiveIndex(2)} to="/chat/groups" />
-      <Tab icon={<Call />} isActive={activeIndex === 3} onClick={() => setActiveIndex(3)} to="/chat/calls" />
+      <Tab icon={<Chat />} isActive={location.pathname === "/chat/chats"} to="/chat/chats" />
+      <Tab icon={<Favorite />} isActive={location.pathname === "/chat/favorites"} to="/chat/favorites" />
+      <Tab icon={<Group />} isActive={location.pathname === "/chat/groups"} to="/chat/groups" />
+      <Tab icon={<Call />} isActive={location.pathname === "/chat/calls"} to="/chat/calls" />
     </ul>
   );
 };
 
-const Tab = ({ icon, isActive, onClick, to }) => {
+const Tab = ({ icon, isActive, to }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
     <li
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={onClick}
       className="relative mt-1 flex cursor-pointer items-center justify-center w-12 h-12 text-xs text-gray-500 transition duration-300"
     >
       <Link to={to}>

@@ -30,7 +30,7 @@ const PageContent: FC = () => {
   return (
     <div
     
-      className="p-2 bg-gray-100 sticky top-60 "
+      className=" bg-gray-100 sticky top-60 "
       ref={mainContentRef}
     >
         <Routes>

@@ -22,7 +22,7 @@ const SideBar = () => {
       {/* Navigation Links */}
       <div className="flex flex-col items-center w-full space-y-10">
         {[ 
-          { to: "/chat", icon: <HomeIcon fontSize="large" />, label: "Home" }, 
+          { to: "/chat/chats", icon: <HomeIcon fontSize="large" />, label: "Home" }, 
           { to: "/services", icon: <ServiceIcon fontSize="large" />, label: "Services" },
           { to: "/ministries", icon: <MinistryIcon fontSize="large" />, label: "Ministries" }, 
           { to: "/enjoy", icon: <VideoIcon fontSize="large" />, label: "Enjoy" }, 

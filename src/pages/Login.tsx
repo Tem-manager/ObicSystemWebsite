@@ -13,7 +13,7 @@ const Login: React.FC = () => {
     console.log("Password:", password);
     
     // بعد التحقق من بيانات المستخدم (أو تسجيل الدخول بنجاح)، نقوم بالتوجيه
-    navigate("/chat"); // توجيه المستخدم إلى صفحة "AllChats"
+    navigate("/chat/chats"); // توجيه المستخدم إلى صفحة "AllChats"
   };
 
   return (
