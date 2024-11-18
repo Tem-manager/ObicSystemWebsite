@@ -2,7 +2,7 @@ import ChatTab from "../../../../Components/Partials/ChatTab";
 
 function AllChats() {
   // مصفوفة البيانات
-  const chatData = Array.from({ length: 100 }, (_, index) => ({
+  const chatData = Array.from({ length: 50 }, (_, index) => ({
     id: index + 1,
     imgSrc: "https://via.placeholder.com/50",
     name: `مستخدم ${index + 1}`,
