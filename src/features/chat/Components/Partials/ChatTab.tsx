@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaHome, FaDollarSign, FaClipboardList, FaBook, FaBlog } from "react-icons/fa";
 
-export const ChatTab = () => {
+export const ChatTab = () => {  
   return (
     <>
     
