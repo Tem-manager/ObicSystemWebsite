@@ -1,77 +1,53 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaHome, FaDollarSign, FaClipboardList, FaBook, FaBlog } from "react-icons/fa"; // استيراد الأيقونات
+import { FaHome, FaDollarSign, FaClipboardList, FaBook, FaBlog } from "react-icons/fa";
 
 export const ChatTab = () => {
   return (
-    <div className="bg-neutral-100 pt-0 flex">
-      <SlideTabs />
-    </div>
+    <>
+    
+      {/* Sidebar with tabs */}
+      {/* <div class?Name="bg-r"> */}
+        <SlideTabs />
+      {/* </div> */}
+
+    </>
   );
 };
 
 const SlideTabs = () => {
-  const [position, setPosition] = useState({
-    left: 0,
-    width: 0,
-    opacity: 0,
-  });
-
   return (
     <ul
-      onMouseLeave={() => {
-        setPosition((pv) => ({
-          ...pv,
-          opacity: 0,
-        }));
-      }}
-      className="relative flex flex-col items-start left-0 fixed h-full p-4 space-y-4"
+      onMouseLeave={() => {}}
+      className="flex flex-col items-center bg-blue-200 sticky top-0"  // added z-index
     >
-      <Tab setPosition={setPosition} icon={<FaHome />} />
-      <Tab setPosition={setPosition} icon={<FaDollarSign />} />
-      <Tab setPosition={setPosition} icon={<FaClipboardList />} />
-      <Tab setPosition={setPosition} icon={<FaBook />} />
-      <Tab setPosition={setPosition} icon={<FaBlog />} />
-
-      <Cursor position={position} />
+      <Tab icon={<FaHome />} />
+      <Tab icon={<FaDollarSign />} />
+      <Tab icon={<FaClipboardList />} />
+      <Tab icon={<FaBook />} />
     </ul>
   );
 };
 
-const Tab = ({ icon, setPosition }) => {
-  const ref = useRef(null);
+const Tab = ({ icon }) => {
+  const [hovered, setHovered] = useState(false);
 
   return (
     <li
-      ref={ref}
-      onMouseEnter={() => {
-        if (!ref?.current) return;
-
-        const { width } = ref.current.getBoundingClientRect();
-
-        setPosition({
-          left: ref.current.offsetLeft,
-          width,
-          opacity: 1,
-        });
-      }}
-      className="relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-white mix-blend-difference"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative flex cursor-pointer items-center justify-center w-12 h-12 text-xs text-gray-500 transition duration-300 md:px-5 md:py-3"
     >
-      <div className="relative flex flex-col items-center">
-        <div className="text-2xl md:text-3xl">{icon}</div>
-        <div className="absolute bottom-0 w-full h-0.5 bg-white opacity-0 transition-all duration-300"></div>
-      </div>
+      <motion.div
+        animate={{
+          backgroundColor: hovered ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)",
+          color: hovered ? "white" : "inherit",
+        }}
+        className="flex h-12 w-12 items-center justify-center rounded-full"
+      >
+        <div className="text-lg md:text-xl">{icon}</div>
+      </motion.div>
     </li>
   );
 };
-
-const Cursor = ({ position }) => {
-  return (
-    <motion.li
-      animate={{
-        ...position,
-      }}
-      className="absolute z-0 h-7 rounded-full bg-black md:h-12"
-    />
-  );
-};
+ export default ChatTab;

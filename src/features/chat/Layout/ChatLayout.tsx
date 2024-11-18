@@ -5,7 +5,7 @@ import Navbar from "../Components/Partials/Navbar";
 
 function ChatLayout() {
   return (
-    <div className="flex flex-col min-h-screen p-4 top-0   ">
+    <div className="flex flex-col min-h-screen py-4 top-0   ">
 
 
       {/* ===== Header Start ===== */}
@@ -15,7 +15,7 @@ function ChatLayout() {
 
 
       {/* ===== Navbar Start ===== */}
-      <Navbar/>
+      <Navbar />
       {/* ===== Navbar End ===== */}
 
 
