@@ -1,53 +1,56 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaHome, FaDollarSign, FaClipboardList, FaBook, FaBlog } from "react-icons/fa";
+import { Call, Chat, Favorite, Group } from "@mui/icons-material";
+import { Link } from "react-router-dom"; // استيراد Link من react-router-dom
 
-export const ChatTab = () => {  
+export const ChatTab = () => {
   return (
-    <>
-    
-      {/* Sidebar with tabs */}
-      {/* <div class?Name="bg-r"> */}
-        <SlideTabs />
-      {/* </div> */}
-
-    </>
+    <div className="h-screen flex items-start justify-center mt-[0px]">
+      {/* تحريك الأيقونات للأعلى باستخدام mt-8 */}
+      <SlideTabs />
+    </div>
   );
 };
 
 const SlideTabs = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   return (
-    <ul
-      onMouseLeave={() => {}}
-      className="flex flex-col items-center bg-blue-200 sticky top-0"  // added z-index
-    >
-      <Tab icon={<FaHome />} />
-      <Tab icon={<FaDollarSign />} />
-      <Tab icon={<FaClipboardList />} />
-      <Tab icon={<FaBook />} />
+    <ul className="flex flex-col items-center">
+      {/* قائمة الأيقونات مرتبة بشكل عمودي */}
+      <Tab icon={<Chat />} isActive={activeIndex === 0} onClick={() => setActiveIndex(0)} to="/chat" />
+      <Tab icon={<Favorite />} isActive={activeIndex === 1} onClick={() => setActiveIndex(1)} to="/chat/favorites" />
+      <Tab icon={<Group />} isActive={activeIndex === 2} onClick={() => setActiveIndex(2)} to="/chat/groups" />
+      <Tab icon={<Call />} isActive={activeIndex === 3} onClick={() => setActiveIndex(3)} to="/chat/calls" />
     </ul>
   );
 };
 
-const Tab = ({ icon }) => {
+const Tab = ({ icon, isActive, onClick, to }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
     <li
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex cursor-pointer items-center justify-center w-12 h-12 text-xs text-gray-500 transition duration-300 md:px-5 md:py-3"
+      onClick={onClick}
+      className="relative mt-1 flex cursor-pointer items-center justify-center w-12 h-12 text-xs text-gray-500 transition duration-300"
     >
-      <motion.div
-        animate={{
-          backgroundColor: hovered ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)",
-          color: hovered ? "white" : "inherit",
-        }}
-        className="flex h-12 w-12 items-center justify-center rounded-full"
-      >
-        <div className="text-lg md:text-xl">{icon}</div>
-      </motion.div>
+      <Link to={to}>
+        <motion.div
+          animate={{
+            backgroundColor: hovered || isActive
+              ? "#192745" // اللون الجديد عند التمرير أو التفعيل
+              : "rgba(0, 0, 0, 0)", // شفاف في الحالة العادية
+            color: hovered || isActive ? "white" : "inherit",
+          }}
+          className="flex h-12 w-12 items-center justify-center rounded-full"
+        >
+          <div className="text-2xl">{icon}</div>
+        </motion.div>
+      </Link>
     </li>
   );
 };
- export default ChatTab;
+
+export default ChatTab;

@@ -21,12 +21,20 @@ import { lazy } from "react";
 
 
 const AllChats = lazy(() =>
-  import("../pages/protected/chat/all-chats/AllChats")
+  import("../pages/protected/chats/all-chats/AllChats")
 );
 
 
 const Groups = lazy(() =>
-  import("../pages/protected/chat/groups/Groups")
+  import("../pages/protected/chats/groups/Groups")
+);
+
+const Favorites = lazy(() =>
+  import("../pages/protected/chats/favorites/Favorites")
+);
+
+const Calls = lazy(() =>
+  import("../pages/protected/chats/calls/Calls")
 );
 
 
@@ -40,7 +48,7 @@ const Status = lazy(() =>
 
 const routes = [
   {
-    path: "/",
+    path: "/chats",
     title: " chat | All chat ",
     component: AllChats,
   },
@@ -48,6 +56,15 @@ const routes = [
     path: "/Groups",
     title: "Chat | Groups  ",
     component: Groups,
+  },
+  {
+    path: "/Favorites",
+    title: "Chat | Favorites  ",
+    component: Favorites,
+  }, {
+    path: "/Calls",
+    title: "Chat | Calls  ",
+    component: Calls,
   },
   {
     path: "/moments",
