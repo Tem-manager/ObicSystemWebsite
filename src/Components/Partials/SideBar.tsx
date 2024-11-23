@@ -18,7 +18,7 @@ const SideBar = () => {
   const isActive = (path) => location.pathname.startsWith(path);
 
   return (
-    <div className="bg-[#192745] h-screen w-14 flex flex-col items-center py-8 shadow-lg">
+    <div className="bg-[#192745] h-screen w-[4vw] flex flex-col items-center py-8 shadow-lg fixed">
       {/* Navigation Links */}
       <div className="flex flex-col items-center w-full space-y-10">
         {[ 

@@ -12,53 +12,15 @@ function AllChats() {
   }));
 
   return (
-    <div className="relative h-screen flex mt-6">
-      {/* مكان ثابت للـ ChatTab */}
-      <div className="flex-grow-0 fixed basis-1/2 z-10">
+    <>
+    
         <ChatTab />
-      </div>
 
-      <div className="flex-grow ml-[50px] p-4 ">
+      <div className="flex-grow ml-[10px]  w-full h-[1200px]  ">
         {/* تقسيم الجزء الأحمر إلى قسمين */}
-        <div className="flex h-full space-x-4">
-          {/* الجزء الأول - تصميم واجهة شبيهة بالواتساب */}
-          <div className="w-[30%] flex-shrink-0  overflow-y-auto border border-white">
-            {/* عنوان المحادثات في قسم ثابت */}
-            <div className="sticky top-0 p-4 z-10 w-full bg-white">
-              <h2 className="text-lg font-semibold text-[#192745]">
-                المحادثات
-              </h2>
-            </div>
-
-            {/* قائمة المحادثات */}
-            <div className="space-y-4  px-4 pt-4 bg-white">
-              {/* التكرار الديناميكي لبطاقات المحادثة */}
-              {chatData.map((chat) => (
-                <ChatCard
-                  key={chat.id}
-                  imgSrc={chat.imgSrc}
-                  name={chat.name}
-                  lastMessage={chat.lastMessage}
-                  time={chat.time}
-                  unreadCount={chat.unreadCount}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* الجزء الثاني - 70% */}
-          <div className="w-[70%] flex-shrink-0 p-4 rounded-lg overflow-y-auto">
-            <h2 className="text-lg font-semibold text-[#192745]">
-              الجزء الثاني
-            </h2>
-            <p>
-              هذا المحتوى في الجزء الثاني الذي يأخذ 70% من مساحة الأحمر. <br />
-              يمكنك إضافة محتوى هنا وسيظل الحجم ثابتًا.
-            </p>
-          </div>
-        </div>
+       
       </div>
-    </div>
+      </>
   );
 }
 

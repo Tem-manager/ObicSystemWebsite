@@ -5,8 +5,7 @@ import { Link, useLocation } from "react-router-dom"; // استيراد useLocat
 
 export const ChatTab = () => {
   return (
-    <div className="h-screen flex items-start justify-center mt-[0px]">
-      {/* تحريك الأيقونات للأعلى باستخدام mt-8 */}
+    <div className="sticky top-0 flex flex-col h-full pl-2">
       <SlideTabs />
     </div>
   );

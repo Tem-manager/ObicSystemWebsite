@@ -18,7 +18,9 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <div className="text-sm shadow-md font-medium text-center text-gray-500 sticky top-14 z-10 bg-white shadow-sm">
+    <div className="h-[8vh] bg-white-700 flex items-center justify-center w-full">
+
+    <div className="text-sm shadow-md font-medium text-center text-gray-500 bg-white shadow-sm">
       <ul className="flex justify-center items-center mb-px">
         {tabs.map((tab, index) => (
           <li key={index} className="mx-2">
@@ -35,6 +37,7 @@ const Navbar: React.FC = () => {
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };
