@@ -23,7 +23,7 @@ function Groups() {
         {/* تقسيم الجزء الأحمر إلى قسمين */}
         <div className="flex h-full space-x-4">
           {/* الجزء الأول - تصميم واجهة شبيهة بالواتساب */}
-          <div className="w-[30%] flex-shrink-0  overflow-y-auto border border-white">
+          <div className="w-[50%] flex-shrink-0  overflow-y-auto border border-white">
             {/* عنوان المحادثات في قسم ثابت */}
             <div className="sticky top-0 p-4 z-10 w-full bg-white">
               <h2 className="text-lg font-semibold text-[#192745]">
