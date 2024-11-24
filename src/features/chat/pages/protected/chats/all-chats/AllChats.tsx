@@ -10,6 +10,7 @@ function AllChats() {
         <ChatTab />
       <div className="flex-grow ml-[10px]  w-full  flex  ">
       <ChatList/>
+<<<<<<< Updated upstream
       <div className="w-[65%] bg-gray-200 p-4 m-2 ">
       <Header
       // الجهة اليسرى: صورة دائرية مع نص بجانبها
@@ -40,6 +41,10 @@ function AllChats() {
       className="bg-white shadow-md dark:bg-gray-800 fixed   z-50"
 
     />
+=======
+      <div className="w-[70%] bg-gray-200 p-4 m-2">
+ 
+>>>>>>> Stashed changes
       </div>
       </div>
       </>
