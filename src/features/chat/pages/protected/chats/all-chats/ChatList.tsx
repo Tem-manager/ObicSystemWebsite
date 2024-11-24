@@ -3,6 +3,7 @@ import { COLORS } from "../../../../../../constants/thems/Color";
 import CircleImage from "../../../../Components/Ui/CircleImage";
 import logo from "../../../../../../../public/images/logo1.png";
 import StatusBadge from "../../../../../../Components/ui/StatusBadge";
+import TimeDisplay from "../../../../../../Components/ui/TimeDisplay";
 
 interface UnreadBadgeProps {
   count: number; // عدد الرسائل غير المقروءة
@@ -32,9 +33,9 @@ const ChatItem: React.FC<ChatItemProps> = ({ name, message, time, unreadCount })
         <p className="text-sm text-gray-500 line-clamp-1">{message}</p>
       </div>
       <div className="flex flex-col items-end text-right">
-        <span className="text-xs text-gray-400">{time}</span>
+        <TimeDisplay time={time} className="text-xs"/> 
         {unreadCount &&           
-        <StatusBadge type="number" content={unreadCount} className="w-6 h-6 bg-blue-400 text-white"/>
+        <StatusBadge type="number" content={unreadCount} className="w-6 h-6 bg-blue-400 text-white "/>
       }
       </div>
     </div>
