@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom"; // استيراد useLocat
 
 export const ChatTab = () => {
   return (
-    <div className="sticky top-0 flex flex-col h-full pl-2">
+    <div className="sticky top-0 flex flex-col h-full pl-2 pt-4">
       <SlideTabs />
     </div>
   );

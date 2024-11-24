@@ -28,7 +28,7 @@ const PageContent: FC = () => {
   }, [pathname]);
 
   return (
-       <div className="overflow-auto h-[calc(100vh-18vh)]"       
+       <div className="overflow-auto h-[calc(100vh-18vh)] p-4"       
        ref={mainContentRef}
         >
       <div className="flex">

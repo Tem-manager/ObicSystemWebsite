@@ -1,10 +1,14 @@
 import SideBar from "../Components/Partials/SideBar";
+import { COLORS } from "../thems/Color";
 import PageContent from "./PageContent";
 
 function AppLayout() {
   return (
 
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen "
+    style={{ backgroundColor: COLORS.BACKGROUND }}
+>
+      
 
       <aside className="">
         <SideBar />
