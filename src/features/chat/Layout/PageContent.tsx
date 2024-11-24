@@ -28,11 +28,11 @@ const PageContent: FC = () => {
   }, [pathname]);
 
   return (
-    <div
-    
-      className=" bg-gray-100 sticky top-60 "
-      ref={mainContentRef}
-    >
+       <div className="overflow-auto h-[calc(100vh-18vh)] p-4"       
+       ref={mainContentRef}
+        >
+      <div className="flex">
+
         <Routes>
         {routes.map((route: RouteConfig, key) => (
             <Route
@@ -50,6 +50,7 @@ const PageContent: FC = () => {
           <Route path="*" element={<Page404 />} />
 
         </Routes>
+    </div>
     </div>
   );
 };

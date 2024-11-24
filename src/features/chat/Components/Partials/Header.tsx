@@ -38,8 +38,8 @@ import { MoreVert as MoreVertIcon, Search as SearchIcon } from "@mui/icons-mater
 
 function Header() {
   return (
-    <div className="fixed top-0 w-full z-50">
-      <div className="w-full bg-white pr-20 py-2 border-b border-gray-200box-border pl-4">
+    <div className="h-[10vh]  flex items-center justify-between ">
+      <div className="w-full pr-10 py-2  box-border pl-4 ">
         <div className="flex items-center justify-between h-[45px]">
           {/* Left section - OBIC text */}
           <div className="text-[#192745] text-xl font-semibold">OBIC</div>
