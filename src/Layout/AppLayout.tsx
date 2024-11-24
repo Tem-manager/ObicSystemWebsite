@@ -1,5 +1,5 @@
 import SideBar from "../Components/Partials/SideBar";
-import { COLORS } from "../thems/Color";
+import { COLORS } from "../constants/thems/Color";
 import PageContent from "./PageContent";
 
 function AppLayout() {

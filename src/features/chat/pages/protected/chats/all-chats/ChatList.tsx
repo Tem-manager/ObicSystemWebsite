@@ -1,4 +1,4 @@
-import { COLORS } from "../../../../../../thems/Color";
+import { COLORS } from "../../../../../../constants/thems/Color";
 
 function ChatList() {
   return (
