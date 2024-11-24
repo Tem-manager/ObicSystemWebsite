@@ -1,79 +1,69 @@
+import React from "react";
 import { COLORS } from "../../../../../../constants/thems/Color";
+import CircleImage from "../../../../Components/Ui/CircleImage";
+import logo from "../../../../../../../public/images/logo1.png";
+import StatusBadge from "../../../../../../Components/ui/StatusBadge";
+import TimeDisplay from "../../../../../../Components/ui/TimeDisplay";
 
+interface UnreadBadgeProps {
+  count: number; // عدد الرسائل غير المقروءة
+}
 
-function ChatList() {
+const UnreadBadge: React.FC<UnreadBadgeProps> = ({ count }) => {
   return (
-    <div
-      className="w-full sm:w-[38%] p-4 m-2 border border-gray-300 rounded-lg shadow-md h-screen"
-      style={{ backgroundColor: COLORS.BACKGROUND }}
-    >
-      {/* <h2 className="text-xl font-semibold mb-4 sticky top-0 py-2">
-        All Chats
-      </h2> */}
+    <span className="bg-blue-400 text-white text-xs rounded-full px-2 py-1 mt-1 self-end">
+      {count}
+    </span>
+  );
+};
 
+interface ChatItemProps {
+  name: string; // اسم المستخدم أو المجموعة
+  message: string; // نص الرسالة
+  time: string; // وقت الرسالة
+  unreadCount?: number; // عدد الرسائل غير المقروءة (اختياري)
+}
 
-
-      {/* قائمة المحادثات */}
-      <div className="space-y-0 overflow-y-auto">
-        {/* محادثة 1 (مع رسالة غير مقروءة) */}
-        <div className="flex items-center hover:bg-gray-100 p-2 rounded-lg cursor-pointer border-b border-gray-300 last:border-b-0">
-          <img
-            src="https://via.placeholder.com/50"
-            alt="User"
-            className="w-12 h-12 rounded-full mr-3"
-          /> 
-          <div className="flex-1">
-            <h3 className="font-semibold text-lg">John Doe</h3>
-            <p className="text-sm text-gray-500 line-clamp-1">
-              Hey! How are you? Let's catch up soon.
-            </p>
-          </div>
-          <div className="flex flex-col items-end text-right">
-            <span className="text-xs text-gray-400">10:30</span>
-            <span className="bg-blue-400 text-white text-xs rounded-full px-2 py-1 mt-1 self-end">
-              3
-            </span>
-          </div>
-        </div>
-
-        {/* محادثة 2 (رسالة مقروءة) */}
-        <div className="flex items-center hover:bg-gray-100 p-2 rounded-lg cursor-pointer border-b border-gray-300 last:border-b-0">
-          <img
-            src="https://via.placeholder.com/50"
-            alt="User"
-            className="w-12 h-12 rounded-full mr-3"
-          />
-          <div className="flex-1">
-            <h3 className="font-semibold text-lg">Jane Smith</h3>
-            <p className="text-sm text-gray-500 line-clamp-1">
-              Are you coming to the party?
-            </p>
-          </div>
-          <div className="flex flex-col items-end text-right">
-            <span className="text-xs text-gray-400">Yesterday</span>
-          </div>
-        </div>
-
-        {/* محادثة 3 (رسالة مقروءة) */}
-        <div className="flex items-center hover:bg-gray-100 p-2 rounded-lg cursor-pointer border-b border-gray-300 last:border-b-0">
-          <img
-            src="https://via.placeholder.com/50"
-            alt="Group"
-            className="w-12 h-12 rounded-full mr-3"
-          />
-          <div className="flex-1">
-            <h3 className="font-semibold text-lg">Work Group</h3>
-            <p className="text-sm text-gray-500 line-clamp-1">
-              Please check the new project details, it's important.
-            </p>
-          </div>
-          <div className="flex flex-col items-end text-right">
-            <span className="text-xs text-gray-400">11:15</span>
-          </div>
-        </div>
+const ChatItem: React.FC<ChatItemProps> = ({ name, message, time, unreadCount }) => {
+  return (
+    <div className="flex items-center hover:bg-gray-100 p-2 rounded-lg cursor-pointer border-b border-gray-300 last:border-b-0">
+      <CircleImage size={12} border="10" imageUrl={logo} className="mr-4" />
+      <div className="flex-1">
+        <h3 className="font-semibold text-lg">{name}</h3>
+        <p className="text-sm text-gray-500 line-clamp-1">{message}</p>
+      </div>
+      <div className="flex flex-col items-end text-right">
+        <TimeDisplay time={time} className="text-xs"/> 
+        {unreadCount &&           
+        <StatusBadge type="number" content={unreadCount} className="w-6 h-6 bg-blue-400 text-white "/>
+      }
       </div>
     </div>
   );
-}
+};
+
+const ChatList: React.FC = () => {
+  const chats: ChatItemProps[] = [
+    { name: "John Doe", message: "Hey! How are you? Let's catch up soon.", time: "10:30", unreadCount: 3 },
+    { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
+    { name: "Work Group", message: "Please check the new project details, it's important.", time: "11:15" },
+    { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
+    { name: "Work Group", message: "Please check the new project details, it's important.", time: "11:15" },
+  ];
+
+  return (
+    <div
+      className="w-full sm:w-[35%] p-4 m-2 border border-gray-300 shadow-md h-screen"
+      style={{ backgroundColor: COLORS.BACKGROUND }}
+    >
+      <h2 className="text-xl font-semibold mb-4 sticky top-0 py-2">All Chats</h2>
+      <div className="space-y-0 overflow-y-auto">
+        {chats.map((chat, index) => (
+          <ChatItem key={index} {...chat} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default ChatList;
