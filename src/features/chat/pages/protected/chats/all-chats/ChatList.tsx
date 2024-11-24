@@ -1,14 +1,17 @@
 import { COLORS } from "../../../../../../constants/thems/Color";
 
+
 function ChatList() {
   return (
     <div
       className="w-full sm:w-[38%] p-4 m-2 border border-gray-300 rounded-lg shadow-md h-screen"
       style={{ backgroundColor: COLORS.BACKGROUND }}
     >
-      <h2 className="text-xl font-semibold mb-4 sticky top-0 py-2">
+      {/* <h2 className="text-xl font-semibold mb-4 sticky top-0 py-2">
         All Chats
-      </h2>
+      </h2> */}
+
+
 
       {/* قائمة المحادثات */}
       <div className="space-y-0 overflow-y-auto">
