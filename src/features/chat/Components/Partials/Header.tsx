@@ -39,7 +39,7 @@
 
 function Header({ leftContent, centerContent, rightContent, className }) {
   return (
-    <header className={`h-[10vh] flex items-center justify-between ${className || ""}`}>
+    <header className={`h-[10vh] flex items-center justify-between w-full ${className || ""}`}>
       <div className="w-full pr-10 py-2 box-border pl-4">
         <div className="flex items-center justify-between h-[45px]">
           {/* المحتوى الأيسر */}
