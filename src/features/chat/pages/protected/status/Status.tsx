@@ -1,9 +1,8 @@
 
 
 import StatusCard from "./StatusCard";
-import ImageStatus from "../../../Components/Ui/imageStatus";
-import ListTitle from "../../../Components/Ui/ListTitle";
 import { statusData } from "./statusData";
+import StatusList from "./StatusList";
 
 
 function Status() {
@@ -14,29 +13,7 @@ function Status() {
                     <div className="w-[50%] flex-shrink-0  overflow-y-auto border border-white">
                         
                         <StatusCard />
-                     <div className="w-full mt-3 max-w-sm mx-auto bg-gray-100 shadow-lg  p-4">
-                        <div className="relative h-screen flex mt-6">
-                            <ul>
-                            {
-                            statusData.map((item) => (
-                                <li className="mb-5">
-                                     <ListTitle
-                                        key={item.id}
-                                        Title={item.username}
-                                        subTitle={item.time}
-                                        imageComponent={
-                                          <ImageStatus  images={item.imageUrls} />
-                                        }
-                               
-                                />
-                                </li>
-                               
-                        ))}
-
-                            </ul>
-                       
-                        </div>
-                     </div>
+                     <StatusList statusData={statusData} />
                     </div>
 
                     <div className="w-[70%] flex-shrink-0 p-4 rounded-lg overflow-y-auto">
