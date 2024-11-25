@@ -1,5 +1,5 @@
   import ChatTab from "../../../../Components/Partials/ChatTab";
-import ChatList from "../all-chats/ChatList";
+import conversation from "../all-chats/conversation/Conversation";
 
   function Favorites() {
    
@@ -10,7 +10,7 @@ import ChatList from "../all-chats/ChatList";
 
       <div className="flex-grow ml-[10px]   flex   ">
 
-      <ChatList/>
+      <conversation/>
       <div className="w-[70%] bg-gray-200">
 
       </div>

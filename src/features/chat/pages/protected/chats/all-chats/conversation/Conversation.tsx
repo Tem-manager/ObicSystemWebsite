@@ -1,10 +1,10 @@
 import React from "react";
-import { COLORS } from "../../../../../../constants/thems/Color";
-import CircleImage from "../../../../Components/Ui/CircleImage";
-import logo from "../../../../../../../public/images/logo1.png";
-import StatusBadge from "../../../../../../Components/ui/StatusBadge";
-import TimeDisplay from "../../../../../../Components/ui/TimeDisplay";
-import Header from "../../../../Components/Partials/Header";
+import { COLORS } from "../../../../../../../constants/thems/Color";
+import CircleImage from "../../../../../Components/Ui/CircleImage";
+import logo from "../../../../../../../../public/images/logo1.png";
+import StatusBadge from "../../../../../../../Components/ui/StatusBadge";
+import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
+import Header from "../../../../../Components/Partials/Header";
 
 
 interface ChatItemProps {
@@ -32,9 +32,9 @@ const ChatItem: React.FC<ChatItemProps> = ({ name, message, time, unreadCount })
   );
 };
 
-const ChatList: React.FC = () => {
+const Conversation: React.FC = () => {
   const chats: ChatItemProps[] = [
-    { name: "John Doe", message: "Hey! How are you? Let's catch up soon.", time: "10:30", unreadCount: 3 },
+    { name: "John Doe", message: "Hey! How are you? Let's catch up soon.", time: "10:30", unreadCount: 4 },
     { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
     { name: "Work Group", message: "Please check the new project details, it's important.", time: "11:15" },
     { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
@@ -49,12 +49,7 @@ const ChatList: React.FC = () => {
     { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
     { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
     { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
-    { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
-    { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
-    { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
-    { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
-    { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
-    { name: "Jane Smith", message: "Are you coming to the party?", time: "Yesterday" },
+   
       ];
 
   return (
@@ -82,4 +77,4 @@ const ChatList: React.FC = () => {
   );
 };
 
-export default ChatList;
+export default Conversation;

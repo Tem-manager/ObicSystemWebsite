@@ -2,8 +2,8 @@ import { Call, Videocam } from "@mui/icons-material";
 import ChatTab from "../../../../Components/Partials/ChatTab";
 import Header from "../../../../Components/Partials/Header";
 import CircleImage from "../../../../Components/Ui/CircleImage";
-import ChatList from "./ChatList";
 import MessageItem from "../messages/MessageItem";
+import Conversation from "./conversation/Conversation";
 
 
   
@@ -25,7 +25,7 @@ function AllChats() {
         <ChatTab />
 
       <div className="flex-grow ml-[10px] flex  ">
-      <ChatList/>
+      <Conversation/>
 
       <div className="w-[65%] bg-gray-200 p-4 m-2 ">
       <Header
