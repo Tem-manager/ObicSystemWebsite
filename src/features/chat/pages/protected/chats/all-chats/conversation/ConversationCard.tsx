@@ -24,6 +24,8 @@
 // };
 
 // export default ConversationCard;
+
+
 import CircleImage from "../../../../../Components/Ui/CircleImage";
 import logo from "../../../../../../../../public/images/logo1.png";
 import StatusBadge from "../../../../../../../Components/ui/StatusBadge";
@@ -31,10 +33,10 @@ import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
 import GenericCard from "../../../../../../../Components/ui/GenericCard";
 import { ChatItemProps } from "./ConversationModel";
 
-const ConversationCard = ({ name, message, time, unreadCount }: ChatItemProps) => {
+const ConversationCard = ({ name, message, time, unreadCount  }: ChatItemProps) => {
   return (
     <GenericCard
-      leftComponent={<CircleImage border="10" imageUrl={logo} className="" size={12} />}
+      leftComponent={<CircleImage border="10" imageUrl={logo}  size={12} />} 
       centerComponent={
         <div>
           <h3 className="font-semibold text-lg">{name}</h3>
@@ -45,7 +47,7 @@ const ConversationCard = ({ name, message, time, unreadCount }: ChatItemProps) =
         <>
           <TimeDisplay time={time} className="text-xs" />
           {unreadCount && (
-            <StatusBadge type="number" content={unreadCount} className="w-6 h-6 bg-blue-400 text-white" />
+            <StatusBadge content={unreadCount} size={6} className=" bg-blue-400 text-white text-xs " />
           )}
         </>
       }

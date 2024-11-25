@@ -3,6 +3,7 @@ export interface ChatItemProps {
     message: string;
     time: string;
     unreadCount?: number;
+
   }
   
   export interface ConversationModel {

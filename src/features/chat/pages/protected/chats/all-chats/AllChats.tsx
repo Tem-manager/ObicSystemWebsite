@@ -12,7 +12,7 @@ function AllChats() {
       <div className="flex-grow w-full flex">
         <Conversation />
         <div className="flex flex-col w-[65%] bg-gray-200 p-4 m-2 relative">
-     <AllMessages/>
+      <AllMessages/>
         </div>
       </div>
     </>

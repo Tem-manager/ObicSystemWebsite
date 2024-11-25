@@ -1,21 +1,16 @@
 import React from "react";
-
 interface StatusBadgeProps {
 
   content: number | string | React.ReactNode; 
-  size: number;
-
-
+  size?: number;
+  className?: string; // خصائص إضافية يمكن تمريرها لتخصيص التصميم
 }
-
-const StatusBadge: React.FC<StatusBadgeProps> = ({ size, content }) => {
+const StatusBadge: React.FC<StatusBadgeProps> = ({ size , content , className = ""  }) => {
   return (
     <span
-    className={` w-${size} h-${size} flex items-center justify-center bg-gray-200 text-gray-700 rounded-full  `}
-   
-    >
-       <span className="font-bold">{content}</span>
-     
+      className={`inline-flex items-center justify-center min-w-${size} min-h-${size}  px-2 rounded-full text-center max-w-12  max-h-6  ${className}`}>
+
+    {content}
     </span>
   );
 };
