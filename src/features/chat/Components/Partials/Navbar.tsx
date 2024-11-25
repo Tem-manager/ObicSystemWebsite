@@ -6,7 +6,6 @@ const Navbar: React.FC = () => {
 
   // Helper function to determine if the link should be active
   const isActive = (path: string) => {
-    // تحقق من إذا كان المسار هو "/chat" أو أحد التبويبات الفرعية الخاصة بها
     return location.pathname === path || location.pathname.startsWith(path);
   };
 

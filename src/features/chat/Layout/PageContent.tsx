@@ -10,7 +10,9 @@ const Page404 = lazy(() => import("../../../pages/Page404"));
 interface RouteConfig {
   path: string;
   title: string;
-  component: React.LazyExoticComponent<() => JSX.Element>; // Define the type for lazy-loaded components
+  component: React.LazyExoticComponent<React.FC<{}>>; 
+
+  // component: React.LazyExoticComponent<() => JSX.Element>; // Define the type for lazy-loaded components
 }
 
 
