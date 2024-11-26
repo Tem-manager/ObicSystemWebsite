@@ -1,5 +1,4 @@
 import React from "react";
-
 interface StatusBadgeProps {
 
   content: number | string | React.ReactNode; 
