@@ -10,7 +10,6 @@ interface Props {
 }
 
 const StatusList: React.FC<Props> = ({ statusData }) => {
-  // Group items by `statusType`
   const groupedData = statusData.reduce<Record<string, StatusModel[]>>((acc, item) => {
     if (!acc[item.statusType]) {
       acc[item.statusType] = [];
@@ -25,7 +24,7 @@ const StatusList: React.FC<Props> = ({ statusData }) => {
         <ul>
           {Object.entries(groupedData).map(([statusType, items]) => (
             <React.Fragment key={statusType}>
-              {/* Render title for the status group */}
+          
               <li className="mb-2 font-bold text-gray-700">{statusType}</li>
               {items.map((item) => (
                 <li className="mb-5" key={item.statusid}>
