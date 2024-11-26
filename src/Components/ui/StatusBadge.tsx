@@ -3,9 +3,11 @@ interface StatusBadgeProps {
 
   content: number | string | React.ReactNode; 
   size?: number;
+  textSize?: string;
   color?:string;
   textColor?:string;
   className?:string;
+
 }
 
 const StatusBadge: React.FC<StatusBadgeProps> = 
@@ -13,11 +15,12 @@ const StatusBadge: React.FC<StatusBadgeProps> =
    size =10,
    content,
    textColor="text-gray-700" ,
+   textSize="text-xs",
    className
   }) => {
   return (
     <span
-    className={` w-${size} h-${size} ${color} flex items-center justify-center  ${textColor} rounded-full font-bold ${className} `}
+    className={`flex items-center justify-center rounded-full font-bold w-${size} h-${size} ${color} ${textSize}  ${textColor}  ${className} `}
    
     >
       {content}
