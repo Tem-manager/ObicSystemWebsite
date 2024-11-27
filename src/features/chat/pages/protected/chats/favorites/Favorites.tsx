@@ -5,7 +5,7 @@ interface FavoritesProps {
   pageTitle: string;
 }
 
-function Favorites({ pageTitle }: FavoritesProps) {
+function Favorites({  }: FavoritesProps) {
   
     return (
       <>          
