@@ -1,5 +1,5 @@
 import ChatTab from "../../../../Components/Partials/ChatTab";
-import Conversation from "./conversation/conversation";
+import Conversation from "./conversation/Conversation";
 import AllMessages from "./messages/AllMessages";
 
 
@@ -10,7 +10,7 @@ function AllChats() {
     <>
       <ChatTab />
       <div className="flex-grow w-full flex">
-        <Conversation />
+        <Conversation pageTitle="All Chat" />
         <div className="flex flex-col w-[65%] bg-gray-200 p-4 m-2 relative">
       <AllMessages/>
         </div>

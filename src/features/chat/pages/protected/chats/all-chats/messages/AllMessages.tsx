@@ -70,7 +70,6 @@ import { Call, Videocam } from "@mui/icons-material";
 import Header from "../../../../../Components/Partials/Header";
 import CircleImage from "../../../../../Components/Ui/CircleImage";
 import MessageList from "../../messages/MessageList";
-import VoiceMessage from "./ImageMessage";
 import ImageMessage from "./ImageMessage";
 
 
@@ -94,7 +93,7 @@ const AllMessages: React.FC = () => {
             <div className="flex items-center space-x-3">
               <CircleImage
                 imageUrl="https://images.pexels.com/photos/28996347/pexels-photo-28996347/free-photo-of-vibrant-dahlia-flowers-in-glass-vases.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                className="w-12 h-12"
+                size={12}
               />
               <span className="text-lg font-semibold text-gray-800">Username</span>
             </div>
