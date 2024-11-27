@@ -47,7 +47,7 @@ const ConversationCard = ({ name, message, time, unreadCount  }: ChatItemProps) 
         <>
           <TimeDisplay time={time} className="text-xs" />
           {unreadCount && (
-            <StatusBadge content={unreadCount} size={6} className=" bg-blue-400 text-white text-xs " />
+            <StatusBadge content={unreadCount} size={6} color={"bg-blue-400"} textColor={"text-white"}  />
           )}
         </>
       }

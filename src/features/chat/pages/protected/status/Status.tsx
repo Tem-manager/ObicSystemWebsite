@@ -5,7 +5,7 @@ import { statusData } from "./statusData";
 import StatusList from "./StatusList";
 
 
-function Status() {
+const Status: React.FC = () => {
     return (
         <><div className="relative h-screen flex mt-6">
             <div className="flex-grow ml-[50px] p-4 ">

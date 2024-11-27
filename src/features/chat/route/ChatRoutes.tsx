@@ -46,6 +46,10 @@ const Status = lazy(() =>
   import("../pages/protected/status/Status")
 );
 
+const statusText = lazy(() =>
+  import("../pages/protected/status/statusText")
+);
+
 const routes = [
   {
     path: "/chats",
@@ -75,6 +79,11 @@ const routes = [
     path: "/status",
     title: "Chat | Status  ",
     component: Status,
+  },
+  {
+    path: "/statusText",
+    title: "Chat | statusText  ",
+    component: statusText,
   },
 ]
 export default routes;

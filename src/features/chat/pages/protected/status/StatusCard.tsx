@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import StatusBadge from "../../../../../Components/ui/StatusBadge";
 import CircleImage from "../../../Components/Ui/CircleImage";
 import DropdownMenu from "../../../Components/Ui/DropdownMenu";
@@ -5,13 +6,14 @@ import ListTitle from "../../../Components/Ui/ListTitle";
 import { AiOutlineFileImage, AiOutlineEdit } from "react-icons/ai";
 
 
-function StatusCard() {
+const StatusCard: React.FC = () => {
+  const navigate = useNavigate();
   const handleAddPhoto = () => {
     console.log("Add Photos & Videos clicked!");
   };
-
+  
   const handleAddText = () => {
-    console.log("Add Text clicked!");
+      navigate("/chat/statusText");
   };
     return (
         <div className=" mb-5 w-full max-w-sm mx-auto bg-gray-100 shadow-lg  p-4">
@@ -38,6 +40,7 @@ function StatusCard() {
                                 </svg>
                               } 
                               size={6}
+                              color="bg-gray-200"
                           />
                        
                       }
@@ -67,7 +70,7 @@ function StatusCard() {
                           <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                       } 
-                    size={10}
+                  
                />
               
             </div>

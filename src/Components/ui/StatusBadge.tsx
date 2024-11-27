@@ -3,14 +3,28 @@ interface StatusBadgeProps {
 
   content: number | string | React.ReactNode; 
   size?: number;
-  className?: string; // خصائص إضافية يمكن تمريرها لتخصيص التصميم
+  textSize?: string;
+  color?:string;
+  textColor?:string;
+  className?:string;
+
 }
-const StatusBadge: React.FC<StatusBadgeProps> = ({ size , content , className = ""  }) => {
+
+const StatusBadge: React.FC<StatusBadgeProps> = 
+({ color="bg-gray-200",
+   size =10,
+   content,
+   textColor="text-gray-700" ,
+   textSize="text-xs",
+   className
+  }) => {
   return (
     <span
-      className={`inline-flex items-center justify-center min-w-${size} min-h-${size}  px-2 rounded-full text-center max-w-12  max-h-6  ${className}`}>
-
-    {content}
+    className={`flex items-center justify-center rounded-full font-bold w-${size} h-${size} ${color} ${textSize}  ${textColor}  ${className} `}
+   
+    >
+      {content}
+     
     </span>
   );
 };
