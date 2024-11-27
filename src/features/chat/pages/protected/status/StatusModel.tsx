@@ -3,8 +3,8 @@
 export interface StatusModel{
     statusid: number;
     username: string;
-    image: string;
+    Urlimage: string[];
     time: string;
-    
-   
+    statusType: 'VIWED' | 'RESENT' | 'MUTED';
+
   }

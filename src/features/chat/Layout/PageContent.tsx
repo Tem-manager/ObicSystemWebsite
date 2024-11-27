@@ -10,7 +10,9 @@ const Page404 = lazy(() => import("../../../pages/Page404"));
 interface RouteConfig {
   path: string;
   title: string;
-  component: React.LazyExoticComponent<() => JSX.Element>; // Define the type for lazy-loaded components
+  component: React.LazyExoticComponent<React.FC<{}>>; 
+
+  // component: React.LazyExoticComponent<() => JSX.Element>; // Define the type for lazy-loaded components
 }
 
 
@@ -28,7 +30,7 @@ const PageContent: FC = () => {
   }, [pathname]);
 
   return (
-       <div className="overflow-auto h-[calc(100vh-18vh)]  bg-red-200"       
+       <div className="overflow-auto h-[calc(100vh-18vh)] "       
        ref={mainContentRef}
         >
       <div className="flex">

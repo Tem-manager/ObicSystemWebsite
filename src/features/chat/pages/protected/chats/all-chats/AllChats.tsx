@@ -1,6 +1,7 @@
 import ChatTab from "../../../../Components/Partials/ChatTab";
-import ChatList from "./ChatList";
+import Conversation from "./conversation/conversation";
 import AllMessages from "./messages/AllMessages";
+
 
 function AllChats() {
 
@@ -9,10 +10,9 @@ function AllChats() {
     <>
       <ChatTab />
       <div className="flex-grow w-full flex">
-        <ChatList />
-        {/* الحاوية الرئيسية */}
+        <Conversation />
         <div className="flex flex-col w-[65%] bg-gray-200 p-4 m-2 relative">
-     <AllMessages/>
+      <AllMessages/>
         </div>
       </div>
     </>

@@ -1,22 +1,30 @@
 import React from "react";
-
 interface StatusBadgeProps {
-  type: "number" | "text" | "icon"; // لتحديد نوع المحتوى
-  content: number | string | React.ReactNode; // يمكن أن يكون رقمًا، نصًا، أو أيقونة
-  size?: string;
-  className?: string; // خصائص إضافية يمكن تمريرها لتخصيص التصميم
+
+  content: number | string | React.ReactNode; 
+  size?: number;
+  textSize?: string;
+  color?:string;
+  textColor?:string;
+  className?:string;
 
 }
 
-const StatusBadge: React.FC<StatusBadgeProps> = ({ type, content,  className = "" }) => {
+const StatusBadge: React.FC<StatusBadgeProps> = 
+({ color="bg-gray-200",
+   size =10,
+   content,
+   textColor="text-gray-700" ,
+   textSize="text-xs",
+   className
+  }) => {
   return (
     <span
-    className={`  text-xs rounded-full flex items-center justify-center ${className}`}
-    title={type} // مجرد مثال، يمكن إزالته حسب الحاجة
+    className={`flex items-center justify-center rounded-full font-bold w-${size} h-${size} ${color} ${textSize}  ${textColor}  ${className} `}
+   
     >
-      {type === "number" && <span className="font-bold">{content}</span>}
-      {type === "text" && <span>{content}</span>}
-      {type === "icon" && <>{content}</>}
+      {content}
+     
     </span>
   );
 };

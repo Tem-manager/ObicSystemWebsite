@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import AddPost from "../../../Components/Ui/AddPost";
+// import { div } from "framer-motion/client";
 
 interface PostData {
   text: string;
   mediaFiles: File[];
 }
 
-const App: React.FC = () => {
+const Moments: React.FC = () => {
   const [posts, setPosts] = useState<PostData[]>([]);
   const [postText, setPostText] = useState<string>("");
   const [mediaFiles, setMediaFiles] = useState<File[]>([]);
@@ -45,186 +47,138 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center space-y-6">
-      {/* واجهة إنشاء المنشور */}
-      <div className="max-w-md w-full p-4 bg-white shadow-lg rounded-lg">
-        <h2 className="text-xl font-semibold mb-4">إنشاء منشور جديد</h2>
+    <>
 
-        {/* حقل النص */}
-        <textarea
-          placeholder="بم تفكر؟"
-          value={postText}
-          onChange={handleTextChange}
-          rows={4}
-          className="w-full border border-gray-300 rounded-lg p-2 mb-4"
-        ></textarea>
+<div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center w-full space-y-6">
+  
+    <div className="w-full max-w-4xl">
+      <AddPost
+        postText={postText}
+        mediaFiles={mediaFiles}
+        isPosting={isPosting}
+        handleTextChange={handleTextChange}
+        handleFileChange={handleFileChange}
+        handlePost={handlePost}
+        handleRemoveMedia={handleRemoveMedia}
+      />
 
-        {/* زر إضافة ملفات */}
-        <div className="mb-4">
-          <label
-            htmlFor="mediaInput"
-            className="block bg-blue-500 text-white py-2 px-4 rounded-lg cursor-pointer text-center"
-          >
-            إضافة صور/فيديوهات
-          </label>
-          <input
-            id="mediaInput"
-            type="file"
-            accept="image/*,video/*"
-            multiple
-            onChange={handleFileChange}
-            className="hidden"
-          />
-        </div>
-
-        {/* عرض الملفات المرفقة */}
-        {mediaFiles.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
-            {mediaFiles.map((file, index) => {
-              const fileUrl = URL.createObjectURL(file);
-
-              return (
-                <div
-                  key={index}
-                  className="relative w-24 h-24 border border-gray-300 rounded-lg overflow-hidden"
-                >
-                  {file.type.includes("video") ? (
-                    <video
-                      src={fileUrl}
-                      className="w-full h-full object-cover"
-                      controls
-                    />
-                  ) : (
-                    <img
-                      src={fileUrl}
-                      alt="Uploaded"
-                      className="w-full h-full object-cover"
-                    />
-                  )}
-                  <button
-                    onClick={() => handleRemoveMedia(index)}
-                    className="absolute top-1 right-1 bg-red-500 text-white text-sm rounded-full p-1"
-                  >
-                    ×
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {/* زر النشر */}
-        <button
-          onClick={handlePost}
-          className={`w-full py-2 text-white rounded-lg ${
-            isPosting
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-green-500 hover:bg-green-600"
-          }`}
-          disabled={isPosting}
-        >
-          {isPosting ? "جاري النشر..." : "نشر"}
-        </button>
-      </div>
 
       {/* عرض المنشورات */}
-      <div className="w-full max-w-4xl space-y-6">
+      <div className="w-full max-w-4xl space-y-6 mt-6">
         {posts.map((post, index) => (
           <PostCard key={index} post={post} />
         ))}
       </div>
-    </div>
+      </div>
+      </div>
+    </>
   );
 };
 
+
 const PostCard: React.FC<{ post: PostData }> = ({ post }) => {
-  const maxDisplayCount = 4; // أقصى عدد للصور المعروضة بشكل كامل
+  const [isExpanded, setIsExpanded] = useState(false);
+  const maxCharCount = 200; // الحد الأقصى لعدد الأحرف المعروضة بشكل مختصر
+
+  const toggleExpand = () => {
+    setIsExpanded((prev) => !prev);
+  };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg border border-gray-300 overflow-hidden">
+    
+    <div className="bg-white shadow-lg rounded-lg border border-gray-300 overflow-hidden w-full items-center justify-center">
       {/* النص */}
       {post.text && (
         <div className="p-4">
-          <p className="text-gray-800 text-lg">{post.text}</p>
+          <p className="text-gray-800 text-lg">
+            {isExpanded || post.text.length <= maxCharCount
+              ? post.text
+              : `${post.text.slice(0, maxCharCount)}...`}
+          </p>
+          {post.text.length > maxCharCount && (
+            <button
+              onClick={toggleExpand}
+              className="text-blue-500 mt-2 underline"
+            >
+              {isExpanded ? "عرض أقل" : "قراءة المزيد"}
+            </button>
+          )}
         </div>
       )}
 
       {/* عرض الوسائط */}
       {post.mediaFiles.length > 0 && (
-        <div className="p-4">
-          {/* عرض صورة واحدة */}
-          {post.mediaFiles.length === 1 && (
-            <div className="flex justify-center mb-4">
-              <div className="relative w-full h-72">
+      <div className="p-4">
+        {/* عرض صورة واحدة */}
+        {post.mediaFiles.length === 1 && (
+          <div className="flex justify-center mb-4">
+            <div className="relative w-full h-72">
+              <img
+                src={URL.createObjectURL(post.mediaFiles[0])}
+                alt="Uploaded"
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* عرض صورتين */}
+        {post.mediaFiles.length === 2 && (
+          <div className="flex justify-center gap-4 mb-4">
+            {post.mediaFiles.map((file, index) => (
+              <div key={index} className="relative w-48 h-48">
                 <img
-                  src={URL.createObjectURL(post.mediaFiles[0])}
+                  src={URL.createObjectURL(file)}
                   alt="Uploaded"
                   className="w-full h-full object-cover rounded-lg"
                 />
               </div>
-            </div>
-          )}
+            ))}
+          </div>
+        )}
 
-          {/* عرض صورتين */}
-          {post.mediaFiles.length === 2 && (
-            <div className="flex justify-center gap-4 mb-4">
-              {post.mediaFiles.map((file, index) => (
-                <div key={index} className="relative w-48 h-48">
-                  <img
-                    src={URL.createObjectURL(file)}
-                    alt="Uploaded"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+        {/* عرض ثلاث صور */}
+        {post.mediaFiles.length === 3 && (
+          <div className="flex justify-center gap-4 mb-4">
+            {post.mediaFiles.map((file, index) => (
+              <div key={index} className="relative w-48 h-48">
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt="Uploaded"
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
-          {/* عرض ثلاث صور */}
-          {post.mediaFiles.length === 3 && (
-            <div className="flex justify-center gap-4 mb-4">
-              {post.mediaFiles.map((file, index) => (
-                <div key={index} className="relative w-48 h-48">
-                  <img
-                    src={URL.createObjectURL(file)}
-                    alt="Uploaded"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* عرض أربع صور أو أكثر */}
-          {post.mediaFiles.length >= 4 && (
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              {post.mediaFiles.slice(0, 4).map((file, index) => (
-                <div key={index} className="relative w-48 h-48">
-                  <img
-                    src={URL.createObjectURL(file)}
-                    alt="Uploaded"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-              ))}
-              {/* عرض الصور المتبقية في حالة وجود أكثر من 4 صور */}
-              {post.mediaFiles.length > 4 && (
-                <div className="relative w-48 h-48 flex justify-center items-center bg-gray-300 rounded-lg">
-                  <span className="text-white text-xl font-bold">
-                    +{post.mediaFiles.length - 4}
-                  </span>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      )}
+        {/* عرض أربع صور أو أكثر */}
+        {post.mediaFiles.length >= 4 && (
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            {post.mediaFiles.slice(0, 4).map((file, index) => (
+              <div key={index} className="relative w-48 h-48">
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt="Uploaded"
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+            ))}
+            {/* عرض الصور المتبقية في حالة وجود أكثر من 4 صور */}
+            {post.mediaFiles.length > 4 && (
+              <div className="relative w-48 h-48 flex justify-center items-center bg-gray-300 rounded-lg">
+                <span className="text-white text-xl font-bold">
+                  +{post.mediaFiles.length - 4}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    )}
     </div>
+    
   );
 };
 
-
-
-
-
-export default App;
+export default Moments;
