@@ -36,6 +36,8 @@ import { ChatItemProps } from "./ConversationModel";
 const ConversationCard = ({ name, message, time, unreadCount  }: ChatItemProps) => {
   return (
     <GenericCard
+    className="p-2"
+
       leftComponent={<CircleImage border="10" imageUrl={logo}  size={12} />} 
       centerComponent={
         <div>

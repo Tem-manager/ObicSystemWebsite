@@ -5,7 +5,13 @@ import { mockChats } from "./ConversationData";
 import { ConversationModel } from "./ConversationModel";
 import ConversationCard from "./ConversationCard"; //  ConversationCard
 
-const Conversation: React.FC = () => {
+
+interface ConversationProps {
+  pageTitle: string; // إضافة Prop لتلقي اسم الصفحة
+}
+
+
+const Conversation: React.FC<ConversationProps> = ({ pageTitle }) => {
   const conversationData: ConversationModel = {
     chats: mockChats, 
     };
@@ -16,8 +22,11 @@ const Conversation: React.FC = () => {
       style={{ backgroundColor: COLORS.BACKGROUND }}
     >
       <Header
-        className="p-4 sticky top-0 z-index bg-[#fcf5fd]"
-        leftContent={<div>All Chat</div>}
+        className="p-4 sticky top-0 z-index bg-[#fcf5fd] "
+        leftContent={    
+        <div className="text-2xl font-bold text-gray-800 leading-tight">
+          {pageTitle}</div>
+          }
       />
       <div className="flex-1 overflow-y-auto space-y-0 px-6">
         {conversationData.chats.map((chat, index) => (

@@ -17,7 +17,7 @@ const GenericCard: React.FC<GenericCardProps> = ({
 }) => {
   return (
     <div
-      className={`flex items-center p-4 cursor-pointer border-b border-gray-300 last:border-b-0 hover:bg-gray-100 ${className}`}
+      className={`flex items-center  cursor-pointer border-b border-gray-300 last:border-b-0 hover:bg-gray-100 ${className}`}
       onClick={onClick}
     >
       {/* Left Component */}
