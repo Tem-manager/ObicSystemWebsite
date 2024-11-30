@@ -1,74 +1,31 @@
-// import React from "react";
-
-// interface MessageItemProps {
-//   message: {
-//     senderName: string; // اسم المرسل
-//     text: string; // نص الرسالة
-//     time: string; // وقت الرسالة
-//     type: "sent" | "received"; // نوع الرسالة: إرسال أو استقبال
-//   };
-// }
-
-// const MessageItem: React.FC<MessageItemProps> = ({ message }) => {
-//   // تحديد الأنماط بناءً على نوع الرسالة
-//   const messageStyle =
-//     message.type === "sent"
-//       ? "bg-blue-500 text-white self-end" // رسائل الإرسال باللون الأزرق والنص باللون الأبيض
-//       : "bg-white text-gray-700 self-start"; // رسائل الاستقبال باللون الأبيض والنص باللون الرمادي
-
-//   return (
-//     <div
-//       className={`flex flex-col max-w-xs p-3 my-2 rounded-lg shadow ${
-//         message.type === "sent" ? "ml-auto" : "mr-auto"
-//       } ${messageStyle}`}
-//     >
-//       <div className="flex justify-between items-center">
-//         <span className="font-medium">{message.senderName}</span>
-//         <span className="text-xs text-gray-500">{message.time}</span>
-//       </div>
-//       <p className="text-sm">{message.text}</p>
-//     </div>
-//   );
-// };
-
-// export default MessageItem;
 
 
 
 import React from "react";
+import TimeDisplay from "../../../../../../Components/ui/TimeDisplay";
 
-interface MessageItemProps {
-  message: {
-    text: string; // نص الرسالة
-    time: string; // وقت الرسالة
-    type: "sent" | "received"; // نوع الرسالة: إرسال أو استقبال
-    isReply?: boolean; // هل الرسالة رد؟
-    senderName?: string; // اسم المرسل (اختياري)
-  };
+interface MessageProps {
+  text: string;
+  time: string;
+  type: "sent" | "received";
 }
 
-const MessageItem: React.FC<MessageItemProps> = ({ message }) => {
-  const messageStyle =
-    message.type === "sent"
-      ? "bg-blue-700 text-white self-end"
-      : "bg-white text-gray-700 self-start";
-
+const MessageItem: React.FC<MessageProps> = ({ text, time, type }) => {
   return (
     <div
-      className={`flex flex-col max-w-xs p-3 my-2 rounded-lg shadow ${
-        message.type === "sent" ? "ml-auto" : "mr-auto"
-      } ${messageStyle}`}
+      className={`flex ${type === "sent" ? "justify-end" : "justify-start"} my-2`}
     >
-      {/* عرض الاسم فقط إذا كانت الرسالة ردًا */}
-      {message.isReply && message.senderName && (
-        <span className="font-medium text-xs text-gray-500">
-          {message.senderName}
-        </span>
-      )}
-      <p className="text-sm">{message.text}</p>
-      <span className="text-xs text-gray-500 mt-1">{message.time}</span>
+      <div
+        className={`max-w-xs p-3 rounded-lg ${
+          type === "sent" ? "bg-[#192745] text-white" : "bg-gray-200 text-gray-800"
+        }`}
+      >
+        <p className="text-sm">{text}</p>
+        <TimeDisplay time={time} className="text-xs mt-1 text-right" />
+      </div>
     </div>
   );
 };
 
 export default MessageItem;
+
