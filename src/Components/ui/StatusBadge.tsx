@@ -20,7 +20,7 @@ const StatusBadge: React.FC<StatusBadgeProps> =
   }) => {
   return (
     <span
-    className={`flex items-center justify-center rounded-full font-bold w-${size} h-${size} ${color} ${textSize}  ${textColor}  ${className} `}
+    className={`flex items-center justify-center rounded-full font-bold m-3 w-${size} h-${size} ${color} ${textSize}  ${textColor}  ${className} `}
    
     >
       {content}
