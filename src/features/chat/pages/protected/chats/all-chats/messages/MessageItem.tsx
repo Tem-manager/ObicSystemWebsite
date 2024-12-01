@@ -1,37 +1,42 @@
 import React from "react";
-import CheckIcon from "../../../../../Components/Ui/CheckIcon"; // مكون الأيقونات
 import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
+import MessageStatus from "../../../../../Components/Ui/MessageStatus"; // استيراد MessageStatus
 
-interface MessageItemProps {
-  message: string; // نص الرسالة
-  time: string; // الوقت
-  status: "sent" | "delivered" | "seen"; // حالة الرسالة
-  isSender?: boolean; // هل المرسل هو المستخدم الحالي؟
+interface MessageProps {
+  text: string;
+  time: string;
+  isSent: boolean; // true إذا كانت الرسالة مرسلة، false إذا مستقبلة
+  status: "sending" | "sent" | "read" | "failed"; // الحالة الجديدة للرسالة
 }
 
-const MessageItem: React.FC<MessageItemProps> = ({ message, time, status, isSender = false }) => {
+const Message: React.FC<MessageProps> = ({ text, time, isSent, status }) => {
   return (
-    <div
-      className={`flex flex-col items-${isSender ? "end" : "start"} max-w-xs mb-4 ${
-        isSender ? "self-end" : "self-start"
-      }`}
-    >
-      {/* فقرة الرسالة */}
+    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
       <div
-        className={`p-3 rounded-lg ${
-          isSender ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-800"
+        className={`max-w-full sm:max-w-xs md:max-w-sm px-4 py-2 rounded-lg shadow-lg overflow-hidden ${
+          isSent
+            ? "bg-[#192745] text-white rounded-tr-none"
+            : "bg-white text-gray-800 rounded-tl-none"
         }`}
       >
-        {message}
-      </div>
+        <p className="text-sm break-words whitespace-pre-wrap">{text}</p>
 
-      {/* حالة الرسالة والوقت */}
-      <div className="flex items-center space-x-1 text-sm text-gray-500 mt-1">
-       <TimeDisplay/>
-        <CheckIcon status={status} className="w-4 h-4" />
+        <div
+          className={`flex items-center justify-between mt-2 ${
+            isSent ? "text-gray-300" : "text-gray-500"
+          }`}
+        >
+          {/* الوقت */}
+          <span className="text-xs">
+            <TimeDisplay time={time} />
+          </span>
+
+          {/* حالة الرسالة (أيقونة) */}
+          {isSent && <MessageStatus status={status} />}
+        </div>
       </div>
     </div>
   );
 };
 
-export default MessageItem;
+export default Message;

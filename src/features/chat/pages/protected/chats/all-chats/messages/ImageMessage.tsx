@@ -1,31 +1,61 @@
+
 import React from "react";
+import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
+import MessageStatus from "../../../../../Components/Ui/MessageStatus"; // استيراد مكون MessageStatus
 
 interface ImageMessageProps {
-  imageUrl: string; // رابط الصورة
-  caption?: string; // النص الوصفي للصورة (اختياري)
-  type: "sent" | "received"; // نوع الرسالة (إرسال أو استقبال)
+  imageUrl: string;
+  time: string;
+  isSent: boolean; // true إذا كانت الرسالة مرسلة، false إذا مستقبلة
+  status: "sending" | "sent" | "read" | "failed"; // إضافة حالة الرسالة
+  comment?: string; // التعليق النصي (اختياري)
 }
 
-const ImageMessage: React.FC<ImageMessageProps> = ({ imageUrl, caption, type }) => {
+const ImageMessage: React.FC<ImageMessageProps> = ({
+  imageUrl,
+  time,
+  isSent,
+  status,
+  comment,
+}) => {
   return (
-    <div
-      className={`flex ${type === "sent" ? "justify-end" : "justify-start"} my-2`}
-    >
+    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
+      {/* الحاوية الرئيسية للرسالة */}
       <div
-        className={`max-w-xs rounded-lg overflow-hidden ${
-          type === "sent" ? "bg-blue-500" : "bg-gray-200"
+        className={`p-2 rounded-lg shadow ${
+          isSent ? "bg-[#192745]" : "bg-white"
         }`}
       >
-        <img src={imageUrl} alt={caption || "Image"} className="w-full h-auto" />
-        {caption && (
+        {/* الصورة */}
+        <div className="max-w-[10rem] max-h-[10rem] overflow-hidden rounded-lg">
+  <img
+    src={imageUrl}
+    alt="message"
+    className="object-contain w-full h-full"
+  />
+</div>
+
+        
+        {/* التعليق النصي */}
+        {comment && (
           <p
-            className={`text-sm p-2 ${
-              type === "sent" ? "text-white" : "text-gray-800"
-            }`}
+            className={`mt-2 text-sm ${isSent ? "text-white" : "text-gray-800"}`}
           >
-            {caption}
+            {comment}
           </p>
         )}
+        
+        {/* حالة الرسالة - تظهر فقط للرسائل المرسلة */}
+        {isSent && <MessageStatus status={status} />}
+
+        {/* الوقت */}
+        <span
+          className={`block text-xs mt-2 ${
+            isSent ? "text-white" : "text-gray-500"
+          }`}
+        >
+          <TimeDisplay time={time} />
+        </span>
       </div>
     </div>
   );
