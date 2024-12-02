@@ -36,7 +36,7 @@ const AudioMessage: React.FC<AudioMessageProps> = ({
     <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
       {/* الحاوية الرئيسية للرسالة */}
       <div
-        className={`p-2 rounded-lg shadow max-w-xs md:max-w-sm ${
+        className={`p-4 rounded-lg shadow-lg w-full max-w-[500px] ${
           isSent ? "bg-[#192745] text-white" : "bg-white text-gray-800"
         }`}
       >
@@ -55,30 +55,26 @@ const AudioMessage: React.FC<AudioMessageProps> = ({
           </p>
         )}
 
-<div className="flex items-center justify-between mt-2">
-  {/* حالة الرسالة والوقت على جهة اليمين */}
-  <div className="flex items-center space-x-2 order-2">
-    {/* حالة الرسالة */}
+        <div className="flex items-center justify-between mt-2">
+          {/* حالة الرسالة والوقت على جهة اليمين */}
+          <div className="flex items-center space-x-2 order-2">
+            {/* حالة الرسالة */}
+            <span className="text-xs">
+              <TimeDisplay time={time} />
+            </span>
+            {isSent && <MessageStatus status={status} />}
+          </div>
 
-    {/* الوقت */}
-    <span className="text-xs">
-      <TimeDisplay time={time} />
-    </span>
-    {isSent && <MessageStatus status={status} />}
-  </div>
-
-  {/* أيقونة الصوت على جهة اليسار */}
-  <div className="order-1">
-    <StatusBadge
-      content={icon}
-      size={6}
-      color={isSent ? "bg-[#192745]" : "bg-gray-200"}
-      textColor={isSent ? "text-white" : "text-gray-700"}
-    />
-  </div>
-</div>
-
-
+          {/* أيقونة الصوت على جهة اليسار */}
+          <div className="order-1">
+            <StatusBadge
+              content={icon}
+              size={6}
+              color={isSent ? "bg-[#192745]" : "bg-gray-200"}
+              textColor={isSent ? "text-white" : "text-gray-700"}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

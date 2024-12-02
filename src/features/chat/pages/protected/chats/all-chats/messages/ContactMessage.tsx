@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { Button, Popover, List, ListItem, ListItemText } from "@mui/material"; // إضافة مكونات للقائمة
+import React from "react";
 import CircleImage from "../../../../../Components/Ui/CircleImage";
 import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
 import MessageStatus from "../../../../../Components/Ui/MessageStatus";
+import DropdownMenu from "../../../../../Components/Ui/DropdownMenu";
+import Button from "../../../../../../../Components/ui/buttoun";
 
 interface ContactMessageProps {
-  profileImageUrls: string[]; // قائمة روابط صور جهات الاتصال (إذا كانت أكثر من جهة اتصال)
-  names: string[]; // قائمة أسماء جهات الاتصال
-  phoneNumbers: string[]; // قائمة أرقام هواتف جهات الاتصال
-  time: string; // وقت الرسالة
-  status: "sending" | "sent" | "read" | "failed"; // حالة الرسالة
-  isSent: boolean; // هل الرسالة مرسلة؟
-  message: string; // محتوى الرسالة
+  profileImageUrls: string[];
+  names: string[];
+  phoneNumbers: string[];
+  time: string;
+  status: "sending" | "sent" | "read" | "failed";
+  isSent: boolean;
+  message: string;
 }
 
 const ContactMessage: React.FC<ContactMessageProps> = ({
@@ -23,113 +24,94 @@ const ContactMessage: React.FC<ContactMessageProps> = ({
   isSent,
   message,
 }) => {
-  // عدد جهات الاتصال المرسلة
   const numberOfContacts = profileImageUrls.length;
 
-  // حالة لعرض قائمة جهات الاتصال
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const dropdownOptions = profileImageUrls.slice(1).map((url, index) => ({
+    label: (
+      <div className="flex items-center space-x-3">
+        <CircleImage imageUrl={url} size={8} />
+        <div className="flex flex-col">
+          <span className="font-semibold">{names[index + 1]}</span>
+          <span className="text-xs text-gray-500">{phoneNumbers[index + 1]}</span>
+        </div>
+      </div>
+    ),
+    onClick: () => alert(`تم اختيار ${names[index + 1]}`),
+  }));
 
-  // دالة لفتح وإغلاق قائمة "عرض الكل"
-  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const viewAllOptions = profileImageUrls.map((url, index) => ({
+    label: (
+      <div className="flex items-center space-x-3">
+        <CircleImage imageUrl={url} size={8} />
+        <div className="flex flex-col">
+          <span className="font-semibold">{names[index]}</span>
+          <span className="text-xs text-gray-500">{phoneNumbers[index]}</span>
+        </div>
+      </div>
+    ),
+    onClick: () => alert(`تم اختيار ${names[index]}`),
+  }));
 
   return (
     <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
       <div
-        className={`max-w-xs md:max-w-sm px-4 py-2 rounded-lg shadow-lg ${
+        className={`w-full max-w-lg px-5 py-4 rounded-lg shadow-lg ${
           isSent
             ? "bg-[#192745] text-white rounded-tr-none"
             : "bg-white text-gray-800 rounded-tl-none"
         }`}
       >
-        {/* عرض جهة الاتصال الأولى */}
-        <div className="flex items-center space-x-3 mb-2">
-          <CircleImage
-            imageUrl={profileImageUrls[0] || "https://www.example.com/default-avatar.png"} // صورة جهة الاتصال الأولى أو صورة افتراضية
-            size={12}
-          />
-          <div className="flex flex-col">
-            <span className="text-lg font-semibold">{names[0]}</span>
-            <span className="text-xs text-gray-500">{phoneNumbers[0]}</span> {/* عرض رقم الهاتف */}
+        {/* Header Section: Contact Information */}
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center space-x-3">
+            <CircleImage
+              imageUrl={profileImageUrls[0] || "https://www.example.com/default-avatar.png"}
+              size={12}
+            />
+            <div className="flex flex-col">
+              <span className="text-lg font-semibold">{names[0]}</span>
+              <span className="text-xs text-gray-500">{phoneNumbers[0]}</span>
+            </div>
           </div>
-
-          {/* عرض عدد جهات الاتصال المرسلة */}
           {numberOfContacts > 1 && (
-            <span
-              className="text-xs text-gray-500 cursor-pointer"
-              onClick={handlePopoverOpen}
-            >
-              +{numberOfContacts - 1}
-            </span>
+            <DropdownMenu
+              buttonContent={<span className="text-xs text-gray-500 cursor-pointer">+{numberOfContacts - 1}</span>}
+              options={dropdownOptions}
+            />
           )}
         </div>
 
-        {/* محتوى الرسالة */}
-        <p className="text-sm">{message}</p>
+        {/* Message Content */}
+        <div className="mb-4">
+          <p className="text-sm leading-relaxed">{message}</p>
+        </div>
 
-        {/* الوقت وحالة الرسالة */}
-        <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
+        {/* Footer Section: Time and Status */}
+        <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
           <TimeDisplay time={time} />
           {isSent && <MessageStatus status={status} />}
         </div>
 
-        {/* الأزرار أسفل الرسالة */}
-        <div className="flex justify-between mt-3">
+        {/* Action Buttons */}
+        <div className="flex justify-center">
           {numberOfContacts > 1 ? (
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              onClick={handlePopoverOpen}
-            >
-              عرض الكل
-            </Button>
+            <DropdownMenu
+              buttonContent={
+                <Button className="h-12 w-full bg-primary text-white m-5">
+                عرض الكل
+              </Button>
+              }
+              options={viewAllOptions}
+            />
           ) : (
-            <Button variant="contained" color="primary" size="small">
+     
+
+               <Button className="h-12 w-full" variant="secondary">
               مراسلة
-            </Button>
+              </Button>
           )}
-          <Button variant="outlined" color="secondary" size="small">
-            إضافة جهة الاتصال
-          </Button>
         </div>
       </div>
-
-      {/* قائمة جهات الاتصال عند التمرير على "عرض الكل" */}
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handlePopoverClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        <List>
-          {profileImageUrls.slice(1).map((url, index) => (
-            <ListItem key={index} className="flex items-center space-x-3">
-              <CircleImage imageUrl={url} size={8} />
-              <div className="flex flex-col">
-                <ListItemText primary={names[index + 1]} />
-                <span className="text-xs text-gray-500">{phoneNumbers[index + 1]}</span> {/* إضافة رقم الهاتف */}
-              </div>
-            </ListItem>
-          ))}
-        </List>
-      </Popover>
     </div>
   );
 };

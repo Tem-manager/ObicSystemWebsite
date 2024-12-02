@@ -1,6 +1,7 @@
 import React from "react";
 import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
 import MessageStatus from "../../../../../Components/Ui/MessageStatus"; // استيراد MessageStatus
+import StatusBadge from "../../../../../../../Components/ui/StatusBadge"; // استيراد StatusBadge
 import { Download } from "@mui/icons-material";
 
 interface DocumentMessageProps {
@@ -28,7 +29,7 @@ const DocumentMessage: React.FC<DocumentMessageProps> = ({
   return (
     <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
       <div
-        className={`max-w-xs md:max-w-sm px-4 py-3 rounded-lg shadow-lg ${
+        className={`w-full max-w-md md:max-w-lg px-4 py-3 rounded-lg shadow-lg ${
           isSent
             ? "bg-[#192745] text-white rounded-tr-none"
             : "bg-white text-gray-800 rounded-tl-none"
@@ -46,14 +47,17 @@ const DocumentMessage: React.FC<DocumentMessageProps> = ({
           </div>
         </div>
 
-        {/* زر تنزيل المستند */}
+        {/* زر تنزيل المستند مع الحجم */}
         <div className="mt-3 flex justify-between items-center">
-          <a
-            href={fileUrl}
-            download={fileName}
-            className="text-blue-500 underline text-sm"
-          >
-     <Download fontSize="small" />          </a>
+          <StatusBadge
+            content={
+              <a href={fileUrl} download={fileName} className="flex items-center space-x-1">
+                <Download fontSize="small" />
+              </a>
+            }
+            size={8}
+            textColor="text-blue-600"
+          />
         </div>
 
         {/* الوقت وحالة الرسالة */}

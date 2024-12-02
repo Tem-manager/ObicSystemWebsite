@@ -12,10 +12,15 @@ import AudioMessage from "./AudioMessage";
 import LocationMessage from "./LocationMessage";
 import ContactMessage from "./ContactMessage";
 import DocumentMessage from "./DocumentMessage";
-import CallMessage from "./CallMessage";
-
+import CallMessage from "./VoiceVideoCallMessage";
+import MessageInput from "./MessageInput";
+import { useState } from "react";
 const AllMessages: React.FC = () => {
+  const [replyingTo, setReplyingTo] = useState<string | null>(null); // لتتبع الرسالة التي يتم الرد عليها
 
+  const handleReply = (messageId: string) => {
+    setReplyingTo(messageId); // تعيين الرسالة التي يتم الرد عليها
+  };
 
   return (
     <div className="h-screen flex flex-col ">
@@ -56,6 +61,9 @@ const AllMessages: React.FC = () => {
       <Message
         text={message.content}
         time={message.time}
+        isDeleted={message.isDeleted}      // إضافة الخاصية isDeleted
+        onReply={handleReply}
+        isReplying={replyingTo === message.id} 
         isSent={message.isSent}
         status={message.status|| "" }
       />
@@ -124,6 +132,7 @@ const AllMessages: React.FC = () => {
     <CallMessage
       callType={message.callType || "missed"}
       time={message.time}
+      callMode={message.callMode || "voice"} // تمرير callMode
       isSent={message.isSent}
       status={message.status || "failed"}
     />
@@ -131,11 +140,11 @@ const AllMessages: React.FC = () => {
   
   null}
     
-    
-    
+   
   </div>
 ))}
-
+ 
+ <MessageInput/>
       </div>
     </div>
   );

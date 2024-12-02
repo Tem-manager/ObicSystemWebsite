@@ -9,6 +9,7 @@ export interface MessageType {
   names?: string[];
    status?: "sending" | "sent" | "read" | "failed";
   isSent: boolean; // true للمرسلة، false للمستقبلة
+  isDeleted?: boolean;
 }
 
 export const MessageData: MessageType[] = [
@@ -18,6 +19,8 @@ export const MessageData: MessageType[] = [
     content: "مرحباً! كيف حالك؟",
     time: "10:00 AM",
     isSent: false,
+    isDeleted: false,  // إضافة حالة الرسالة (محذوفة أم لا)
+
  
   },
   {
@@ -34,10 +37,12 @@ export const MessageData: MessageType[] = [
   {
     id: 3,
     type: "text",
-    content: "أنا بخير! ماذا عنك؟",
+    content: " +967 778987678 أنا بخير! ماذا عنك؟  https://images.pexels.com/photos/28996347/pexels-photo-28996347/free-photo-of-vibrant-dahlia-flowers-in-glass-vases.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+
     time: "10:05 AM",
     isSent: true,
-    status:"sent"
+    status:"sent",
+    // isDeleted: true,
   },
 
  
@@ -75,7 +80,7 @@ export const MessageData: MessageType[] = [
     id: 8,
     type: "video",
     content:
-      "https://youtu.be/GNJtPFXUnm4?si=JkhVAZ3x5eyb4rno.mp4",
+      "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
     comment: "ما رأيك في هذا الفيديو؟",
     time: "10:25 AM",
     isSent: true,
@@ -92,7 +97,7 @@ export const MessageData: MessageType[] = [
   {
     id: 10,
     type: "audio", 
-    content: "https://gaana.com/song/beete-lamhein",
+    content: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
     time: "10:05 AM",
     isSent: true,
     status: "sent",
@@ -166,7 +171,7 @@ export const MessageData: MessageType[] = [
     type: "document",
     fileName: "Presentation.pptx",
     fileSize: "5 MB",
-    fileType: "PowerPoint",
+    fileType: "PPT",
     fileUrl: "https://example.com/presentation.pptx",
     isSent: false,
     time: "11:00 AM",
@@ -175,29 +180,66 @@ export const MessageData: MessageType[] = [
   {
     id: 17,
     type: "call",
-    content: "Voice Call with John Doe", // وصف المكالمة
+    content: "Voice Call with John Doe", // وصف المكالمة الصوتية
     time: "12:45 PM",
     status: "sent",
     isSent: true,
-    callType: "outgoing", // نوع المكالمة
+    callType: "outgoing", // نوع المكالمة: صادرة
+    callMode: "voice", // وضع المكالمة: صوتية
+    duration: "05:30", // مدة المكالمة
   },
   {
     id: 18,
     type: "call",
-    content: "Missed call from Jane Smith",
+    content: "Missed Voice Call from Jane Smith",
     time: "1:00 PM",
     status: "failed",
     isSent: false,
-    callType: "missed", // نوع المكالمة
+    callType: "missed", // نوع المكالمة: فائتة
+    callMode: "voice", // وضع المكالمة: صوتية
   },
   {
     id: 19,
     type: "call",
-    content: "Incoming Call from Sarah",
+    content: "Incoming Voice Call from Sarah",
     time: "2:15 PM",
     status: "read",
     isSent: false,
-    callType: "incoming", // نوع المكالمة
+    callType: "incoming", // نوع المكالمة: واردة
+    callMode: "voice", // وضع المكالمة: صوتية
+    duration: "10:15", // مدة المكالمة
+  },
+  {
+    id: 20,
+    type: "call",
+    content: "Video Call with John Doe", // وصف المكالمة الفيديو
+    time: "3:30 PM",
+    status: "sent",
+    isSent: true,
+    callType: "outgoing", // نوع المكالمة: صادرة
+    callMode: "video", // وضع المكالمة: فيديو
+    duration: "15:45", // مدة المكالمة
+  },
+  {
+    id: 21,
+    type: "call",
+    content: "Missed Video Call from Jane Smith",
+    time: "4:00 PM",
+    status: "failed",
+    isSent: false,
+    callType: "missed", // نوع المكالمة: فائتة
+    callMode: "video", // وضع المكالمة: فيديو
+  },
+  {
+    id: 22,
+    type: "call",
+    content: "Incoming Video Call from Sarah",
+    time: "5:00 PM",
+    status: "read",
+    isSent: false,
+    callType: "incoming", // نوع المكالمة: واردة
+    callMode: "video", // وضع المكالمة: فيديو
+    duration: "20:30", // مدة المكالمة
   },
 ];
 

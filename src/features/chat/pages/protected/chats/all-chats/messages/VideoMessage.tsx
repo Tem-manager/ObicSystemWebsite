@@ -1,14 +1,13 @@
-
 import React from "react";
 import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
-import MessageStatus from "../../../../../Components/Ui/MessageStatus"; // استيراد مكون MessageStatus
+import MessageStatus from "../../../../../Components/Ui/MessageStatus";
 
 interface VideoMessageProps {
-  videoUrl: string; // رابط الفيديو
-  comment: string;  // التعليق النصي
-  time: string;     // وقت الرسالة
-  isSent: boolean;  // true للمرسلة، false للمستقبلة
-  status?: "sending" | "sent" | "read" | "failed"; // حالة الرسالة (اختياري)
+  videoUrl: string;
+  comment: string;
+  time: string;
+  isSent: boolean;
+  status?: "sending" | "sent" | "read" | "failed";
 }
 
 const VideoMessage: React.FC<VideoMessageProps> = ({
@@ -23,34 +22,34 @@ const VideoMessage: React.FC<VideoMessageProps> = ({
       className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}
     >
       <div
-        className={`max-w-xs md:max-w-sm px-4 py-2 rounded-lg shadow ${
+        className={`w-full max-w-md md:max-w-lg px-4 py-3 rounded-lg shadow-md ${
           isSent
             ? "bg-[#192745] text-white rounded-tr-none"
             : "bg-white text-gray-800 rounded-tl-none"
         }`}
       >
         {/* الفيديو */}
-        <div className="mb-2">
+        <div className="mb-3">
           <video
             src={videoUrl}
             controls
-            className="w-full h-auto rounded-lg"
+            className="w-full h-auto max-h-[300px] rounded-lg aspect-video"
           ></video>
         </div>
+
         {/* التعليق */}
-        <p className="text-sm">{comment}</p>
+        <p className="text-sm leading-relaxed">{comment}</p>
 
-        {/* حالة الرسالة */}
-        {isSent && status && (
-          <div className="mt-2">
-            <MessageStatus status={status} />
-          </div>
-        )}
+        {/* الوقت وحالة الرسالة */}
+        <div className="flex justify-between items-center mt-3">
+          {/* الوقت */}
+          <span className="block text-xs text-gray-500">
+            <TimeDisplay time={time} />
+          </span>
 
-        {/* الوقت */}
-        <span className="block text-xs text-gray-500 mt-2">
-          <TimeDisplay time={time} />
-        </span>
+          {/* حالة الرسالة */}
+          {isSent && status && <MessageStatus status={status} />}
+        </div>
       </div>
     </div>
   );

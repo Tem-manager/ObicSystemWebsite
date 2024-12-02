@@ -11,7 +11,8 @@ interface StatusBadgeProps {
 }
 
 const StatusBadge: React.FC<StatusBadgeProps> = 
-({ color="bg-gray-200",
+({
+   color="",
    size =10,
    content,
    textColor="text-gray-700" ,
