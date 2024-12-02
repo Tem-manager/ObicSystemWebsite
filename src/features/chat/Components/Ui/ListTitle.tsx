@@ -6,19 +6,21 @@ interface ListTitleProps {
   imageComponent: React.ReactNode;
   subTitle: string;
   showIcon?: boolean; 
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void; 
 }
 
 const ListTitle: React.FC<ListTitleProps> = ({
   Title,
   imageComponent,
   subTitle,
-  showIcon = false, 
+  onClick,
+  showIcon = false,
 }) => {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center" onClick={onClick}> 
       <div className="relative">
         {imageComponent}
-        {showIcon && <PluzIconOverlay />} 
+        {showIcon && <PluzIconOverlay />}
       </div>
       <div className="ml-4">
         <h3 className="text-lg font-medium text-gray-900">{Title}</h3>

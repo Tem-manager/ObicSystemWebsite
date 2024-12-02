@@ -1,8 +1,10 @@
 import { lazy, } from "react";
+// import AppLayout from "../Layout/AppLayout";
 
 // Lazy loading for components
 const SharedRoutes = lazy(() => import("./SharedRoutes"));
 const ChatLayout = lazy(() => import("../features/chat/Layout/ChatLayout"));
+const AppLayout = lazy(() => import("../Layout/AppLayout"));
 const ServicesRoutes = lazy(() =>
   import("../features/services/route/ServicesRoutes")
 );
@@ -26,7 +28,7 @@ const routes: RouteConfig[] = [
   {
     path: "/",
     title: "login",
-    component: SharedRoutes,
+    component: AppLayout,
   },
   {
     path: "/*",
