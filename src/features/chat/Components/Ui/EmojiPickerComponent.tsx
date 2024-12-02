@@ -31,7 +31,7 @@ const EmojiPickerComponent: React.FC<Props> = ({ onEmojiSelect }) => {
         color="text-yellow-300"
       />
       {isOpen && (
-        <div className="absolute bottom-20 right-4 bg-white shadow-lg rounded-lg p-2 z-10">
+        <div className="absolute bottom-20 left-4 bg-white shadow-lg rounded-lg p-2 z-10">
           <EmojiPicker onEmojiClick={handleEmojiClick} />
         </div>
       )}

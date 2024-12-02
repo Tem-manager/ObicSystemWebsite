@@ -61,7 +61,7 @@ const StoryViewer: React.FC<StoryViewerProps> = ({ stories }) => {
     }
     if (story.type === "text") {
       return (
-        <div className="w-full h-full flex items-center justify-center bg-black text-white text-2xl">
+        <div className="w-full h-full flex items-center justify-center bg-black text-white text-2xl p-4">
           {story.content}
         </div>
       );
@@ -75,17 +75,16 @@ const StoryViewer: React.FC<StoryViewerProps> = ({ stories }) => {
     }
   };
 
-  // Function to handle emoji selection and add it to the input field
   const handleEmojiSelect = (emoji: string) => {
-    setMessage((prevMessage) => prevMessage + emoji); // Append the selected emoji
+    setMessage((prevMessage) => prevMessage + emoji);
   };
 
   return (
-    <div className="relative h-full w-3/5 bg-black">
-   
+    <div className="h-full w-full flex items-center justify-center relative">
+      {/* Story Content */}
       {renderStoryContent()}
 
-    
+      {/* Navigation Buttons */}
       <button
         onClick={prevStory}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl"
@@ -99,7 +98,7 @@ const StoryViewer: React.FC<StoryViewerProps> = ({ stories }) => {
         <FaArrowRight />
       </button>
 
-    
+      {/* Progress Indicators */}
       <div className="absolute top-4 left-0 w-full flex items-center justify-center space-x-2">
         {stories.map((_, index) => (
           <div
@@ -111,21 +110,15 @@ const StoryViewer: React.FC<StoryViewerProps> = ({ stories }) => {
         ))}
       </div>
 
+      {/* Bottom Input and Emoji Picker */}
       <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-70 p-4 flex items-center space-x-2">
-    
         <EmojiPickerComponent onEmojiSelect={handleEmojiSelect} />
-
-
         <SendInput
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Type reply.."
-                
-            />
-        
-        <button
-          onClick={handleSendMessage}
-        >
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Type reply..."
+        />
+        <button onClick={handleSendMessage}>
           <StatusBadge
             content={<RiSendPlane2Fill />}
             color="bg-green-500"
