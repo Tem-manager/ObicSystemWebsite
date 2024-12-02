@@ -82,10 +82,10 @@ const StoryViewer: React.FC<StoryViewerProps> = ({ stories }) => {
 
   return (
     <div className="relative h-full w-3/5 bg-black">
-      {/* عرض المحتوى */}
+   
       {renderStoryContent()}
 
-      {/* أزرار التنقل */}
+    
       <button
         onClick={prevStory}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl"
@@ -99,7 +99,7 @@ const StoryViewer: React.FC<StoryViewerProps> = ({ stories }) => {
         <FaArrowRight />
       </button>
 
-      {/* مؤشر التقدم */}
+    
       <div className="absolute top-4 left-0 w-full flex items-center justify-center space-x-2">
         {stories.map((_, index) => (
           <div
@@ -111,9 +111,8 @@ const StoryViewer: React.FC<StoryViewerProps> = ({ stories }) => {
         ))}
       </div>
 
-      {/* مربع الإرسال */}
       <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-70 p-4 flex items-center space-x-2">
-        {/* أيقونات */}
+    
         <EmojiPickerComponent onEmojiSelect={handleEmojiSelect} />
 
 
@@ -123,7 +122,7 @@ const StoryViewer: React.FC<StoryViewerProps> = ({ stories }) => {
                 placeholder="Type reply.."
                 
             />
-        {/* زر الإرسال */}
+        
         <button
           onClick={handleSendMessage}
         >
