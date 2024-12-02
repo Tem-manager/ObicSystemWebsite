@@ -71,7 +71,7 @@ const StatusInput: React.FC = () => {
             onChangeColor={setCurrentColorIndex}
           />
           <TextStyleToggle textStyle={textStyle} onToggleTextStyle={setTextStyle} />
-          <EmojiPickerComponent onEmojiSelect={setSelectedEmoji} />
+          {/* <EmojiPickerComponent onEmojiSelect={setSelectedEmoji} /> */}
         </div>
       </div>
 
