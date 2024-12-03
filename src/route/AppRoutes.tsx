@@ -28,13 +28,13 @@ const routes: RouteConfig[] = [
   {
     path: "/",
     title: "login",
-    component: AppLayout,
-  },
-  {
-    path: "/*",
-    title: "",
     component: SharedRoutes,
   },
+  // {
+  //   path: "/*",
+  //   title: "",
+  //   component: SharedRoutes,
+  // },
   {
     path: "/chat/*",
     title: "",
