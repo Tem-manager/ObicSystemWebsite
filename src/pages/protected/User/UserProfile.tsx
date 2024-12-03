@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Language, MiscellaneousServices, Error, Help, Logout, AccountBalanceWalletOutlined, FilterCenterFocusOutlined, CreditCardOutlined,  MonetizationOnOutlined, CircleNotifications,  SystemSecurityUpdateGood, CheckCircleOutline, HolidayVillageOutlined, AddAlertOutlined, LocalMallOutlined, FolderSpecialOutlined, Fastfood, SelfImprovement, AddShoppingCart, Home } from "@mui/icons-material";
 import AccountInfo from "./AccountInfo";
+import Example from "./Example";
 
 const UserProfile: React.FC = () => {
   const [activeTab, setActiveTab] = useState("services");
@@ -39,7 +40,6 @@ const [showNotice, setShowNotice] = useState(true);
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 pl-[60px] p-4 bg-gray-100 min-h-screen">
-     
        <AccountInfo/>
 
       {/* القسم الديناميكي */}
@@ -69,6 +69,7 @@ const [showNotice, setShowNotice] = useState(true);
               onClick={() => setShowLanguages(!showLanguages)}
               // className="flex items-center gap-2 px-6 py-3 rounded-full font-medium bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white shadow-md hover:shadow-sm transition-transform duration-300 ease-in-out hover:scale-105"
             >
+
               <Language className="h-5 w-5 mr-4" />
               {/* {selectedLanguage} */}
             </button>
