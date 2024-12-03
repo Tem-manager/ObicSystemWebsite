@@ -5,7 +5,7 @@ import StatusInput from "./StatusInput";
 
 const statusText: React.FC = () => {
   return (
-    <div className="h-[calc(92vh-10vh)] w-full flex items-center justify-center bg-purple-700">
+    <div className="h-[calc(92vh-10vh)] w-full flex items-center justify-center ">
       <StatusInput />
     </div>
   );

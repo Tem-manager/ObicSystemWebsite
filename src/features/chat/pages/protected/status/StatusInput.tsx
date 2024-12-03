@@ -1,85 +1,77 @@
 import React, { useState } from "react";
-import { FaPalette } from "react-icons/fa";
 import { RiSendPlane2Fill } from "react-icons/ri";
-import { PiTextTBold } from "react-icons/pi";
 import StatusBadge from "../../../../../Components/ui/StatusBadge";
 import CloseIcon from "../../../Components/Ui/CloseIcon";
+import BackgroundColorSelector from "../../../Components/Ui/BackgroundColorSelector";
+import TextStyleToggle from "../../../Components/Ui/TextStyleToggle";
+import EmojiPickerComponent from "../../../Components/Ui/EmojiPickerComponent";
+import { StatusbgColor } from "../../../Constants/StatusbgColor";
 
 const StatusInput: React.FC = () => {
   const [status, setStatus] = useState<string>("");
   const [currentColorIndex, setCurrentColorIndex] = useState<number>(0);
   const [textStyle, setTextStyle] = useState<"normal" | "bold" | "italic">("normal");
+  const [selectedEmoji, setSelectedEmoji] = useState<string>("");
 
-  const colors = [
-    "bg-purple-700",
-    "bg-red-500",
-    "bg-green-500",
-    "bg-blue-500",
-    "bg-yellow-500",
-    "bg-pink-500",
-  ];
+  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length <= 680) {
+    if (e.target.value.length <= 600) {
       setStatus(e.target.value);
     }
-  };
-
-  const handleColorChange = () => {
-    setCurrentColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
   };
 
   const handleSend = () => {
     alert(`Status sent: ${status}`);
   };
 
-  const toggleTextStyle = () => {
-    setTextStyle((prevStyle) => {
-      if (prevStyle === "normal") return "bold";
-      if (prevStyle === "bold") return "italic";
-      return "normal";
-    });
-  };
-
   return (
     <div
-      className={`relative h-full w-full flex flex-col items-center justify-center text-center ${colors[currentColorIndex]}`}
-    >
-      <textarea
-        value={status}
-        onChange={handleInputChange}
-        placeholder="Type a status"
-        className={`text-white placeholder-white bg-transparent outline-none text-4xl w-full max-w-3xl text-center h-auto resize-none leading-6`}
-        style={{
-          fontWeight: textStyle === "bold" ? "bold" : "normal",
-          fontStyle: textStyle === "italic" ? "italic" : "normal",
-          textAlign: "center",
-        }}
-        maxLength={680}
-      ></textarea>
+  className="relative h-full w-full flex justify-center items-center text-center"
+  style={{
+    backgroundColor: StatusbgColor[currentColorIndex],
+    backgroundImage: selectedEmoji
+      ? `url("data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
+          `<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><text x='0' y='50' font-size='50'>${selectedEmoji}</text></svg>`
+        )}")`
+      : "none",
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    //opacity: 0.8,
+  }}
+>
+  <div
+    className="relative flex flex-col items-center justify-center w-full max-w-3xl 
+    text-white h-3/4 px-10"
+    
+  >
+    <textarea
+      value={status}
+      onChange={() => handleInputChange}
+      placeholder="Type a Status"
+      className="bg-transparent placeholder-white outline-none text-center text-xl resize-none w-full h-full
+      overflow-hidden leading-6 "
+      style={{
+        fontWeight: textStyle === "bold" ? "bold" : "normal",
+        fontStyle: textStyle === "italic" ? "italic" : "normal",
+      }}
+      rows={1}
+      maxLength={600}
+    />
+  </div>
+      
 
-      {/* Top Buttons */}
+      {/* Control Buttons */}
       <div className="absolute top-4 right-4 p-2">
-        <div className="flex">
-          {/* Background Color Button */}
-          <StatusBadge
-            content={
-              <button onClick={handleColorChange} title="Change Background Color">
-                <FaPalette />
-              </button>
-            }
-            textSize="text-lg"
+        <div className="flex space-x-2">
+          <BackgroundColorSelector
+            colors={StatusbgColor}
+            currentColorIndex={currentColorIndex}
+            onChangeColor={setCurrentColorIndex}
           />
-
-          {/* Text Style Toggle Button */}
-          <StatusBadge
-            content={
-              <button onClick={toggleTextStyle} title="Toggle Text Style">
-                <PiTextTBold />
-              </button>
-            }
-            textSize="text-lg"
-          />
+          <TextStyleToggle textStyle={textStyle} onToggleTextStyle={setTextStyle} />
+          {/* <EmojiPickerComponent onEmojiSelect={setSelectedEmoji} /> */}
         </div>
       </div>
 
@@ -93,12 +85,12 @@ const StatusInput: React.FC = () => {
         className="absolute bottom-0 left-0 w-full bg-black bg-opacity-40 text-white flex justify-between items-center p-4"
         style={{ backdropFilter: "blur(10px)" }}
       >
-        <div className="text-sm">{680 - status.length} characters left</div>
+        <div className="text-sm">{600 - status.length} characters left</div>
         <button onClick={handleSend}>
           <StatusBadge
             content={<RiSendPlane2Fill />}
-            color={"bg-green-500"}
-            textColor={"text-white"}
+            color="bg-green-500"
+            textColor="text-white"
             textSize="text-2xl"
             size={12}
           />

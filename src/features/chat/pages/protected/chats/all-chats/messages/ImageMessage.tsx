@@ -1,31 +1,62 @@
 import React from "react";
+import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
+import MessageStatus from "../../../../../Components/Ui/MessageStatus";
 
 interface ImageMessageProps {
   imageUrl: string; // رابط الصورة
-  caption?: string; // النص الوصفي للصورة (اختياري)
-  type: "sent" | "received"; // نوع الرسالة (إرسال أو استقبال)
+  time: string; // وقت الرسالة
+  isSent: boolean; // true إذا كانت الرسالة مرسلة، false إذا مستقبلة
+  status: "sending" | "sent" | "read" | "failed"; // حالة الرسالة
+  comment?: string; // التعليق النصي (اختياري)
 }
 
-const ImageMessage: React.FC<ImageMessageProps> = ({ imageUrl, caption, type }) => {
+const ImageMessage: React.FC<ImageMessageProps> = ({
+  imageUrl,
+  time,
+  isSent,
+  status,
+  comment,
+}) => {
   return (
-    <div
-      className={`flex ${type === "sent" ? "justify-end" : "justify-start"} my-2`}
-    >
+    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
+      {/* الحاوية الرئيسية للرسالة */}
       <div
-        className={`max-w-xs rounded-lg overflow-hidden ${
-          type === "sent" ? "bg-blue-500" : "bg-gray-200"
+        className={`p-4 rounded-lg shadow-lg ${
+          isSent
+            ? "bg-[#192745] text-white rounded-tr-none"
+            : "bg-white text-gray-800 rounded-tl-none"
         }`}
       >
-        <img src={imageUrl} alt={caption || "Image"} className="w-full h-auto" />
-        {caption && (
+        {/* الصورة */}
+        <div className="w-full max-w-[400px] max-h-[400px] overflow-hidden rounded-lg">
+          <img
+            src={imageUrl}
+            alt="message"
+            className="object-contain w-full h-full"
+          />
+        </div>
+
+        {/* التعليق النصي */}
+        {comment && (
           <p
-            className={`text-sm p-2 ${
-              type === "sent" ? "text-white" : "text-gray-800"
+            className={`mt-2 text-sm leading-relaxed ${
+              isSent ? "text-white" : "text-gray-800"
             }`}
           >
-            {caption}
+            {comment}
           </p>
         )}
+
+        {/* الوقت وحالة الرسالة */}
+        <div className="flex items-center justify-between mt-2">
+          {/* الوقت */}
+          <span className="text-xs">
+            <TimeDisplay time={time} />
+          </span>
+
+          {/* حالة الرسالة - تظهر فقط للرسائل المرسلة */}
+          {isSent && <MessageStatus status={status} />}
+        </div>
       </div>
     </div>
   );
