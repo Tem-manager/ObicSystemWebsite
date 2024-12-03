@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import ListTitle from '../../../Components/Ui/ListTitle';
 import ImageStatus from '../../../Components/Ui/imageStatus';
 import { StatusModel } from './StatusModel';
-import { IoClose } from "react-icons/io5";
-import StatusBadge from '../../../../../Components/ui/StatusBadge';
 import Dialog from '../../../Components/Ui/Dialog';
 import StoryViewer from './StoryViewer';
 import { StoresData } from './StoresData';
@@ -45,7 +43,6 @@ const StatusList: React.FC<Props> = ({ statusData }) => {
                 <li className="mb-5" key={item.statusid}>
                   <ListTitle
                     hoverBg='hover:bg-gray-200'
-                    cursorpointer='cursor-pointer'
                     Title={item.username}
                     subTitle={item.time}
                     imageComponent={<ImageStatus images={item.Urlimage} />}

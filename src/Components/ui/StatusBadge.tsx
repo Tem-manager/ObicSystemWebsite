@@ -12,7 +12,7 @@ interface StatusBadgeProps {
 
 const StatusBadge: React.FC<StatusBadgeProps> = 
 ({
-   color="",
+   color="bg-gray-200",
    size =10,
    content,
    textColor="text-gray-700" ,
