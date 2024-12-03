@@ -11,7 +11,7 @@ function AllChats() {
       <ChatTab />
       <div className="flex-grow w-full flex">
         <Conversation pageTitle="All Chat" />
-        <div className="flex flex-col w-[65%] bg-gray-200 p-4 m-2 relative">
+        <div className="flex flex-col w-[65%] relative">
       <AllMessages/>
         </div>
       </div>

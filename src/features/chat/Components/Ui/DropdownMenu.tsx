@@ -29,7 +29,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ buttonContent, options }) =
     
       {isOpen && (
         <div
-          className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10"
+          className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-[9999]"
           onMouseLeave={closeDropdown}
         >
           <ul className="py-1">

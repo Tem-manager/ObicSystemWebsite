@@ -42,11 +42,20 @@ interface HeaderProps {
   centerContent?: React.ReactNode;
   rightContent?: React.ReactNode;
   className?: string;
+  backgroundColor?: string; // بروب جديد للخلفية
 }
 
-const Header: React.FC<HeaderProps> = ({ leftContent, centerContent, rightContent, className = "" }) => {
+const Header: React.FC<HeaderProps> = ({
+  leftContent,
+  centerContent,
+  rightContent,
+  className = "",
+  backgroundColor = "", // خلفية افتراضية
+}) => {
   return (
-    <header className={`h-[10vh] flex items-center justify-between w-full ${className}`}>
+    <header
+      className={`h-[10vh] flex items-center justify-between w-full ${backgroundColor} ${className}`}
+    >
       <div className="w-full pr-10 py-2 box-border pl-4">
         <div className="flex items-center justify-between h-[45px]">
           <div>{leftContent}</div>
