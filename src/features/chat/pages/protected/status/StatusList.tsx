@@ -44,6 +44,8 @@ const StatusList: React.FC<Props> = ({ statusData }) => {
               {items.map((item) => (
                 <li className="mb-5" key={item.statusid}>
                   <ListTitle
+                    hoverBg='hover:bg-gray-200'
+                    cursorpointer='cursor-pointer'
                     Title={item.username}
                     subTitle={item.time}
                     imageComponent={<ImageStatus images={item.Urlimage} />}

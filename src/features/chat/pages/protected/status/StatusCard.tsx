@@ -76,13 +76,13 @@ const StatusCard: React.FC = () => {
             </div>
           </div>
         <ListTitle
-         Title="My status" 
-         imageComponent={<CircleImage 
-                                size={12}
-                                imageUrl={"https://images.pexels.com/photos/29137971/pexels-photo-29137971/free-photo-of-scenic-autumn-pathway-lined-with-vibrant-leaves.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"}
-                            />}
-        subTitle="Click to add status update"
-        showIcon={true}
+            Title="My status" 
+            imageComponent={<CircleImage 
+                                    size={12}
+                                    imageUrl={"https://images.pexels.com/photos/29137971/pexels-photo-29137971/free-photo-of-scenic-autumn-pathway-lined-with-vibrant-leaves.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"}
+                                />}
+            subTitle="Click to add status update"
+            showIcon={true}
         />
           
         </div>

@@ -55,7 +55,7 @@ const Dialog: React.FC<DialogProps> = ({ BgColor = "bg-slate-600", children, onC
           <StatusBadge
               content={<IoClose />}
               textSize='text-2xl'
-              color='bg-inherit' />
+               />
       </button>
       {children}
     </div>

@@ -7,6 +7,7 @@ interface ListTitleProps {
   subTitle: string;
   showIcon?: boolean; 
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void; 
+  hoverBg?:string;
 }
 
 const ListTitle: React.FC<ListTitleProps> = ({
@@ -15,9 +16,11 @@ const ListTitle: React.FC<ListTitleProps> = ({
   subTitle,
   onClick,
   showIcon = false,
+  hoverBg,
+  
 }) => {
   return (
-    <div className="flex items-center" onClick={onClick}> 
+    <div className={`flex items-center w-screen ${hoverBg} cursor-pointer`} onClick={onClick}> 
       <div className="relative">
         {imageComponent}
         {showIcon && <PluzIconOverlay />}
