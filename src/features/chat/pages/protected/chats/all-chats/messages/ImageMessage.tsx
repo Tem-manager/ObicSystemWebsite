@@ -8,6 +8,7 @@ interface ImageMessageProps {
   isSent: boolean; // true إذا كانت الرسالة مرسلة، false إذا مستقبلة
   status: "sending" | "sent" | "read" | "failed"; // حالة الرسالة
   comment?: string; // التعليق النصي (اختياري)
+  onReply?: (replyContent: string) => void; // دالة الرد
 }
 
 const ImageMessage: React.FC<ImageMessageProps> = ({
@@ -16,12 +17,23 @@ const ImageMessage: React.FC<ImageMessageProps> = ({
   isSent,
   status,
   comment,
+  onReply,
 }) => {
   return (
-    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
+    <div
+      className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}
+      onDoubleClick={() =>
+        onReply &&
+        onReply(
+          comment
+            ? `Image: ${imageUrl}\nComment: ${comment}`
+            : `Image: ${imageUrl}`
+        )
+      } // استدعاء الرد عند الضغط مرتين
+    >
       {/* الحاوية الرئيسية للرسالة */}
       <div
-        className={`p-4 rounded-lg shadow-lg ${
+        className={`p-4 rounded-lg shadow-lg relative ${
           isSent
             ? "bg-[#192745] text-white rounded-tr-none"
             : "bg-white text-gray-800 rounded-tl-none"

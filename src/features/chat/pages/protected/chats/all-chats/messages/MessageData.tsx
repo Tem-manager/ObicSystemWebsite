@@ -10,12 +10,15 @@ export interface MessageType {
    status?: "sending" | "sent" | "read" | "failed";
   isSent: boolean; // true للمرسلة، false للمستقبلة
   isDeleted?: boolean;
+  sender?:string;
+  replyTo?:object;
 }
 
 export const MessageData: MessageType[] = [
   {
     id: 1,
     type: "text",
+    sender:"text",
     content: "مرحباً! كيف حالك؟",
     time: "10:00 AM",
     isSent: false,
@@ -240,6 +243,21 @@ export const MessageData: MessageType[] = [
     callType: "incoming", // نوع المكالمة: واردة
     callMode: "video", // وضع المكالمة: فيديو
     duration: "20:30", // مدة المكالمة
+  },
+  
+  {
+    id: 23,
+    type: "text",
+    sender: "You", // اسمك (المستخدم)
+    content: "أنا بخير، شكراً! وأنت؟",
+    time: "10:05 AM",
+    isSent: true,
+    isDeleted: false,
+    replyTo: {
+      id: 1, // ID الرسالة التي تم الرد عليها
+      content: "مرحباً! كيف حالك؟",
+      sender: "Ali", // اسم المرسل الأصلي
+    },
   },
 ];
 

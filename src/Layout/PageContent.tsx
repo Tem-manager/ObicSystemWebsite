@@ -32,6 +32,7 @@ const PageContent: FC = () => {
   return (
     <div
       ref={mainContentRef}
+        className="overflow-hidden h-screen" 
     >
       <Suspense fallback={<Loader />}>
         <Routes>
