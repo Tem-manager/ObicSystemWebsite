@@ -97,8 +97,7 @@ const SideBar: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#192745] h-screen flex flex-col items-center py-8 shadow-lg fixed sm:w-[1vw] md:w-[6vw] lg:w-[4vw]">
-      {/* Navigation Links */}
+    <div className="bg-[#192745] h-screen flex flex-col items-center py-8 shadow-lg fixed">
       <div className="flex flex-col justify-between items-center w-full h-full ">
         {navItems.map((item, index) => (
           <Link
@@ -108,7 +107,6 @@ const SideBar: React.FC = () => {
               ${isActive(item.to) ? "text-white" : "text-gray-600 hover:text-white"}
               transition-all duration-300 ease-in-out`}
           >
-            {/* Icon */}
             {React.cloneElement(item.icon, {
               className: `${
                 isActive(item.to)
@@ -116,8 +114,6 @@ const SideBar: React.FC = () => {
                   : "text-gray-400 group-hover:text-white"
               }`,
             })}
-
-            {/* Label */}
             <span
               className={`mt-2 text-xs
                 ${isActive(item.to) ? "text-white" : "text-gray-400 group-hover:text-white"}

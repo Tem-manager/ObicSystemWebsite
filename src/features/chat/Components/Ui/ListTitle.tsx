@@ -20,7 +20,7 @@ const ListTitle: React.FC<ListTitleProps> = ({
   
 }) => {
   return (
-    <div className={`flex items-center w-screen ${hoverBg} cursor-pointer`} onClick={onClick}> 
+    <div className={`flex items-center w-80 ${hoverBg} cursor-pointer`} onClick={onClick}> 
       <div className="relative">
         {imageComponent}
         {showIcon && <PluzIconOverlay />}

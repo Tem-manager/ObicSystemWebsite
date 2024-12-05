@@ -61,8 +61,14 @@ function Groups() {
     </div>
   );
 }
+interface ChatCardProps {
+  name: string;
+  lastMessage: string;
+  time: string;
+  unreadCount: number;
+}
 
-function ChatCard({ name, lastMessage, time, unreadCount }) {
+function ChatCard({ name, lastMessage, time, unreadCount }: ChatCardProps) {
   return (
     <div className="flex items-center justify-between p-2 bg-white border-b border-gray-300 bg-gray-100 hover:bg-gray-50">
       {/* أيقونة تمثل مجموعة المستخدمين */}
