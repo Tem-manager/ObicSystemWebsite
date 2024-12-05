@@ -5,7 +5,7 @@ interface FavoritesProps {
   pageTitle: string;
 }
 
-function Favorites({  }: FavoritesProps) {
+const Favorites: React.FC<FavoritesProps> = () => {
   
     return (
       <>          

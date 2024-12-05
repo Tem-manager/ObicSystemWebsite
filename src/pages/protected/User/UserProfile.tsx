@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Language, MiscellaneousServices, Error, Help, Logout, AccountBalanceWalletOutlined, FilterCenterFocusOutlined, CreditCardOutlined,  MonetizationOnOutlined, CircleNotifications,  SystemSecurityUpdateGood, CheckCircleOutline, HolidayVillageOutlined, AddAlertOutlined, LocalMallOutlined, FolderSpecialOutlined, Fastfood, SelfImprovement, AddShoppingCart, Home } from "@mui/icons-material";
 import AccountInfo from "./AccountInfo";
-import Example from "./Example";
 
 const UserProfile: React.FC = () => {
   const [activeTab, setActiveTab] = useState("services");
