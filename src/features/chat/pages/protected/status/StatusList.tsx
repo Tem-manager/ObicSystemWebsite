@@ -5,6 +5,7 @@ import { StatusModel } from './StatusModel';
 import Dialog from '../../../Components/Ui/Dialog';
 import StoryViewer from './StoryViewer';
 import { StoresData } from './StoresData';
+import UsersFooter from './UsersFooter';
 
 interface Props {
   statusData: StatusModel[];
@@ -59,7 +60,7 @@ const StatusList: React.FC<Props> = ({ statusData }) => {
         <Dialog 
           onClose={closeDialog} 
         >
-          <StoryViewer stories={StoresData} />
+          <StoryViewer stories={StoresData} footer={<UsersFooter/>} />
         </Dialog>
     )}
 

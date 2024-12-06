@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, ReactNode } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import UsersFooter from "./UsersFooter";
+
 
 interface Story {
   type: string;
@@ -9,9 +9,10 @@ interface Story {
 
 interface StoryViewerProps {
   stories: Story[];
+  footer: React.ReactNode
 }
 
-const StoryViewer: React.FC<StoryViewerProps> = ({  stories }) => {
+const StoryViewer: React.FC<StoryViewerProps> = ({  stories,footer }) => {
   
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -93,7 +94,7 @@ const StoryViewer: React.FC<StoryViewerProps> = ({  stories }) => {
           ></div>
         ))}
       </div>
-<UsersFooter/>
+    {footer}
     </div>
   );
 };
