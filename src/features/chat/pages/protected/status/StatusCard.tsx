@@ -8,7 +8,7 @@ import CircleImage from "../../../Components/Ui/CircleImage";
 import DropdownMenu from "../../../Components/Ui/DropdownMenu";
 import ListTitle from "../../../Components/Ui/ListTitle";
 import MediaPreview from "./MediaPreview";
-import { HiDotsVertical } from "react-icons/hi";
+import { MdOutlinePrivacyTip } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import StoryViewer from "./StoryViewer";
 import MystatusFooter from "./MystatusFooter";
@@ -42,7 +42,7 @@ const StatusCard: React.FC = () => {
 
   return (
     <div className="mb-5 w-full max-w-sm mx-auto bg-gray-100 shadow-lg p-4">
-      <div className="flex justify-between items-center mb-4">
+      <div className=" flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold text-gray-800">Status</h2>
         <div className="flex items-center space-x-4">
           <DropdownMenu
@@ -71,7 +71,7 @@ const StatusCard: React.FC = () => {
 
          <StatusBadge
             content={
-              <HiDotsVertical />
+              <MdOutlinePrivacyTip />
                 }
             textSize="text-l"
           />
