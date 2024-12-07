@@ -6,7 +6,7 @@ import StatusBadge from "../../../../../Components/ui/StatusBadge";
  const MystatusFooter :React.FC = () =>{
  
   return (
-    <div className="absolute bottom-0 left-30   flex items-center space-x-2">
+    <div className="absolute bottom-10 left-30   flex items-center space-x-2">
        
         <StatusBadge
          content={<IoEyeOutline />}
