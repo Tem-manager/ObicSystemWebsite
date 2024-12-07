@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, ReactNode } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import ListTitle from "../../../Components/Ui/ListTitle";
 import CircleImage from "../../../Components/Ui/CircleImage";
