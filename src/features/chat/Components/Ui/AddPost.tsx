@@ -656,6 +656,9 @@
 
 
 import React, { useState } from "react";
+import ListTitle from "./ListTitle";
+import { user } from "../../pages/protected/moments/MomentsData"; // استيراد بيانات المستخدم
+
 
 // الواجهة الرئيسية
 const UserIconWithName: React.FC = () => {
@@ -674,25 +677,18 @@ const UserIconWithName: React.FC = () => {
     <div className="relative min-h-screen bg-gray-100">
       {/* قسم أيقونة المستخدم */}
       <header className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-full p-4 flex items-center space-x-3">
-        <div className="relative">
-          <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 text-blue-500"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-            </svg>
-          </div>
-          <button
-            className="absolute -bottom-1 -right-1 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center shadow-md"
-            onClick={toggleModal}
-          >
-            +
-          </button>
-        </div>
-        <span className="text-lg font-medium text-gray-700">Hadeel</span>
+      <ListTitle
+      Title={user.username}
+      imageComponent={
+      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+        <img src={user.avatar} alt="User avatar" className="w-full h-full rounded-full" />
+      </div>
+    }
+     
+      showIcon={true}
+      onClick={toggleModal}
+ 
+    />
       </header>
 
       {/* عرض النافذة عند التفعيل */}

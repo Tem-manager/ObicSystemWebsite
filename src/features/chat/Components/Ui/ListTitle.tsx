@@ -4,7 +4,7 @@ import PluzIconOverlay from "./PluzIconOverlay";
 interface ListTitleProps {
   Title: string;
   imageComponent: React.ReactNode;
-  subTitle: string;
+  subTitle?: string;
   showIcon?: boolean; 
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void; 
   hoverBg?:string;
