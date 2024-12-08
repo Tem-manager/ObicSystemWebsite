@@ -11,20 +11,20 @@ export interface MessageType {
   isSent: boolean; // true للمرسلة، false للمستقبلة
   isDeleted?: boolean;
   sender?:string;
-  replyTo?:object;
+  date?:string;
 }
 
 export const MessageData: MessageType[] = [
   {
     id: 1,
     type: "text",
-    sender:"text",
+    sender:"ALI",
     content: "مرحباً! كيف حالك؟",
-    time: "10:00 AM",
+    time: "10:05:00",
     isSent: false,
     isDeleted: false,  // إضافة حالة الرسالة (محذوفة أم لا)
 
- 
+    date: "2023-12-07",
   },
   {
     id: 2,
@@ -34,14 +34,14 @@ export const MessageData: MessageType[] = [
       "https://images.pexels.com/photos/28996347/pexels-photo-28996347/free-photo-of-vibrant-dahlia-flowers-in-glass-vases.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     time: "10:10 AM",
     comment: "ما رأيك في الصورة؟",
-
+    date: "2023-12-07",
     isSent: false,
   },
   {
     id: 3,
     type: "text",
     content: " +967 778987678 أنا بخير! ماذا عنك؟  https://images.pexels.com/photos/28996347/pexels-photo-28996347/free-photo-of-vibrant-dahlia-flowers-in-glass-vases.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-
+    date: "2023-12-09",
     time: "10:05 AM",
     isSent: true,
     status:"sent",
@@ -57,7 +57,9 @@ export const MessageData: MessageType[] = [
     time: "10:15 AM",
     comment: " الصورة؟",
     isSent: true,
-      status:"sending"
+      status:"sending",
+      date: "2023-1-12",
+
   },
   {
     id: 6,
@@ -66,6 +68,7 @@ export const MessageData: MessageType[] = [
       "https://images.pexels.com/photos/28748477/pexels-photo-28748477/free-photo-of-open-book-and-camera-amid-autumn-leaves.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     time: "10:15 AM",
         comment: "ما رأيك ؟",
+        date: "yestarday",
 
     isSent: false,
   },
@@ -77,6 +80,7 @@ export const MessageData: MessageType[] = [
     comment: "شاهد هذا الفيديو المميز!",
     time: "10:20 AM",
     isSent: false,
+    date: "2023-12-09",
 
   },
   {
@@ -227,7 +231,7 @@ export const MessageData: MessageType[] = [
     id: 21,
     type: "call",
     content: "Missed Video Call from Jane Smith",
-    time: "4:00 PM",
+    time: "10:05:00",
     status: "failed",
     isSent: false,
     callType: "missed", // نوع المكالمة: فائتة
@@ -245,19 +249,6 @@ export const MessageData: MessageType[] = [
     duration: "20:30", // مدة المكالمة
   },
   
-  {
-    id: 23,
-    type: "text",
-    sender: "You", // اسمك (المستخدم)
-    content: "أنا بخير، شكراً! وأنت؟",
-    time: "10:05 AM",
-    isSent: true,
-    isDeleted: false,
-    replyTo: {
-      id: 1, // ID الرسالة التي تم الرد عليها
-      content: "مرحباً! كيف حالك؟",
-      sender: "Ali", // اسم المرسل الأصلي
-    },
-  },
+
 ];
 
