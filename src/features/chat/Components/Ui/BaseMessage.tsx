@@ -8,7 +8,6 @@ import InfoIcon from "@mui/icons-material/Info";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"; // استيراد أيقونة النسخ
 import StarIcon from '@mui/icons-material/Star';
-import ReplyMessageView from "../../pages/protected/chats/all-chats/messages/ReplyMessageview";
 
 interface BaseMessageProps {
   time: string;
@@ -38,8 +37,7 @@ const BaseMessage: React.FC<BaseMessageProps> = React.memo(
     status = null,
     isDeleted,
     onReply,
-    replyText,
-    onCancelReply,
+  
     onDelete,
     onInfo,
     onFavorite,
@@ -78,12 +76,7 @@ const BaseMessage: React.FC<BaseMessageProps> = React.memo(
           }`}
         >
           {/* Show reply message if it exists */}
-          {replyTo && (
-            <ReplyMessageView
-              replyText={replyTo.content}
-              replyAuthor={replyTo.sender}
-            />
-          )}
+      
 
           {/* Message Content */}
           {isDeleted ? (
@@ -96,9 +89,14 @@ const BaseMessage: React.FC<BaseMessageProps> = React.memo(
 
           {/* Time and Status */}
           <div className="flex items-center justify-between mt-2 text-gray-500">
-            <span className="text-xs">
-              <TimeDisplay time={time} />
-            </span>
+          <span className="text-xs">
+    {/* عرض الوقت بتنسيق الوقت العادي */}
+    <TimeDisplay time={time} formatType="normal" />
+  </span>
+  <span className="text-xs">
+    {/* عرض التاريخ بتنسيق مخصص */}
+    <TimeDisplay time={time} formatType="custom" />
+  </span>
             {status && isSent && <MessageStatus status={status} />}
           </div>
 
