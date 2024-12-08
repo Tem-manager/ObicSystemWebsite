@@ -35,11 +35,12 @@ const Moments: React.FC = () => {
         setPostText("");
         setMediaFiles([]);
         setIsPosting(false);
-        alert("تم نشر المنشور بنجاح!");
+        // alert("تم نشر المنشور بنجاح!");
       }, 2000);
-    } else {
-      alert("يرجى إضافة نص أو وسائط قبل النشر.");
     }
+    //  else {
+    //   alert("يرجى إضافة نص أو وسائط قبل النشر.");
+    // }
   };
 
   const handleRemoveMedia = (index: number) => {
@@ -181,4 +182,10 @@ const PostCard: React.FC<{ post: PostData }> = ({ post }) => {
   );
 };
 
+
+
+
 export default Moments;
+
+
+

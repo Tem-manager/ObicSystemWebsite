@@ -5,13 +5,15 @@ import { StatusModel } from './StatusModel';
 import Dialog from '../../../Components/Ui/Dialog';
 import StoryViewer from './StoryViewer';
 import { StoresData } from './StoresData';
+import UsersFooter from './UsersFooter';
 
 interface Props {
   statusData: StatusModel[];
 }
 
 const StatusList: React.FC<Props> = ({ statusData }) => {
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isStoryViewerOpen, setStoryViewerOpen] = useState(false);
+
   const [selectedStatusId, setSelectedStatusId] = useState<number | null>(null);
 
   const groupedData = statusData.reduce<Record<string, StatusModel[]>>((acc, item) => {
@@ -24,11 +26,11 @@ const StatusList: React.FC<Props> = ({ statusData }) => {
 
   const handleListTitleClick = (statusid: number) => {
     setSelectedStatusId(statusid);
-    setDialogOpen(true);
+    setStoryViewerOpen(true)
   };
 
   const closeDialog = () => {
-    setDialogOpen(false);
+    setStoryViewerOpen(false);
     setSelectedStatusId(null);
   };
 
@@ -54,14 +56,18 @@ const StatusList: React.FC<Props> = ({ statusData }) => {
           ))}
         </ul>
       </div>
-
+{/* 
       {dialogOpen && (
         <Dialog 
           onClose={closeDialog} 
         >
-          <StoryViewer stories={StoresData} />
+          <StoryViewer stories={StoresData} footer={<UsersFooter/>} />
         </Dialog>
-    )}
+    )} */}
+
+  <Dialog isOpen={isStoryViewerOpen} onClose={closeDialog}>
+    <StoryViewer stories={StoresData} footer={<UsersFooter/>} />
+        </Dialog>
 
     </div>
   );

@@ -5,9 +5,13 @@ import StatusBadge from "../../../../Components/ui/StatusBadge";
 
 interface Props {
   onEmojiSelect: (emoji: string) => void;
+  position?:string
 }
 
-const EmojiPickerComponent: React.FC<Props> = ({ onEmojiSelect }) => {
+const EmojiPickerComponent: React.FC<Props> = 
+({ onEmojiSelect,
+  position="absolute bottom-20 left-4"
+ }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleEmojiPicker = () => {
@@ -31,7 +35,7 @@ const EmojiPickerComponent: React.FC<Props> = ({ onEmojiSelect }) => {
         color="text-yellow-300"
       />
       {isOpen && (
-        <div className="absolute bottom-20 left-4 bg-white shadow-lg rounded-lg p-2 z-10">
+        <div className={`${position} bg-white shadow-lg rounded-lg p-2 z-10`}>
           <EmojiPicker onEmojiClick={handleEmojiClick} />
         </div>
       )}

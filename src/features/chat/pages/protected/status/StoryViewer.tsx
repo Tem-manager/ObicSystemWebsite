@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import UsersFooter from "./UsersFooter";
+import ListTitle from "../../../Components/Ui/ListTitle";
+import CircleImage from "../../../Components/Ui/CircleImage";
+
 
 interface Story {
   type: string;
@@ -9,9 +11,10 @@ interface Story {
 
 interface StoryViewerProps {
   stories: Story[];
+  footer: React.ReactNode
 }
 
-const StoryViewer: React.FC<StoryViewerProps> = ({  stories }) => {
+const StoryViewer: React.FC<StoryViewerProps> = ({  stories,footer }) => {
   
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -59,7 +62,7 @@ const StoryViewer: React.FC<StoryViewerProps> = ({  stories }) => {
     }
     if (story.type === "text") {
       return (
-        <div className="w-full h-full flex items-center justify-center bg-black text-white text-2xl p-4">
+        <div className="w-full h-full flex items-center justify-center  bg-black text-white text-2xl p-4">
           {story.content}
         </div>
       );
@@ -67,34 +70,92 @@ const StoryViewer: React.FC<StoryViewerProps> = ({  stories }) => {
   };
 
   return (
-    <div className="h-full w-full flex items-center justify-center relative">
-      {renderStoryContent()}
+   
+    // <div className=" h-full w-full flex items-center justify-center relative">
 
-      <button
-        onClick={prevStory}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl"
-      >
-        <FaArrowLeft />
-      </button>
-      <button
-        onClick={nextStory}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl"
-      >
-        <FaArrowRight />
-      </button>
+    //   {renderStoryContent()}
+        
 
-      <div className="absolute top-4 left-0 w-full flex items-center justify-center space-x-2">
-        {stories.map((_, index) => (
-          <div
-            key={index}
-            className={`h-1 w-20 bg-white transition-all duration-500 ${
-              index <= currentIndex ? "opacity-100" : "opacity-50"
-            }`}
-          ></div>
-        ))}
-      </div>
-<UsersFooter/>
-    </div>
+
+        // <button
+        //   onClick={prevStory}
+        //   className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl"
+        // >
+        //   <FaArrowLeft />
+        // </button>
+        // <button
+        //   onClick={nextStory}
+        //   className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl"
+        // >
+        //   <FaArrowRight />
+        // </button>
+
+    //     <div className="absolute top-4 left-0 w-full  ">
+          
+
+          // <div className="flex items-center justify-center space-x-2">
+          //   {stories.map((_, index) => (
+          //     <div
+          //       key={index}
+          //       className={`h-1 w-20 bg-white transition-all duration-500 ${index <= currentIndex ? "opacity-100" : "opacity-50"}`}
+          //     ></div>
+          //   ))}
+          // </div>
+    //       <div className="ml-11 mt-10">
+          // <ListTitle
+          //     Title="username"
+          //     subTitle="06:24"
+          //     imageComponent={<CircleImage size={10} 
+          //     imageUrl={"https://images.pexels.com/photos/28996347/pexels-photo-28996347/free-photo-of-vibrant-dahlia-flowers-in-glass-vases.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"} />} />
+    //       </div>
+          
+    //     </div>
+    //     {footer}
+    //   </div>
+
+    <div className="h-screen w-full flex flex-col items-center justify-center relative">
+        <ListTitle
+                Title="username"
+                subTitle="06:24"
+                TitleColor="text-white"
+                subTitleColor="text-slate-300"
+                imageComponent={<CircleImage size={10} 
+                imageUrl={"https://images.pexels.com/photos/28996347/pexels-photo-28996347/free-photo-of-vibrant-dahlia-flowers-in-glass-vases.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"} />} />
+
+        <div className="flex items-center justify-center mt-2 space-x-2">
+            {stories.map((_, index) => (
+              <div
+                key={index}
+                className={`h-1 w-20 bg-white transition-all duration-500 ${index <= currentIndex ? "opacity-100" : "opacity-50"}`}
+              ></div>
+            ))}
+          </div>
+
+          <div className=" mt-2">
+            
+          </div>
+        <div className="w-full max-w-md h-2/3  items-center justify-center bg-black rounded-lg overflow-hidden">
+        {renderStoryContent()}
+        
+        <button
+              onClick={prevStory}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl"
+            >
+              <FaArrowLeft />
+            </button>
+            <button
+              onClick={nextStory}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl"
+            >
+              <FaArrowRight />
+            </button>
+        </div>
+
+    
+
+    
+    {footer}
+  </div>
   );
 };
 
