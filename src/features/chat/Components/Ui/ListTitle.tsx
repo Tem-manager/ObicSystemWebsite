@@ -18,7 +18,7 @@ const ListTitle: React.FC<ListTitleProps> = ({
   onClick,
   showIcon = false,
   hoverBg,
-  width="w-80"
+  width="0"
 
   
 }) => {

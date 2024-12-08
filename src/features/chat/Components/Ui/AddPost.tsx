@@ -658,6 +658,8 @@
 import React, { useState } from "react";
 import ListTitle from "./ListTitle";
 import { user } from "../../pages/protected/moments/MomentsData"; // استيراد بيانات المستخدم
+import SendInput from "./SendInput";
+
 
 
 // الواجهة الرئيسية
@@ -760,6 +762,12 @@ const AddPostModal: React.FC<{
     setMediaFiles(mediaFiles.filter((_, i) => i !== index));
   };
 
+  const [message, setMessage] = React.useState("");
+  const handleSendMessage = () => {
+    console.log("Message sent:", message);
+    setMessage("");
+  };
+
   return (
     <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
@@ -770,6 +778,9 @@ const AddPostModal: React.FC<{
           className="w-full border rounded-lg p-2 mb-4"
           placeholder="بم تفكر؟"
         ></textarea>
+
+        <SendInput value={message} onChange={(e) => setMessage(e.target.value)} placeholder="بم تفكر؟" Bg="bg-white" className={`w-full border rounded-lg p-2 mb-4`} textColor="text-black" />
+
         <input
           type="file"
           multiple
