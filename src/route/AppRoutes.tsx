@@ -5,8 +5,8 @@ import { lazy, } from "react";
 const SharedRoutes = lazy(() => import("./SharedRoutes"));
 const ChatLayout = lazy(() => import("../features/chat/Layout/ChatLayout"));
 // const AppLayout = lazy(() => import("../Layout/AppLayout"));
-const ServicesRoutes = lazy(() =>
-  import("../features/services/route/ServicesRoutes")
+const ServicesLayout = lazy(() =>
+  import("../features/services/Layout/ServicesLayout")
 );
 
 const MinistriesRoutes = lazy(() =>
@@ -43,7 +43,7 @@ const routes: RouteConfig[] = [
   {
     path: "/services/*",
     title: "",
-    component: ServicesRoutes,
+    component: ServicesLayout,
   },
   {
     path: "/ministries/*",

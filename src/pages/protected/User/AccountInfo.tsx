@@ -30,7 +30,7 @@ const AccountInfo: React.FC = () => {
   ]);
 
   const [phoneInfo, setPhoneInfo] = useState([
-    { field: "phone", label: "Phone Num", value: "00967777777777",  maxLength: 9 },
+    { field: "phone", label: "Phone Num", value: "00967777777777",  },
   ]);
 
   const [emailInfo, setEmailInfo] = useState([
@@ -68,19 +68,19 @@ const AccountInfo: React.FC = () => {
       );
     }
   };
-  const [phone, setPhone] = useState<string>('');
+  // const [phone, setPhone] = useState<string>('');
 
-  const handlePhoneChange = (value: string) => {
-    setPhone(value);
-  };
+  // const handlePhoneChange = (value: string) => {
+  //   setPhone(value);
+  // };
 
-  const handleChangePhone = (field: string, newValue: string) => {
-    setPhoneInfo((prev) =>
-      prev.map((item) =>
-        item.field === field ? { ...item, value: newValue } : item
-      )
-    );
-  };
+  // const handleChangePhone = (field: string, newValue: string) => {
+  //   setPhoneInfo((prev) =>
+  //     prev.map((item) =>
+  //       item.field === field ? { ...item, value: newValue } : item
+  //     )
+  //   );
+  // };
 
   const handleChangeEmail = (field: string, newValue: string) => {
     setEmailInfo((prev) =>
@@ -142,7 +142,7 @@ const AccountInfo: React.FC = () => {
         <div className="bg-gray-100 p-4 rounded-md space-y-4">
 {accountInfo.map(({ field, label, value, maxLength }, index) => (
   <div key={field}>
-    <p className={`${accountInfoIsEditing ? "text-black" : "text-gray-500"}`}>
+    <div className={`${accountInfoIsEditing ? "text-black" : "text-gray-500"}`}>
       {accountInfoIsEditing ? (
         <div>
           <label htmlFor={field} className="block text-sm font-medium text-gray-700">
@@ -173,7 +173,7 @@ const AccountInfo: React.FC = () => {
           {label}: {value}
         </span>
       )}
-    </p>
+    </div>
   </div>
 ))}
 
@@ -198,7 +198,7 @@ const AccountInfo: React.FC = () => {
         <div className="bg-gray-100 p-4 rounded-md space-y-4">
             {emailInfo.map(({ field, label, value }) => (
             <div key={field}>
-                <p className={`${emailIsEditing ? "text-black" : "text-gray-500"}`}>
+                <div className={`${emailIsEditing ? "text-black" : "text-gray-500"}`}>
                 {emailIsEditing ? (
                     <div>
                     <label htmlFor={field} className="block text-sm font-medium text-gray-700">{label}</label>
@@ -218,7 +218,7 @@ const AccountInfo: React.FC = () => {
                 ) : (
                     <span className="font-semibold">{label}: {value}</span>
                 )}
-                </p>
+                </div>
             </div>
             ))}
             {emailIsEditing && (
@@ -241,22 +241,22 @@ const AccountInfo: React.FC = () => {
           </IconButton>
         </div>
         <div className="bg-gray-100 p-4 rounded-md space-y-4">
-          {phoneInfo.map(({ field, label, value,  maxLength }) => (
+          {phoneInfo.map(({ field, label, value }) => (
             <div key={field}>
-              <p className={`${phoneInfoIsEditing ? "text-black" : "text-gray-500"}`}>
+              <div className={`${phoneInfoIsEditing ? "text-black" : "text-gray-500"}`}>
                 {phoneInfoIsEditing ? (
                   <div className="flex items-center space-x-2">
                    
                     <div className="text-sm text-gray-500">
-                    <PhoneInputWithCountry  />.
+                    <PhoneInputWithCountry  />
 
-                      {getCharacterCountText(value, maxLength)}
+                      {/* {getCharacterCountText(value, maxLength)} */}
                     </div>
                   </div>
                 ) : (
                   <span className="font-semibold">{label}: {value}</span>
                 )}
-              </p>
+              </div>
             </div>
           ))}
           {phoneInfoIsEditing && (
