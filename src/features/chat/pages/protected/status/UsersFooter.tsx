@@ -13,7 +13,7 @@ import SendInput from "../../../Components/Ui/SendInput";
   };
   return (
     <div className="flex mt-4 w-full max-w-md p-2 border border-gray-600 rounded bg-gray-900 text-white focus:outline-none">
-      <EmojiPickerComponent onEmojiSelect={(emoji) => setMessage((prev) => prev + emoji)} />
+      <EmojiPickerComponent position="absolute bottom-40 left-15" onEmojiSelect={(emoji) => setMessage((prev) => prev + emoji)} />
       <SendInput value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Type reply..." />
       <button onClick={handleSendMessage}>
         <StatusBadge content={<RiSendPlane2Fill />} color="bg-green-500" textColor="text-white" textSize="text-2xl" size={12} />

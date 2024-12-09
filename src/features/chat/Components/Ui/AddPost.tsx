@@ -658,6 +658,7 @@
 import React, { useState } from "react";
 import ListTitle from "./ListTitle";
 import { user } from "../../pages/protected/moments/MomentsData"; // استيراد بيانات المستخدم
+import CircleImage from "./CircleImage";
 
 
 // الواجهة الرئيسية
@@ -678,16 +679,20 @@ const UserIconWithName: React.FC = () => {
       {/* قسم أيقونة المستخدم */}
       <header className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-full p-4 flex items-center space-x-3">
       <ListTitle
-      Title={user.username}
-      imageComponent={
-      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-        <img src={user.avatar} alt="User avatar" className="w-full h-full rounded-full" />
-      </div>
-    }
-     
-      showIcon={true}
-      onClick={toggleModal}
- 
+          Title={user.username}
+          imageComponent={
+            <CircleImage
+            size={12}
+            imageUrl={
+              user.avatar
+            }
+          />
+          
+          }
+         width="0"
+          showIcon={true}
+          onClick={toggleModal} 
+          subTitle={""} 
     />
       </header>
 

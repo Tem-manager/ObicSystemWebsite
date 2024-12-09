@@ -31,9 +31,6 @@ const MediaPreview: React.FC<{
   return (
     <div className="h-screen w-full flex flex-col items-center justify-center relative">
     
-      
-
-     
       <div className="w-full max-w-md h-2/3  items-center justify-center bg-black rounded-lg overflow-hidden">
         {files.length > 0 && (
           <button
@@ -105,6 +102,7 @@ const MediaPreview: React.FC<{
       {/* Caption Input and Send Button */}
       <div className="flex mt-4 w-full max-w-md p-2 border border-gray-600 rounded bg-gray-900 text-white focus:outline-none">
         <EmojiPickerComponent
+          position="absolute bottom-40 left-15"
           onEmojiSelect={(emoji) => setMessage((prev) => prev + emoji)}
         />
         <SendInput
