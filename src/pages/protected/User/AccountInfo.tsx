@@ -112,7 +112,7 @@ const AccountInfo: React.FC = () => {
   };
  
   return (
-    <div className="lg:w-1/3 w-full bg-white shadow-md rounded-lg p-4">
+    <div className="lg:w-1/3 w-full bg-white shadow-md rounded-lg p-4 overflow-auto ">
 
       {/* Profile Image Section */}
       <div className="flex flex-col items-center text-center relative">

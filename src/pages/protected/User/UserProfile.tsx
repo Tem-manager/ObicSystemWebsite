@@ -38,7 +38,7 @@ const [showNotice, setShowNotice] = useState(true);
   }, []);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 pl-[60px] p-4 bg-gray-100 min-h-screen">
+    <div className="flex flex-col lg:flex-row gap-6 pl-[60px] p-4 bg-gray-100 min-h-screen overflow-auto">
        <AccountInfo/>
 
       {/* القسم الديناميكي */}

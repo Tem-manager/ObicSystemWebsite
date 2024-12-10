@@ -8,7 +8,7 @@ function AllChats() {
 
   return (
     <>
-      <ChatTab />
+      {/* <ChatTab /> */}
       <div className="flex-grow w-full flex">
         <Conversation pageTitle="All Chat" />
         <div className="flex flex-col w-[65%] relative">
