@@ -20,7 +20,7 @@ const EnjoyHome = () => {
     setIsExpanded(!isExpanded);
   };
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center  bg-gray-900">
+    <div className="h-screen w-screen flex flex-col items-center justify-center  bg-gray-900">
       <div className="w-full max-w-md h-2/3 relative bg-black rounded-lg overflow-hidden">
        
         <video

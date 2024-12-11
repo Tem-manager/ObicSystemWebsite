@@ -16,7 +16,7 @@ function AppLayout() {
       
 
        
-      <main className="flex-grow pt-16 px-8 ">
+      <main className="flex-grow pt-16  ">
       <PageContent routes={routes} />
       </main>
         
