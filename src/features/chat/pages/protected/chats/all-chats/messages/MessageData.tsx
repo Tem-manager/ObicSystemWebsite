@@ -12,7 +12,10 @@ export interface MessageType {
   isDeleted?: boolean;
   sender?:string;
   date?:string;
-}
+  replyTo?: {
+    sender: string; // اسم المرسل الذي يتم الرد عليه
+    content: string; // محتوى الرسالة الأصلية
+  };}
 
 export const MessageData: MessageType[] = [
   {
@@ -22,7 +25,7 @@ export const MessageData: MessageType[] = [
     content: "مرحباً! كيف حالك؟",
     time: "10:05:00",
     isSent: false,
-    isDeleted: false,  // إضافة حالة الرسالة (محذوفة أم لا)
+    isDeleted: true,  // إضافة حالة الرسالة (محذوفة أم لا)
 
     date: "2023-12-07",
   },
@@ -248,6 +251,22 @@ export const MessageData: MessageType[] = [
     callMode: "video", // وضع المكالمة: فيديو
     duration: "20:30", // مدة المكالمة
   },
+  {
+    id: 23,
+    type: "text",
+    sender: "You",
+    content: "Sure, let's meet tonight 7:00 downtown",
+    time: "5:00 PM",
+    status: "read",
+    isSent: false,
+    replyTo: {
+      sender: "Amal",
+      content: "I try status replay",
+    },
+  },
+
+ 
+
   
 
 ];

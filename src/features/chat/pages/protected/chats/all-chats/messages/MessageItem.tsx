@@ -1,137 +1,150 @@
-// ===========================================2
+// import React from "react";
+// import BaseMessage from "../../../../../Components/Ui/BaseMessage";
+// import ReplyBox from "./ReplyBox";
 
-// import React, { useState } from "react";
-// import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
-// import MessageStatus from "../../../../../Components/Ui/MessageStatus"; // استيراد MessageStatus
-// import MoreVertIcon from '@mui/icons-material/MoreVert'; // استيراد الأيقونة MoreVert
-// import { Menu, MenuItem } from '@mui/material'; // استيراد مكونات القائمة المنسدلة
-// import MessageInput from "./MessageInput"; // استيراد مكون MessageInput (الذي يحتوي على حقل الإدخال)
+// interface ReplyTo {
+//   sender: string;
+//   content: string;
+// }
 
 // interface MessageProps {
 //   text: string;
 //   time: string;
-//   isSent: boolean; // true إذا كانت الرسالة مرسلة، false إذا مستقبلة
-//   status: "sending" | "sent" | "read" | "failed"; // الحالة الجديدة للرسالة
-//   isDeleted?: boolean; // إضافة خاصية لتحديد ما إذا كانت الرسالة محذوفة
+//   isSent: boolean;
+//   status: "sending" | "sent" | "read" | "failed";
+//   isDeleted?: boolean;
+//   onReply: (message: string) => void;
+//   replyText?: string | null;
+//   replyTo?: ReplyTo;
+//   onCancelReply?: () => void;
+//   onDelete?: () => void;
+//   onInfo?: () => void;
+//   onFavorite?: () => void;
 // }
 
-// const Message: React.FC<MessageProps> = ({ text, time, isSent, status, isDeleted }) => {
-//   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null); // لحالة القائمة المنسدلة
-//   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // حالة القائمة المنسدلة
-//   const [isReplying, setIsReplying] = useState(false); // حالة الرد على الرسالة
-//   const [replyText, setReplyText] = useState(""); // النص الذي يتم إدخاله للرد على الرسالة
-
-//   // تعبير منتظم لاكتشاف الروابط
-//   const urlRegex = /(https?:\/\/[^\s]+)/g;
-//   const phoneRegex = /\b\d{10,15}\b/g;
-
-//   // دالة لتحويل النص إلى رابط قابل للنقر
-//   const renderText = (text: string) => {
-//     let modifiedText = text;
-//     // تحويل الروابط إلى رابط clickable
-//     modifiedText = modifiedText.replace(urlRegex, (url) => {
-//       return `<a href="${url}" target="_blank" class="text-blue-500 underline">${url}</a>`;
-//     });
-
-//     // تحويل الأرقام إلى نص يمكن التعرف عليه (مثال: يمكن تحويله إلى رابط للمكالمة)
-//     modifiedText = modifiedText.replace(phoneRegex, (phone) => {
-//       return `<a href="tel:${phone}" class="text-blue-500 underline">${phone}</a>`;
-//     });
-
-//     return modifiedText;
-//   };
-
-//   // فتح القائمة المنسدلة عند الضغط على الأيقونة
-//   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-//     setAnchorEl(event.currentTarget);
-//     setIsDropdownOpen(true);
-//   };
-
-//   // إغلاق القائمة المنسدلة
-//   const handleClose = () => {
-//     setAnchorEl(null);
-//     setIsDropdownOpen(false);
-//   };
-
-//   // حدث الضغط على رد الرسالة في القائمة المنسدلة
-//   const handleReplyClick = () => {
-//     setIsReplying(true); // تفعيل حالة الرد
-//   };
-
+// const Message: React.FC<MessageProps> = ({
+//   text,
+//   time,
+//   isSent,
+//   status,
+//   isDeleted,
+//   onReply,
+//   replyText,
+//   onCancelReply,
+//   onInfo,
+//   onDelete,
+//   onFavorite,
+//   replyTo,
+// }) => {
 //   return (
-//     <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
+//     <BaseMessage
+//       time={time}
+//       isSent={isSent}
+//       status={status}
+//       isDeleted={isDeleted}
+//       onReply={onReply}
+//       replyText={replyText}
+//       onCancelReply={onCancelReply}
+//       onDelete={onDelete}
+//       onInfo={onInfo}
+//       text={text}
+//       onFavorite={onFavorite}
+//       additionalOptions={[]}
+//     >
+//       {/* تأكد من وجود بيانات للرد قبل عرضها */}
+//       {replyTo && (
+//         <ReplyBox 
+//           sender={replyTo.sender} 
+//           content={replyTo.content} 
+//           onCancelReply={onCancelReply!}
+//         />
+//       )}
+
+//       {/* عرض الرسالة الأساسية */}
+//       {isDeleted ? (
+//         <p className="text-sm text-gray-400">
+//           {isSent ? "You deleted this message" : "This message was deleted"}
+//         </p>
+//       ) : (
+//         <p className="text-base sm:text-lg break-words whitespace-pre-wrap">
+//           {text}
+//         </p>
+//       )}
+//     </BaseMessage>
+//   );
+// };
+
+// export default Message;
+
+
+// =============================================================
+// import React from "react";
+// import BaseMessage from "../../../../../Components/Ui/BaseMessage";
+
+// interface ReplyTo {
+//   sender: string;
+//   content: string;
+// }
+
+// interface MessageProps {
+//   text: string;
+//   time: string;
+//   isSent: boolean;
+//   status: "sending" | "sent" | "read" | "failed";
+//   isDeleted?: boolean;
+//   onReply: (message: string) => void;
+//   replyText?: string | null;
+//   replyTo?: ReplyTo;
+//   onCancelReply?: () => void;
+//   onDelete?: () => void;
+//   onInfo?: () => void;
+//   onFavorite?: () => void;
+// }
+
+// const Message: React.FC<MessageProps> = ({
+//   text,
+//   time,
+//   isSent,
+//   status,
+//   isDeleted,
+//   onReply,
+//   replyText,
+//   replyTo,
+//   onCancelReply,
+//   onInfo,
+//   onDelete,
+//   onFavorite,
+// }) => {
+//   return (
+//     <div className="w-full mb-2">
+//       {/* إذا كان هناك رسالة رد عليها، أظهرها بتصميم مميز */}
+//       {replyTo && (
+//         <div className="bg-gray-100 border-l-4 border-blue-500 p-2 rounded-md mb-1 shadow-sm">
+//           <p className="text-sm font-semibold text-blue-600">{replyTo.sender}</p>
+//           <p className="text-sm text-gray-700">{replyTo.content}</p>
+//         </div>
+//       )}
+
+//       {/* الرسالة الأساسية */}
 //       <div
-//         className={`relative w-full max-w-lg sm:max-w-md px-4 py-3 rounded-lg shadow-lg overflow-hidden ${
-//           isSent
-//             ? "bg-[#192745] text-white rounded-tr-none"
-//             : "bg-white text-gray-800 rounded-tl-none"
+//         className={`flex flex-col space-y-1 ${
+//           isSent ? "items-end" : "items-start"
 //         }`}
 //       >
-//         {/* أيقونة MoreVert في الزاوية العليا اليمنى داخل div */}
-//         <button
-//           onClick={handleClick}
-//           className="absolute top-2 right-2 p-2 text-gray-500 hover:text-gray-700 z-10"
-//         >
-//           <MoreVertIcon />
-//         </button>
-
-//         {/* إذا كانت الرسالة محذوفة */}
-//         {isDeleted ? (
-//           <p className={`text-sm ${isSent ? "text-gray-400" : "text-gray-600"}`}>
-//             {isSent ? "You deleted this message" : "This message was deleted"}
-//           </p>
-//         ) : (
-//           <p
-//             className="text-base sm:text-lg break-words whitespace-pre-wrap"
-//             dangerouslySetInnerHTML={{ __html: renderText(text) }} // عرض النص المعدل
-//           />
-//         )}
-
-//         {/* الوقت */}
-//         <div
-//           className={`flex items-center justify-between mt-2 ${isSent ? "text-gray-300" : "text-gray-500"}`}
-//         >
-//           <span className="text-xs">
-//             <TimeDisplay time={time} />
-//           </span>
-
-//           {/* حالة الرسالة (أيقونة) */}
-//           {!isDeleted && isSent && <MessageStatus status={status} />}
-//         </div>
-
-//         {/* قائمة منسدلة تظهر عند الضغط على MoreVert */}
-//         <Menu
-//           anchorEl={anchorEl}
-//           open={isDropdownOpen}
-//           onClose={handleClose}
-//           anchorOrigin={{
-//             vertical: 'top',
-//             horizontal: 'right',
-//           }}
-//           transformOrigin={{
-//             vertical: 'top',
-//             horizontal: 'right',
-//           }}
-//         >
-//           <MenuItem onClick={handleReplyClick}>Reply</MenuItem>
-//           <MenuItem onClick={handleClose}>Copy</MenuItem>
-//           <MenuItem onClick={handleClose}>Info</MenuItem>
-//           <MenuItem onClick={handleClose}>Favorite</MenuItem>
-//         </Menu>
-
-//         {/* حقل الرد الذي يظهر عند الضغط على "Reply" */}
-//         {isReplying && (
-//           <div className="mt-4">
-//             <MessageInput
-//               placeholder="Type your reply..."
-//               onSend={(message) => {
-//                 console.log("Reply sent:", message);
-//                 setReplyText(""); // مسح النص بعد إرسال الرد
-//                 setIsReplying(false); // إخفاء حقل الرد
-//               }}
-//             />
-//           </div>
-//         )}
+//         <BaseMessage
+//           time={time}
+//           isSent={isSent}
+//           status={status}
+//           isDeleted={isDeleted}
+//           onReply={onReply}
+//           replyText={replyText}
+//           onCancelReply={onCancelReply}
+//           onDelete={onDelete}
+//           onInfo={onInfo}
+//           text={text}
+//           onFavorite={onFavorite}
+//           additionalOptions={[]}
+//         />
 //       </div>
 //     </div>
 //   );
@@ -139,23 +152,99 @@
 
 // export default Message;
 
-// ==================================3
+// ===================================
+// import React from "react";
+// import BaseMessage from "../../../../../Components/Ui/BaseMessage";
+// import ReplyBox from "./ReplyBox";
+
+// interface ReplyTo {
+//   sender: string;
+//   content: string;
+// }
+
+// interface MessageProps {
+//   text: string;
+//   time: string;
+//   isSent: boolean;
+//   status: "sending" | "sent" | "read" | "failed";
+//   isDeleted?: boolean;
+//   onReply: (message: string) => void;
+//   replyTo?: ReplyTo;
+//   onCancelReply?: () => void;
+//   onDelete?: () => void;
+//   onInfo?: () => void;
+//   onFavorite?: () => void;
+// }
+
+// const Message: React.FC<MessageProps> = ({
+//   text,
+//   time,
+//   isSent,
+//   status,
+//   isDeleted,
+//   onReply,
+//   replyTo,
+//   onCancelReply,
+//   onInfo,
+//   onDelete,
+//   onFavorite,
+// }) => {
+//   return (
+//     <div className="w-full mb-2">
+//       {/* استدعاء ReplyBox عند وجود رد */}
+//       {replyTo && (
+//         <ReplyBox
+//           sender={replyTo.sender}
+//           content={replyTo.content}
+//           onCancelReply={onCancelReply!}
+//         />
+//       )}
+
+//       {/* الرسالة الأساسية */}
+//       <div
+//         className={`flex flex-col space-y-1 ${isSent ? "items-end" : "items-start"}`}
+//       >
+//         <BaseMessage
+//           time={time}
+//           isSent={isSent}
+//           status={status}
+//           isDeleted={isDeleted}
+//           onReply={onReply}
+//           replyText={text}
+//           onCancelReply={onCancelReply}
+//           onDelete={onDelete}
+//           onInfo={onInfo}
+//           text={text}
+//           onFavorite={onFavorite}
+//           additionalOptions={[]}
+//         />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Message;
+// ================================================================================
 import React from "react";
-import BaseMessage from "../../../../../Components/Ui/BaseMessage"; // استيراد BaseMessage
-import ReplyMessage from "./ReplyMessage";
+import BaseMessage from "../../../../../Components/Ui/BaseMessage";
+
+interface ReplyTo {
+  sender: string;
+  content: string;
+}
 
 interface MessageProps {
   text: string;
   time: string;
-  isSent: boolean; // true إذا كانت الرسالة مرسلة، false إذا مستقبلة
-  status: "sending" | "sent" | "read" | "failed"; // الحالة الجديدة للرسالة
-  isDeleted?: boolean; // إضافة خاصية لتحديد ما إذا كانت الرسالة محذوفة
-  onReply: (message: string) => void; // دالة للرد على الرسالة
-  replyText?: string | null; // النص الذي يتم الرد عليه، إذا كان موجودًا
-  onCancelReply?: () => void; // دالة لإلغاء الرد
-  onDelete?: () => void; // دالة لحذف الرسالة
-  onInfo?: () => void; // دالة لعرض معلومات الرسالة
-  onFavorite?:()=>void;
+  isSent: boolean;
+  status: "sending" | "sent" | "read" | "failed";
+  isDeleted?: boolean;
+  onReply: (message: string) => void;
+  replyTo?: ReplyTo; // خاصية الرد
+  onCancelReply?: () => void;
+  onDelete?: () => void;
+  onInfo?: () => void;
+  onFavorite?: () => void;
 }
 
 const Message: React.FC<MessageProps> = ({
@@ -165,46 +254,33 @@ const Message: React.FC<MessageProps> = ({
   status,
   isDeleted,
   onReply,
-  replyText,
+  replyTo, // استلام الرد
   onCancelReply,
   onInfo,
   onDelete,
   onFavorite,
 }) => {
   return (
-    <BaseMessage
-      time={time}
-      isSent={isSent}
-      status={status}
-      isDeleted={isDeleted}
-      onReply={onReply}
-      replyText={replyText}
-      onCancelReply={onCancelReply}
-      onDelete={onDelete}
-      onInfo={onInfo}
-      text={text} // تمرير النص هنا
-      onFavorite={onFavorite}
-      additionalOptions={[]} // يمكنك إضافة خيارات إضافية إذا لزم الأمر
-    >
-      {/* عرض مكون الرد إذا كان هناك رد نشط */}
-      {replyText && (
-        <ReplyMessage replyText={replyText} onCancelReply={onCancelReply!} />
-      )}
-
-      {/* النص أو حالة الرسالة المحذوفة */}
-      {isDeleted ? (
-        <p className="text-sm text-gray-400">
-          {isSent ? "You deleted this message" : "This message was deleted"}
-        </p>
-      ) : (
-        <p className="text-base sm:text-lg break-words whitespace-pre-wrap">
-          {text}
-        </p>
-      )}
-    </BaseMessage>
+    <div className="w-full mb-2">
+      {/* الرسالة الأساسية */}
+      <div className={`flex flex-col space-y-1 ${isSent ? "items-end" : "items-start"}`}>
+        <BaseMessage
+          time={time}
+          isSent={isSent}
+          status={status}
+          isDeleted={isDeleted}
+          onReply={onReply}
+          text={text}
+          onCancelReply={onCancelReply}
+          onDelete={onDelete}
+          onInfo={onInfo}
+          onFavorite={onFavorite}
+          additionalOptions={[]}
+          replyTo={replyTo} // تمرير خاصية الرد
+        />
+      </div>
+    </div>
   );
 };
 
 export default Message;
-
-
