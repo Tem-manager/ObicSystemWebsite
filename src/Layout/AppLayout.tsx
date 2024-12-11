@@ -6,7 +6,7 @@ import PageContent from "./PageContent";
 function AppLayout() {
   return (
 
-    <div className="flex min-h-screen "
+    <div className="flex min-h-screen  "
 
     style={{ backgroundColor: COLORS.BACKGROUND }}
 >      
@@ -16,7 +16,7 @@ function AppLayout() {
       
 
        
-      <main className="flex-grow pt-16 ">
+      <main className="flex-grow pt-16 px-8 ">
       <PageContent routes={routes} />
       </main>
         
