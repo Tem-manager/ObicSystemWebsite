@@ -1,8 +1,8 @@
 export const StatusbgColor = [
-    "rgba(128,0,128,0.8)",
-    "rgba(255,0,0,0.8)",
-    "rgba(0,128,0,0.8)",
-    "rgba(0,0,255,0.8)",
-    "rgba(255,255,0,0.8)",
-    "rgba(255,105,180,0.8)",
+    "bg-red-950",
+    "bg-fuchsia-800",
+    "bg-green-900",
+    "bg-cyan-700",
+    "bg-slate-600",
+    "bg-rose-700",
   ];

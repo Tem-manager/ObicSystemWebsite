@@ -4,15 +4,15 @@ import AllMessages from "./messages/AllMessages";
 
 
 function AllChats() {
-
-
   return (
     <>
-      {/* <ChatTab /> */}
-      <div className="flex-grow w-full flex">
-        <Conversation pageTitle="All Chat" />
-        <div className="flex flex-col w-[65%] relative">
-      <AllMessages/>
+      <ChatTab />
+      <div className="flex-grow w-full h-screen flex overflow-hidden">
+        <div className="flex-grow w-full flex">
+          <Conversation pageTitle="All Chat" />
+          <div className="flex flex-col w-[65%] h-full">
+            <AllMessages />
+          </div>
         </div>
       </div>
     </>
@@ -20,3 +20,4 @@ function AllChats() {
 }
 
 export default AllChats;
+

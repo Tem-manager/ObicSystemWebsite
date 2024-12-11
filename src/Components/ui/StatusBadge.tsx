@@ -7,6 +7,7 @@ interface StatusBadgeProps {
   color?:string;
   textColor?:string;
   className?:string;
+  margin?:string
 
 }
 
@@ -17,11 +18,12 @@ const StatusBadge: React.FC<StatusBadgeProps> =
    content,
    textColor="text-gray-700" ,
    textSize="text-xs",
+   margin="m-3",
    className
   }) => {
   return (
     <span
-    className={`flex items-center justify-center rounded-full font-bold m-3 w-${size} h-${size} ${color} ${textSize}  ${textColor}  ${className} `}
+    className={`flex items-center justify-center rounded-full font-bold ${margin} w-${size} h-${size} ${color} ${textSize}  ${textColor}  ${className} `}
    
     >
       {content}

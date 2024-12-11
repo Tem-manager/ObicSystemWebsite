@@ -12,8 +12,8 @@ import SendInput from "../../../Components/Ui/SendInput";
     setMessage("");
   };
   return (
-    <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-70 p-4 flex items-center space-x-2">
-      <EmojiPickerComponent onEmojiSelect={(emoji) => setMessage((prev) => prev + emoji)} />
+    <div className="flex mt-4 w-full max-w-md p-2 border border-gray-600 rounded bg-gray-900 text-white focus:outline-none">
+      <EmojiPickerComponent position="absolute bottom-40 left-15" onEmojiSelect={(emoji) => setMessage((prev) => prev + emoji)} />
       <SendInput value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Type reply..." />
       <button onClick={handleSendMessage}>
         <StatusBadge content={<RiSendPlane2Fill />} color="bg-green-500" textColor="text-white" textSize="text-2xl" size={12} />
