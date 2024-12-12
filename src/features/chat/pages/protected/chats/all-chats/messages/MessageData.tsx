@@ -36,7 +36,7 @@ export const MessageData: MessageType[] = [
     
       "https://images.pexels.com/photos/28996347/pexels-photo-28996347/free-photo-of-vibrant-dahlia-flowers-in-glass-vases.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     time: "10:10 AM",
-    comment: "ما رأيك في الصورة؟",
+    comment: "ما رأيك في الصورة؟  ما رأيك في الصورة ما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورةما رأيك في الصورة" ,
     date: "2023-12-07",
     isSent: false,
   },
@@ -58,7 +58,7 @@ export const MessageData: MessageType[] = [
     content:
       "https://images.pexels.com/photos/28748477/pexels-photo-28748477/free-photo-of-open-book-and-camera-amid-autumn-leaves.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     time: "10:15 AM",
-    comment: " الصورة؟",
+    // comment: " الصورة؟",
     isSent: true,
       status:"sending",
       date: "2023-1-12",
@@ -101,7 +101,7 @@ export const MessageData: MessageType[] = [
     type: "text",
     content: " tesssssttesssssttessssst tessssst tessssst tessssst tessssst tessssst tessssst tessssst tessssst tesssssttessssst tesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttesssssttessssst",
     time: "10:05 AM",
-    isSent: true,
+    isSent: false,
     status:"sending"
   },
   {
@@ -252,22 +252,65 @@ export const MessageData: MessageType[] = [
     duration: "20:30", // مدة المكالمة
   },
   {
-    id: 23,
+  id: 23,
+  type: "text",
+  sender: "You",
+  content: "Sure, let's meet tonight 7:00 downtown",
+  time: "5:00 PM",
+  status: "read",
+  isSent: false,
+  replyTo: {
     type: "text",
-    sender: "You",
-    content: "Sure, let's meet tonight 7:00 downtown",
-    time: "5:00 PM",
-    status: "read",
-    isSent: false,
-    replyTo: {
-      sender: "Amal",
-      content: "I try status replay",
-    },
-  },
+    sender: "Amat",
+    content: "I try status replay"
+  }
+},
+{
+  id: 24,
+  type: "text",
+  sender: "You",
+  content: "I try status replay",
+  time: "5:00 PM",
+  status: "read",
+  isSent: false,
+  replyTo: {
+    type: "image",
+    sender: "Amat",
+    content: "https://images.pexels.com/photos/28748477/pexels-photo-28748477/free-photo-of-open-book-and-camera-amid-autumn-leaves.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
 
- 
-
-  
+  }
+},
+{
+  id: 25,
+  type: "text",
+  sender: "You",
+  content: "I try status replay",
+  time: "5:00 PM",
+  status: "read",
+  isSent: false,
+  replyTo: {
+    type: "document",
+    sender: "Amat",
+    content: "https://example.com/presentation.pptx"
+   
+  }
+},
+{
+  id: 26,
+  type: "text",
+  sender: "You",
+  content: "I try status replay",
+  time: "5:00 PM",
+  status: "read",
+  isSent: true,
+  replyTo: {
+    type: "video",
+    sender: "Amat",
+    content:
+    "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+   
+  }
+},
 
 ];
 

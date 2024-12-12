@@ -3,7 +3,7 @@ import CircleImage from "../../../../../Components/Ui/CircleImage";
 import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
 import MessageStatus from "../../../../../Components/Ui/MessageStatus";
 import DropdownMenu from "../../../../../Components/Ui/DropdownMenu";
-import Button from "../../../../../../../Components/ui/buttoun";
+import Button from "../../../../../../../Components/ui/Buttoun";
 
 interface ContactMessageProps {
   profileImageUrls: string[];
@@ -53,23 +53,23 @@ const ContactMessage: React.FC<ContactMessageProps> = ({
   }));
 
   return (
-    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
+    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-2`}>
       <div
-        className={`w-full max-w-lg px-5 py-4 rounded-lg shadow-lg ${
+        className={`w-full max-w-lg px-3 py-2 rounded-lg shadow-lg ${
           isSent
             ? "bg-[#192745] text-white rounded-tr-none"
             : "bg-white text-gray-800 rounded-tl-none"
         }`}
       >
         {/* Header Section: Contact Information */}
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-1">
           <div className="flex items-center space-x-3">
             <CircleImage
               imageUrl={profileImageUrls[0] || "https://www.example.com/default-avatar.png"}
-              size={12}
+              size={10}
             />
             <div className="flex flex-col">
-              <span className="text-lg font-semibold">{names[0]}</span>
+              <span className="text-sm font-semibold">{names[0]}</span>
               <span className="text-xs text-gray-500">{phoneNumbers[0]}</span>
             </div>
           </div>
@@ -82,12 +82,12 @@ const ContactMessage: React.FC<ContactMessageProps> = ({
         </div>
 
         {/* Message Content */}
-        <div className="mb-4">
-          <p className="text-sm leading-relaxed">{message}</p>
+        <div className="mb-2">
+          <p className="text-xs leading-relaxed">{message}</p>
         </div>
 
         {/* Footer Section: Time and Status */}
-        <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
+        <div className="flex items-center justify-between text-xs text-gray-500 mb-1">
           <TimeDisplay time={time} />
           {isSent && <MessageStatus status={status} />}
         </div>
@@ -97,18 +97,16 @@ const ContactMessage: React.FC<ContactMessageProps> = ({
           {numberOfContacts > 1 ? (
             <DropdownMenu
               buttonContent={
-                <Button className="h-12 w-full bg-primary text-white m-5">
-                عرض الكل
-              </Button>
+                <Button className="h-12 w-11/12 bg-primary text-white whitespace-nowrap">
+                  عرض الكل
+                </Button>
               }
               options={viewAllOptions}
             />
           ) : (
-     
-
-               <Button className="h-12 w-full" variant="secondary">
+            <Button className="h-12 w-11/12" variant="secondary">
               مراسلة
-              </Button>
+            </Button>
           )}
         </div>
       </div>

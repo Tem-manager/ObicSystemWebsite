@@ -26,21 +26,21 @@ const LocationMessage: React.FC<LocationMessageProps> = ({
   const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
   return (
-    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
+    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-2`}>
       <div
-        className={`w-full max-w-md md:max-w-lg lg:max-w-xl px-6 py-4 rounded-lg shadow-lg ${
+        className={`w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] px-4 py-3 rounded-lg shadow-lg ${
           isSent
             ? "bg-[#192745] text-white rounded-tr-none"
             : "bg-white text-gray-800 rounded-tl-none"
         }`}
       >
         {/* عرض الصورة */}
-        <div className="relative mb-4">
+        <div className="relative mb-3">
           <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
             <img
               src={imageUrl}
               alt="موقع الشخص"
-              className="w-full h-auto max-h-[300px] sm:max-h-[400px] rounded-lg cursor-pointer object-cover"
+              className="w-full h-auto max-h-[100px] sm:max-h-[250px] lg:max-h-[200px] rounded-lg cursor-pointer object-cover"
             />
           </a>
         </div>
@@ -53,13 +53,13 @@ const LocationMessage: React.FC<LocationMessageProps> = ({
         )}
 
         {/* الوقت، الحالة، وأيقونة الموقع */}
-        <div className="flex items-center justify-between mt-4">
+        <div className="flex items-center justify-between mt-3">
           {/* أيقونة الموقع */}
           <div className="flex items-center space-x-2">
             <StatusBadge
               content={<LocationOnIcon fontSize="small" />}
               size={6}
-              color={isSent ? "bg-[#1d4ed8]" : "bg-gray-200"}
+              color={isSent ? "" : ""}
               textColor={isSent ? "text-white" : "text-gray-700"}
             />
           </div>
@@ -76,5 +76,6 @@ const LocationMessage: React.FC<LocationMessageProps> = ({
     </div>
   );
 };
+
 
 export default LocationMessage;

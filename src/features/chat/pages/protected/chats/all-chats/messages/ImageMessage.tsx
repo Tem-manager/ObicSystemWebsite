@@ -1,14 +1,23 @@
 import React from "react";
-import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
-import MessageStatus from "../../../../../Components/Ui/MessageStatus";
+import BaseMessage from "../../../../../Components/Ui/BaseMessage";
+
+interface ReplyTo {
+  sender: string;
+  content: string;
+}
 
 interface ImageMessageProps {
-  imageUrl: string; // رابط الصورة
-  time: string; // وقت الرسالة
-  isSent: boolean; // true إذا كانت الرسالة مرسلة، false إذا مستقبلة
-  status: "sending" | "sent" | "read" | "failed"; // حالة الرسالة
-  comment?: string; // التعليق النصي (اختياري)
-  onReply?: (replyContent: string) => void; // دالة الرد
+  imageUrl: string;
+  time: string;
+  isSent: boolean;
+  status: "sending" | "sent" | "read" | "failed";
+  comment?: string;
+  onReply: (replyContent: string) => void;
+  onCancelReply?: () => void;
+  onDelete?: () => void;
+  onInfo?: () => void;
+  onFavorite?: () => void;
+  replyTo?: ReplyTo;
 }
 
 const ImageMessage: React.FC<ImageMessageProps> = ({
@@ -17,59 +26,37 @@ const ImageMessage: React.FC<ImageMessageProps> = ({
   isSent,
   status,
   comment,
+  
   onReply,
+  onCancelReply,
+  onDelete,
+  onInfo,
+  onFavorite,
+  replyTo,
 }) => {
+  const handleDoubleClick = () => {
+    const replyContent = comment ? `Image: ${comment}` : "Image";
+    onReply(replyContent);
+  };
+
   return (
-    <div
-      className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}
-      onDoubleClick={() =>
-        onReply &&
-        onReply(
-          comment
-            ? `Image: ${imageUrl}\nComment: ${comment}`
-            : `Image: ${imageUrl}`
-        )
-      } // استدعاء الرد عند الضغط مرتين
-    >
-      {/* الحاوية الرئيسية للرسالة */}
-      <div
-        className={`p-4 rounded-lg shadow-lg relative ${
-          isSent
-            ? "bg-[#192745] text-white rounded-tr-none"
-            : "bg-white text-gray-800 rounded-tl-none"
-        }`}
-      >
-        {/* الصورة */}
-        <div className="w-full max-w-[400px] max-h-[400px] overflow-hidden rounded-lg">
-          <img
-            src={imageUrl}
-            alt="message"
-            className="object-contain w-full h-full"
-          />
-        </div>
+    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
+      <BaseMessage
+  time={time}
+  isSent={isSent}
+  status={status}
+  text={comment || ""}
+  imageUrl={imageUrl}
+  imageStyles="max-w-[200px] max-h-[200px] sm:max-w-[300px] sm:max-h-[300px] object-cover rounded-lg"
+  onCancelReply={onCancelReply}
+  onDelete={onDelete}
+  onInfo={onInfo}
+  onReply={() => onReply({ sender: replyTo?.sender || "Unknown", content: imageUrl })}
+  onFavorite={onFavorite}
+  additionalOptions={[]}
+  replyTo={replyTo}
+/>
 
-        {/* التعليق النصي */}
-        {comment && (
-          <p
-            className={`mt-2 text-sm leading-relaxed ${
-              isSent ? "text-white" : "text-gray-800"
-            }`}
-          >
-            {comment}
-          </p>
-        )}
-
-        {/* الوقت وحالة الرسالة */}
-        <div className="flex items-center justify-between mt-2">
-          {/* الوقت */}
-          <span className="text-xs">
-            <TimeDisplay time={time} />
-          </span>
-
-          {/* حالة الرسالة - تظهر فقط للرسائل المرسلة */}
-          {isSent && <MessageStatus status={status} />}
-        </div>
-      </div>
     </div>
   );
 };
