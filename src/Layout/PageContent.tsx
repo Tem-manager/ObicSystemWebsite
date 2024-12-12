@@ -62,6 +62,7 @@
 //one pagecontent
 
 
+
 import { FC, useEffect, useRef, lazy, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import PageTitle from "../Components/ui/PageTitle";
@@ -83,7 +84,7 @@ interface PageContentProps {
 const PageContent: FC<PageContentProps> = ({
   routes,
   scrollBehavior = "smooth",
-  customClassName = " h-[calc(100vh-18vh)]",
+  customClassName = "h-full w-full ",
 }) => {
   const { pathname } = useLocation();
   const mainContentRef = useRef<HTMLDivElement | null>(null);
@@ -98,7 +99,10 @@ const PageContent: FC<PageContentProps> = ({
   }, [pathname, scrollBehavior]);
 
   return (
-    <div ref={mainContentRef} className={customClassName}>
+    <div
+      ref={mainContentRef}
+      className={`relative ${customClassName} border border-gray-200 overflow-y-auto h-full`}
+    >
       <Suspense fallback={<Loader />}>
         <Routes>
           {routes.map((route, key) => (

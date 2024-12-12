@@ -33,7 +33,7 @@ const TopBar: React.FC = () => {
   ];
 
   return (
-    <div className="w-full h-16 flex items-center px-8 fixed top-0 z-10 border-b border-gray-200 bg-[#192745]">
+    <div className="w-full h-16 flex items-center px-8 fixed top-0 z-10 border-b border-gray-200 bg-[#192745] z-index">
   {/* Left Section: Mobile Menu Toggle Icon and OBIC Title */}
   <div className="flex items-center space-x-3">
     {/* Icon: Only visible on small screens */}
