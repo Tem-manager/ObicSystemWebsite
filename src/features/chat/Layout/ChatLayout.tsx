@@ -40,12 +40,14 @@
 
 
 import { useState } from "react";
-import PageContent from "./PageContent";
+// import PageContent from "./PageContent";
 import Header from "../Components/Partials/Header";
 import Navbar from "../Components/Partials/Navbar";
 import { Chat, GroupAdd, MoreVert as MoreVertIcon, QrCode, Search as SearchIcon } from "@mui/icons-material";
 import { BiUserPlus } from "react-icons/bi";
 import DropdownMenu from "../Components/Ui/DropdownMenu";
+import PageContent from "../../../Layout/PageContent";
+import routes from "../route/ChatRoutes";
 function ChatLayout() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
@@ -78,7 +80,7 @@ function ChatLayout() {
   ];
 
   return (
-    <div className="flex-grow ml-[4vw]" onClick={() => setIsDropdownOpen(false)}>
+    <div className="flex-grow " onClick={() => setIsDropdownOpen(false)}>
       <Header
         leftContent={<div className="text-[#192745] text-xl font-semibold">OBIC</div>}
         rightContent={
@@ -99,7 +101,7 @@ function ChatLayout() {
       />
 
       <Navbar />
-      <PageContent />
+      <PageContent routes={routes} />
     </div>
   );
 }

@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <div className="h-[8vh] flex items-center justify-center w-full  shadow-[0_4px_6px_rgba(0,0,0,0.1),0_1px_3px_rgba(0,0,0,0.06)] relative z-10 ">
+    <div className="h-[8vh] flex items-center justify-center w-full  shadow-[0_4px_6px_rgba(0,0,0,0.1),0_1px_3px_rgba(0,0,0,0.06)] relative">
 
     <div className="text-sm  font-medium text-center text-gray-500  ">
       <ul className="flex justify-center items-center mb-px">
