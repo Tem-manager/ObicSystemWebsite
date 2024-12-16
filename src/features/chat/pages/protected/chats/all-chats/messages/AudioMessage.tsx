@@ -33,15 +33,15 @@ const AudioMessage: React.FC<AudioMessageProps> = ({
     );
 
   return (
-    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
+    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-3`}>
       {/* الحاوية الرئيسية للرسالة */}
       <div
-        className={`p-4 rounded-lg shadow-lg w-full max-w-[500px] ${
+        className={`p-3 rounded-lg shadow-md w-full max-w-sm ${
           isSent ? "bg-[#192745] text-white" : "bg-white text-gray-800"
         }`}
       >
         {/* مشغل الصوت */}
-        <div className="w-full mb-2">
+        <div className="w-full mb-1">
           <audio controls className="w-full rounded-lg">
             <source src={audioUrl} type="audio/mp3" />
             متصفحك لا يدعم مشغل الصوت.
@@ -50,12 +50,12 @@ const AudioMessage: React.FC<AudioMessageProps> = ({
 
         {/* التعليق النصي */}
         {comment && (
-          <p className={`mt-2 text-sm ${isSent ? "text-white" : "text-gray-800"}`}>
+          <p className={`mt-2 text-xs ${isSent ? "text-white" : "text-gray-800"}`}>
             {comment}
           </p>
         )}
 
-        <div className="flex items-center justify-between mt-2">
+        <div className="flex items-center justify-between mt-1">
           {/* حالة الرسالة والوقت على جهة اليمين */}
           <div className="flex items-center space-x-2 order-2">
             {/* حالة الرسالة */}

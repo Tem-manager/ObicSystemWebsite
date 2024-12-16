@@ -22,7 +22,7 @@ const VideoMessage: React.FC<VideoMessageProps> = ({
       className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}
     >
       <div
-        className={`w-full max-w-md md:max-w-lg px-4 py-3 rounded-lg shadow-md ${
+        className={`w-full max-w-sm md:max-w-md px-4 py-3 rounded-lg shadow-md ${
           isSent
             ? "bg-[#192745] text-white rounded-tr-none"
             : "bg-white text-gray-800 rounded-tl-none"
@@ -54,5 +54,6 @@ const VideoMessage: React.FC<VideoMessageProps> = ({
     </div>
   );
 };
+
 
 export default VideoMessage;

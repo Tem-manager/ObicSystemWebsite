@@ -6,7 +6,7 @@ interface TimeDisplayProps {
 
 }
 
-const TimeDisplay: React.FC<TimeDisplayProps> = ({ time , className = "" }) => {
+const TimeDisplay: React.FC<TimeDisplayProps> = ({ time , className = "", }) => {
   return (
     <span 
     className={`text-xs text-gray-400 ${className}`}

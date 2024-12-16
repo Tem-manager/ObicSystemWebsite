@@ -1,7 +1,6 @@
 import React from "react";
 import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
 import MessageStatus from "../../../../../Components/Ui/MessageStatus"; // استيراد MessageStatus
-import StatusBadge from "../../../../../../../Components/ui/StatusBadge"; // استيراد StatusBadge
 import { Download } from "@mui/icons-material";
 
 interface DocumentMessageProps {
@@ -27,48 +26,42 @@ const DocumentMessage: React.FC<DocumentMessageProps> = ({
   const fileExtension = fileName.split(".").pop()?.toUpperCase() || "Unknown";
 
   return (
-    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-4`}>
+    <div className={`flex ${isSent ? "justify-end" : "justify-start"} mb-2`}>
       <div
-        className={`w-full max-w-md md:max-w-lg px-4 py-3 rounded-lg shadow-lg ${
+        className={`w-full max-w-sm px-2 py-2 rounded-lg shadow-md ${
           isSent
             ? "bg-[#192745] text-white rounded-tr-none"
             : "bg-white text-gray-800 rounded-tl-none"
         }`}
       >
         {/* عرض معلومات المستند */}
-        <div className="flex items-center space-x-3">
-          <div className="flex items-center justify-center w-12 h-12 bg-gray-200 rounded-lg text-gray-600">
-            <span className="text-sm font-semibold">{fileExtension}</span>
+        <div className="flex items-center space-x-2">
+          <div className="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-lg text-gray-600">
+            <span className="text-xs font-semibold">{fileExtension}</span>
           </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-semibold">{fileName}</span>
-            <span className="text-xs text-gray-500">{fileSize}</span>
-            <span className="text-xs text-gray-500">{fileType}</span>
-          </div>
-        </div>
-
-        {/* زر تنزيل المستند مع الحجم */}
-        <div className="mt-3 flex justify-between items-center">
-          <StatusBadge
-            content={
-              <a href={fileUrl} download={fileName} className="flex items-center space-x-1">
+          <div className="flex-1">
+            <span className="block text-sm font-semibold truncate">{fileName}</span>
+            <div className="flex items-center text-xs text-gray-500 space-x-2">
+              <span>{fileSize}</span>
+              <span>{fileType}</span>
+              <a
+                href={fileUrl}
+                download={fileName}
+                className={`flex items-center space-x-1 ${isSent ? "text-white" : "text-[#192745]"}`}
+              >
                 <Download fontSize="small" />
               </a>
-            }
-            size={8}
-            textColor="text-blue-600"
-          />
+            </div>
+          </div>
         </div>
 
         {/* الوقت وحالة الرسالة */}
         <div
-          className={`flex items-center justify-between mt-2 ${
+          className={`flex items-center justify-between mt-1 text-xs ${
             isSent ? "text-gray-300" : "text-gray-500"
           }`}
         >
-          <span className="text-xs">
-            <TimeDisplay time={time} />
-          </span>
+          <TimeDisplay time={time} />
           {isSent && <MessageStatus status={status} />}
         </div>
       </div>

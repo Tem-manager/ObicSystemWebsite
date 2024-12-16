@@ -54,16 +54,24 @@ const AllMessages: React.FC = () => {
   onInfo={() => console.log("Message info")}
   onFavorite={() => handleFavorite(message.id)}
   replyTo={message.replyTo} // تمرير خاصية الرد
+  sender={message.sender}
 
 />
     ),
-    image: ({ message }) => (
+    image: ({ message,onReply }) => (
       <ImageMessage
         imageUrl={message.content}
         time={message.time}
         comment={message.comment || ""}
         isSent={message.isSent}
         status={message.status || ""}
+        onReply={onReply}
+        replyTo={message.replyTo}
+        onCancelReply={() => setReplyTo(null)}
+        onDelete={() => console.log("Message deleted")}
+        onInfo={() => console.log("Message info")}
+        onFavorite={() => handleFavorite(message.id)}
+        replyTo={message.replyTo}
       />
     ),
     video: ({ message }) => (
