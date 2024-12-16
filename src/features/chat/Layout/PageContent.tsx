@@ -1,4 +1,4 @@
-//one pagecontent
+//one page content
 
 
 import { FC, useEffect, useRef, lazy } from "react";
@@ -15,7 +15,7 @@ const Page404 = lazy(() => import("../../../pages/Page404"));
 interface RouteConfig {
   path: string;
   title: string;
-  component: React.LazyExoticComponent<React.ComponentType<any>>; // يدعم كلا النوعين
+  component: React.LazyExoticComponent<React.ComponentType<any>>;
 }
 
 

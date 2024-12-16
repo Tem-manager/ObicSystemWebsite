@@ -27,13 +27,12 @@
 
 
 import CircleImage from "../../../../../Components/Ui/CircleImage";
-import logo from "../../../../../../../../public/images/logo1.png";
-import StatusBadge from "../../../../../../../Components/ui/StatusBadge";
+import logo from "/images/logo1.png";
 import TimeDisplay from "../../../../../../../Components/ui/TimeDisplay";
 import GenericCard from "../../../../../../../Components/ui/GenericCard";
 import { ChatItemProps } from "./ConversationModel";
 
-const ConversationCard = ({ name, message, time, unreadCount  }: ChatItemProps) => {
+const ConversationCard = ({ name, message, time  }: ChatItemProps) => {
   return (
     <GenericCard
     className="p-2"

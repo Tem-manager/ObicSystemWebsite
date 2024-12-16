@@ -9,7 +9,7 @@
 //     <div className="flex-grow ml-[4vw]">
 
 // <Header
-//       leftContent={ <div className="text-[#192745] text-xl font-semibold">OBIC</div>}
+//       leftContent={ <div className="text-[#192745] text-xl font-semibold"></div>}
 //       rightContent={
 //         <>
 //           {/* Search icon */}
