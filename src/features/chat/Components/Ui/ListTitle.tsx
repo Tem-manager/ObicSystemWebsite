@@ -20,7 +20,9 @@ const ListTitle: React.FC<ListTitleProps> = ({
   onClick,
   showIcon = false,
   hoverBg,
-  width="0"
+  width="0",
+  subTitleColor="text-gray-500",
+  TitleColor="text-gray-900"
 
   
 }) => {
