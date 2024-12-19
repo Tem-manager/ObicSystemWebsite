@@ -54,13 +54,13 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <header
-      className={`h-[10vh] flex items-center justify-between w-full ${backgroundColor} ${className}`}
+      className={`h-[10vh] flex items-center justify-between w-full ${backgroundColor} ${className}border-b border-gray-200`}
     >
-      <div className="w-full pr-10 py-2 box-border pl-4">
+      <div className="w-full pr-2 py-2 box-border pl-4">
         <div className="flex items-center justify-between h-[45px]">
           <div>{leftContent}</div>
           <div>{centerContent}</div>
-          <div className="flex items-center space-x-8">{rightContent}</div>
+          <div className="flex items-center space-x-4">{rightContent}</div>
         </div>
       </div>
     </header>

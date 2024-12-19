@@ -1,4 +1,5 @@
 import ChatTab from "../../../../Components/Partials/ChatTab";
+// import BaseMessage from "../../../../Components/Ui/BaseMessage";
 import Conversation from "./conversation/Conversation";
 import AllMessages from "./messages/AllMessages";
 
@@ -11,7 +12,8 @@ function AllChats() {
         <div className="flex-grow w-full flex">
           <Conversation pageTitle="All Chat" />
           <div className="flex flex-col w-[65%] h-full">
-            <AllMessages />
+            {/* <BaseMessage/> */}
+            <AllMessages/>
           </div>
         </div>
       </div>

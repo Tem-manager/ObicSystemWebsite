@@ -21,7 +21,9 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ buttonContent, options }) =
     
       <button
         onClick={toggleDropdown}
-        className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300"
+        // className="flex items-center justify-center w-10 h-10 rounded-full bg-red-200 hover:bg-gray-300"
+        className="flex items-center justify-center w-10 h-10 rounded-full"
+
       >
         {buttonContent}
       </button>
@@ -30,6 +32,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ buttonContent, options }) =
       {isOpen && (
         <div
           className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-[9999]"
+
           onMouseLeave={closeDropdown}
         >
           <ul className="py-1">

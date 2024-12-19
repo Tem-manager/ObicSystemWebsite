@@ -1,6 +1,3 @@
-//one page content
-
-
 import { FC, useEffect, useRef, lazy } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import PageTitle from "../../../Components/ui/PageTitle";
@@ -9,13 +6,13 @@ import routes from "../route/ChatRoutes";
 // Lazy loading for Page404
 const Page404 = lazy(() => import("../../../pages/Page404"));
 
-
-
 // Interface for route structure
 interface RouteConfig {
   path: string;
   title: string;
-  component: React.LazyExoticComponent<React.ComponentType<any>>;
+  component: React.LazyExoticComponent<React.ComponentType<any>>; // يدعم كلا النوعين
+
+  // component: React.LazyExoticComponent<() => JSX.Element>; // Define the type for lazy-loaded components
 }
 
 

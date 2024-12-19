@@ -105,7 +105,7 @@
 
 
 import React, { useState } from "react";
-//import PhoneInput from "react-phone-input-2";
+import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 
@@ -141,19 +141,19 @@ const PhoneInputWithCountry: React.FC = () => {
       />
       {/* الرسالة عند صحة الرقم */}
       {isValidLength && (
-        <p className="text-sm text-green-500">Phone number is valid for the selected country.</p>
+        <div className="text-sm text-green-500">Phone number is valid for the selected country.</div>
       )}
       {/* الرسالة عند عدم صحة الرقم */}
       {!isValidLength && phone && (
-        <p className="text-sm text-red-500">Invalid phone number for the selected country.</p>
+        <div className="text-sm text-red-500">Invalid phone number for the selected country.</div>
       )}
       {/* طباعة طول الرقم الوطني */}
-      {nationalNumberLength !== null && (
-        <p className="text-sm text-gray-500">
+      {/* {nationalNumberLength !== null && (
+        <div className="text-sm text-gray-500">
           The allowed national phone number length for the selected country is: {nationalNumberLength} digits.
-        </p>
-      )}
-      <p className="text-sm text-gray-500">Entered Phone Number: {phone}</p>
+        </div>
+      )} */}
+      {/* <div className="text-sm text-gray-500">Entered Phone Number: {phone}</div> */}
     </div>
   );
 };

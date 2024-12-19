@@ -5,7 +5,6 @@
 
 // const ChatRoutes = () => (
 //   <Routes>
-//     {/* الصفحة الرئيسية للسوق */}
 //     <Route path="/" element={<ChatHome />} />
 //     <Route path="/page1" element={<ChatPage1 />} />
 //     <Route path="/page2" element={<ChatPage2 />} />
