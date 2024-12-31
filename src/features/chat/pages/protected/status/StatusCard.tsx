@@ -15,6 +15,8 @@ import StoryViewer from "./StoryViewer";
 import MystatusFooter from "./MystatusFooter";
 import { StoresData } from "./StoresData";
 import { IoArrowBackOutline } from "react-icons/io5";
+import ContactDialog from "../../../Components/Ui/ContactDialog";
+import { contacts } from "./contactsData";
 
 const StatusCard: React.FC = () => {
   const navigate = useNavigate();
@@ -22,6 +24,7 @@ const StatusCard: React.FC = () => {
   const [isMediaPreviewOpen, setMediaPreviewOpen] = useState(false); // Media Preview Dialog
   const [isStoryViewerOpen, setStoryViewerOpen] = useState(false);
   const [showPrivacyCard, setShowPrivacyCard] = useState(false); // Privacy card toggle
+  const [isModalOpen, setModalOpen] = useState(false);
 
   // Add new files to the existing list
   const addFiles = (newFiles: File[]) => {
@@ -60,7 +63,7 @@ const StatusCard: React.FC = () => {
             <input type="radio" id="all-contacts" name="privacy" />
             <label htmlFor="all-contacts" className="ml-2">My contacts</label>
           </div>
-          <div className="mb-2">
+          <div className="mb-2" onClick={() => setModalOpen(true)}>
             <input type="radio" id="except-contacts" name="privacy" />
             <label htmlFor="except-contacts" className="ml-2">My contacts except...</label>
           </div>
@@ -148,8 +151,15 @@ const StatusCard: React.FC = () => {
           </Dialog>
          
           
+         
+     
         </>
       )}
+      <ContactDialog 
+          isOpen={isModalOpen}
+          contacts={contacts}
+          onClose={() => setModalOpen(false)} 
+          Title={"My contacts except"} />
     </div>
   );
 };

@@ -6,6 +6,7 @@ interface GenericCardProps {
   rightComponent?: React.ReactNode; // Component(s) to display on the right
   className?: string; // Additional styling for the card
   onClick?: () => void; // Optional click handler
+  hover?:string
 }
 
 const GenericCard: React.FC<GenericCardProps> = ({
@@ -14,10 +15,11 @@ const GenericCard: React.FC<GenericCardProps> = ({
   rightComponent,
   className,
   onClick,
+  hover="bg-gray-100 "
 }) => {
   return (
     <div
-      className={`flex items-center  cursor-pointer border-b border-gray-300 last:border-b-0 hover:bg-gray-100 ${className}`}
+      className={`flex items-center  cursor-pointer border-b border-gray-300 last:border-b-0 hover:${hover} ${className}`}
       onClick={onClick}
     >
       {/* Left Component */}

@@ -1,29 +1,28 @@
-import React from "react";
-import { moods } from "../../../Constants/moods";
+// src/ContactList.tsx
+import React, { useState } from 'react';
+import { contacts } from './contactsData';
+import ContactDialog from '../../../Components/Ui/ContactDialog';
 
-interface MoodGridProps {
-  onMoodSelect: (mood: { emoji: string; label: string }) => void;
-}
+const ContactList: React.FC = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
 
-const MoodGrid: React.FC<MoodGridProps> = ({ onMoodSelect }) => {
+  
+
   return (
-    <div className="overflow-y-auto max-h-[60vh] bg-gray-100 rounded-lg shadow-lg">
-      <div className="w-80 grid grid-cols-3 gap-4 p-4">
-        {moods.map((mood, index) => (
-          <div
-            key={index}
-            role="button"
-            aria-label={`Select mood ${mood.label}`}
-            className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow hover:shadow-md cursor-pointer hover:bg-gray-50 transition"
-            onClick={() => onMoodSelect(mood)}
-          >
-            <div className="text-3xl">{mood.emoji}</div>
-            <p className="mt-2 text-sm text-gray-700 font-medium">{mood.label}</p>
+
+    <div className="p-4">
+      <div className="mb-2" onClick={() => setModalOpen(true)}>
+            <input type="radio" id="except-contacts" name="privacy" />
+            <label htmlFor="except-contacts" className="ml-2">My contacts except...</label>
           </div>
-        ))}
-      </div>
+      
+      <ContactDialog 
+        isOpen={isModalOpen}
+        contacts={contacts}
+        onClose={() => setModalOpen(false)} 
+        Title={"My contacts except"} />
     </div>
   );
 };
 
-export default MoodGrid;
+export default ContactList;
