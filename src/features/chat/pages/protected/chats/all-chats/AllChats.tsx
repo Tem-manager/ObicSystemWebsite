@@ -7,7 +7,11 @@ import AllMessages from "./messages/AllMessages";
 function AllChats() {
   return (
     <>
-      <ChatTab />
+      <div className="flex-grow-0 fixed basis-1/2 z-10">
+        <ChatTab />
+      </div>
+      <div className="flex-grow ml-[50px] p-4 ">
+
       <div className="flex-grow w-full h-screen flex overflow-hidden">
         <div className="flex-grow w-full flex">
           <Conversation pageTitle="All Chat" />
@@ -16,6 +20,7 @@ function AllChats() {
             <AllMessages/>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

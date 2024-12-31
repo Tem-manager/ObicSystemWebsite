@@ -144,8 +144,10 @@ const Calls: React.FC = () => {
   };
   return (
     <>
-      <ChatTab />
-
+<div className="flex-grow-0 fixed basis-1/2 z-10">
+        <ChatTab />
+      </div>
+      <div className="flex-grow ml-[50px] p-4 ">
       <div className="flex-grow ml-[50px] p-6">
         <h2 className="text-2xl font-semibold mb-4">Your Calls</h2>
 
@@ -160,7 +162,7 @@ const Calls: React.FC = () => {
             
           ))}
         </div>
-      </div>
+      </div> 
       <TransitionsModal
         open={modalOpen}
         handleClose={handleClose}
@@ -169,6 +171,7 @@ const Calls: React.FC = () => {
         onAcceptCall={handleAcceptCall}
         onRejectCall={handleRejectCall}
       />
+      </div>
     </>
   );
 };

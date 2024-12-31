@@ -13,7 +13,7 @@ function Groups() {
   }));
 
   return (
-    <div className="relative h-screen flex mt-6">
+    <div className="relative h-screen  mt-6">
       {/* مكان ثابت للـ ChatTab */}
       <div className="flex-grow-0 fixed basis-1/2 z-10">
         <ChatTab />
