@@ -1,13 +1,9 @@
 // momentsModel.ts
 export interface PostData {
-    text: string;
-    mediaFiles: File[];
+  text: string;
+  mediaFiles: File[] | string[]; // يدعم الملفات أو الروابط
+  user: {
     username: string;
     avatar: string;
-  }
-  
-  export interface AddPostModalProps {
-    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    savePost: (text: string, mediaFiles: File[]) => void;
-  }
-  
+  };
+}
